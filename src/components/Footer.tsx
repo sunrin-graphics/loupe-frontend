@@ -76,13 +76,13 @@ const FooterContainer = styled.div`
   flex-wrap: wrap;
   border: 1px solid var(--600, #ececf1);
   background: var(--700, #f8f8fc);
-  @media (max-width: 1440px) {
+  @media (max-width: 1920px) {
     padding: 48px 160px;
   }
-  @media (max-width: 744px) {
+  @media (max-width: 1440px) {
     padding: 48px 32px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 744px) {
     padding: 48px 20px;
   }
 `;

@@ -35,7 +35,6 @@ const ContentAuthorInfo = styled.div`
 
 const ContentAuthorName = styled.div`
   color: var(--200, #302f4b);
-  font-family: SUITE;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -44,7 +43,6 @@ const ContentAuthorName = styled.div`
 
 const ContentAuthorEmail = styled.div`
   color: var(--400, #878797);
-  font-family: SUITE;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

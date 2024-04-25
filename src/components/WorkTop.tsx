@@ -94,8 +94,7 @@ const ContentTitle = styled.div`
   @media (max-width: 1440px) {
     font-size: 56px;
   }
-
-  @media (max-width: 375px) {
+  @media (max-width: 744px) {
     font-size: 32px;
   }
 `;
@@ -107,15 +106,15 @@ const ContentHeadContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 96px;
-  @media (max-width: 1440px) {
+  @media (max-width: 1920px) {
     padding: 64px;
   }
-  @media (max-width: 744px) {
+  @media (max-width: 1440px) {
     padding: 32px;
     gap: 64px;
     justify-content: flex-start;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 744px) {
     padding: 20px;
     gap: 40px;
     justify-content: flex-start;
@@ -132,7 +131,7 @@ const ContentDescription = styled.div`
     font-size: 18px;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 744px) {
     font-size: 16px;
   }
 `;

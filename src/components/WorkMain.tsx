@@ -68,7 +68,7 @@ const ArtImage = styled.img`
   @media (max-width: 1440px) {
     border-radius: 12px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 744px) {
     border-radius: 8px;
   }
 `;
@@ -80,13 +80,13 @@ const WorkMainLayout = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 48px;
-  @media (max-width: 1440px) {
+  @media (max-width: 1920px) {
     padding: 80px 160px;
   }
-  @media (max-width: 744px) {
+  @media (max-width: 1440px) {
     padding: 32px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 744px) {
     padding: 20px;
   }
 `;

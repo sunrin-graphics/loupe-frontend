@@ -35,13 +35,13 @@ const Layout = styled.div`
   justify-content: space-between;
   align-items: center;
   background: var(--800, #fff);
-  @media (max-width: 1440px) {
+  @media (max-width: 1920px) {
     padding: 0 160px;
   }
-  @media (max-width: 744px) {
+  @media (max-width: 1440px) {
     padding: 0 32px;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 744px) {
     padding: 0 20px;
   }
 `;
