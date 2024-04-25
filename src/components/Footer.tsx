@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import sunrinLogo from '../assets/sunrin.svg';
 import youtube from '../assets/youtube.svg';
