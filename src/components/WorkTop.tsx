@@ -49,7 +49,7 @@ const WorkTopLayout = styled.div`
   position: relative;
   margin-top: 60px;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 60px);
   @media (max-width: 1440px) {
     flex-direction: column;
     height: auto;
