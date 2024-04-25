@@ -47,9 +47,8 @@ export default function WorkTop() {
 const WorkTopLayout = styled.div`
   display: flex;
   position: relative;
-  margin-top: 60px;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: 100vh;
   @media (max-width: 1440px) {
     flex-direction: column;
     height: auto;

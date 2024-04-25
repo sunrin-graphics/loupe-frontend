@@ -1,9 +1,28 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Logo from '../assets/logo.svg';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
+  const [visible, setVisible] = useState(false);
+  // header visible when scroll down
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+    });
+  }, []);
   return (
-    <Layout>
+    <Layout
+      style={{
+        boxShadow: visible ? '0px 4px 8px rgba(0, 0, 0, 0.05)' : 'none',
+        transition: 'box-shadow 0.2s',
+        display: visible ? 'flex' : 'none',
+      }}
+    >
       <img src={Logo} />
       <Nav>
         <li>
@@ -22,6 +41,17 @@ export default function Header() {
     </Layout>
   );
 }
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    `;
 
 const Layout = styled.div`
   position: fixed;
@@ -44,6 +74,7 @@ const Layout = styled.div`
   @media (max-width: 744px) {
     padding: 0 20px;
   }
+  animation: ${fadeIn} 0.5s;
 `;
 
 const Nav = styled.ul`
