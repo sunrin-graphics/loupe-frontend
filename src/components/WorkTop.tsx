@@ -50,7 +50,7 @@ const WorkTopLayout = styled.div`
   margin-top: 60px;
   width: 100%;
   height: 100vh;
-  @media (max-width: 744px) {
+  @media (max-width: 1440px) {
     flex-direction: column;
     height: auto;
   }
