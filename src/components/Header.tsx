@@ -1,8 +1,11 @@
 import styled, { keyframes } from 'styled-components';
 import Logo from '../assets/logo.svg';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   // header visible when scroll down
 
@@ -26,16 +29,16 @@ export default function Header() {
       <img src={Logo} />
       <Nav>
         <li>
-          <NavItem>WORKS</NavItem>
+          <NavItem to={'/work'}>작품</NavItem>
         </li>
         <li>
-          <NavItem>PROFILE</NavItem>
+          <NavItem to={'/member'}>참여 인원</NavItem>
         </li>
         <li>
-          <NavItem>GUEST BOOK</NavItem>
+          <NavItem to={'/letter'}>방명록</NavItem>
         </li>
         <li>
-          <NavItem>CREDIT</NavItem>
+          <NavItem to={'/credit'}>크레딧</NavItem>
         </li>
       </Nav>
     </Layout>
@@ -87,13 +90,14 @@ const Nav = styled.ul`
   }
 `;
 
-const NavItem = styled.li`
+const NavItem = styled(Link)`
   color: var(--500, #bbbbc4);
   font-size: 16px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 150%; /* 24px */
   cursor: pointer;
+  text-decoration: none;
   transition: color 0.2s, transform 0.2s;
   &:hover {
     color: var(--100, #181826);

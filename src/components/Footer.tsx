@@ -1,26 +1,32 @@
 import styled from 'styled-components';
 import sunrinLogo from '../assets/sunrin.svg';
 import youtube from '../assets/youtube.svg';
-import facebook from '../assets/facebook.svg';
+import link from '../assets/link.svg';
 import instagram from '../assets/instagram.svg';
 
 export default function Footer() {
   return (
     <FooterLayout>
       <FooterContainer>
-        <FooterInfo>
+        <FooterBlock>
           <FooterRow>
             <img src={sunrinLogo} alt="sunrinLogo" />
-            <FooterHead>
+            <FooterSemiLabel>
               <Strong>선린인터넷고등학교 </Strong>
               콘텐츠디자인과
-            </FooterHead>
+            </FooterSemiLabel>
           </FooterRow>
           <FooterColumn>
             <FooterText>© 2024 선린인터넷고등학교 콘텐츠디자인과</FooterText>
             <FooterText>서울특별시 용산구 원효로97길 33-4</FooterText>
             <FooterText>Tel. 713-6213 | Fax. 704-0960</FooterText>
           </FooterColumn>
+        </FooterBlock>
+        <FooterBlock>
+          <FooterSemiLabel>
+            선린인터넷고등학교 <br />
+            콘텐츠디자인과 졸업전시회
+          </FooterSemiLabel>
           <FooterColumn>
             <FooterRow>
               <FooterLabel>웹 디자인</FooterLabel>
@@ -38,25 +44,47 @@ export default function Footer() {
               <FooterName>차호림</FooterName>
             </FooterRow>
           </FooterColumn>
-        </FooterInfo>
-        <FooterLinkGroup>
-          <FooterIcon>
-            <img src={sunrinLogo} alt="youtube" />
-          </FooterIcon>
-          <FooterIcon>
-            <img src={youtube} alt="youtube" />
-          </FooterIcon>
-          <FooterIcon>
-            <img src={facebook} alt="youtube" />
-          </FooterIcon>
-          <FooterIcon>
-            <img src={instagram} alt="youtube" />
-          </FooterIcon>
-        </FooterLinkGroup>
+        </FooterBlock>
+        <FooterBlock>
+          <FooterSemiLabel>웹사이트 바로가기</FooterSemiLabel>
+          <FooterLinkItem>
+            <FooterIcon>
+              <img src={link} alt="youtube" />
+            </FooterIcon>
+
+            <FooterLink>학교 공식 웹사이트</FooterLink>
+          </FooterLinkItem>
+          <FooterLinkItem>
+            <FooterIcon>
+              <img src={instagram} alt="youtube" />
+            </FooterIcon>
+            <FooterLink>졸업전시회 인스타그램</FooterLink>
+          </FooterLinkItem>
+          <FooterLinkItem>
+            <FooterIcon>
+              <img src={youtube} alt="youtube" />
+            </FooterIcon>
+            <FooterLink>졸업전시회 유튜브</FooterLink>
+          </FooterLinkItem>
+        </FooterBlock>
       </FooterContainer>
     </FooterLayout>
   );
 }
+
+const FooterLinkItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const FooterSemiLabel = styled.div`
+  color: var(--100, #181826);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+`;
 
 const FooterLayout = styled.footer`
   display: flex;
@@ -87,11 +115,12 @@ const FooterContainer = styled.div`
   }
 `;
 
-const FooterInfo = styled.div`
+const FooterBlock = styled.div`
   display: flex;
   flex-direction: column;
+  width: 280px;
   align-items: flex-start;
-  gap: var(--New-group-Gutter, 16px);
+  gap: 8px;
 `;
 
 const FooterColumn = styled.div`
@@ -123,7 +152,7 @@ const FooterRow = styled.div`
   display: flex;
   align-items: center;
 
-  gap: 8px;
+  gap: 4px;
 `;
 
 const FooterName = styled.div`
@@ -134,44 +163,29 @@ const FooterName = styled.div`
   line-height: 150%; /* 21px */
 `;
 
-const FooterHead = styled.div`
-  color: var(--100, #181826);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 30px */
-  user-select: none;
-`;
-
 const Strong = styled.span`
   font-weight: 600;
 `;
 
-const FooterLinkGroup = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  align-content: flex-end;
-  gap: 12px;
-  flex-wrap: wrap;
+const FooterLink = styled.a`
+  color: var(--300, #59596f);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 21px */
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  &:hover {
+    color: var(--100, #181826);
+  }
 `;
 
 const FooterIcon = styled.div`
   display: flex;
-  width: 56px;
-  height: 56px;
+  width: 20px;
+  height: 20px;
   justify-content: center;
   align-items: center;
-  border-radius: 100px;
-  border: 1px solid var(--600, #ececf1);
-  background: var(--800, #fff);
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-  &:hover {
-    background: var(--100, #e3e3e6);
-  }
-  &:active {
-    background: var(--100, #d3d3d6);
-    transform: translateY(1px);
-  }
+  gap: 8.333px;
 `;

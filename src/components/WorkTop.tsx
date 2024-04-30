@@ -90,6 +90,8 @@ const ContentTitle = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
+  word-break: keep-all;
+  //  word-break: keep-all;
   @media (max-width: 1440px) {
     font-size: 56px;
   }
