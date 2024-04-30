@@ -102,7 +102,7 @@ const FooterContainer = styled.div`
   row-gap: 32px;
   flex: 1 0 0;
   flex-wrap: wrap;
-  border: 1px solid var(--600, #ececf1);
+  border-top: 1px solid var(--600, #ececf1);
   background: var(--700, #f8f8fc);
   @media (max-width: 1920px) {
     padding: 48px 160px;

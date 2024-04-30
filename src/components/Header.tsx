@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
-  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   // header visible when scroll down
 
