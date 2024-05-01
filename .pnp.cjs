@@ -34,6 +34,7 @@ const RAW_RUNTIME_STATE =
           ["eslint", "npm:8.57.0"],\
           ["eslint-plugin-react-hooks", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:4.6.0"],\
           ["eslint-plugin-react-refresh", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:0.4.6"],\
+          ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:18.2.0"],\
           ["react-router-dom", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:6.23.0"],\
@@ -2254,6 +2255,7 @@ const RAW_RUNTIME_STATE =
           ["eslint", "npm:8.57.0"],\
           ["eslint-plugin-react-hooks", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:4.6.0"],\
           ["eslint-plugin-react-refresh", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:0.4.6"],\
+          ["prettier", "npm:3.2.5"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:18.2.0"],\
           ["react-router-dom", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:6.23.0"],\
@@ -2667,6 +2669,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/prelude-ls-npm-1.2.1-3e4d272a55-10c0.zip/node_modules/prelude-ls/",\
         "packageDependencies": [\
           ["prelude-ls", "npm:1.2.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["prettier", [\
+      ["npm:3.2.5", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.2.5-6859110d6a/node_modules/prettier/",\
+        "packageDependencies": [\
+          ["prettier", "npm:3.2.5"]\
         ],\
         "linkType": "HARD"\
       }]\
