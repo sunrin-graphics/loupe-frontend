@@ -3,6 +3,7 @@ import sunrinLogo from '../assets/sunrin.svg';
 import youtube from '../assets/youtube.svg';
 import link from '../assets/link.svg';
 import instagram from '../assets/instagram.svg';
+import { ResponsiveContainer } from './shared/styles';
 
 export default function Footer() {
   return (
@@ -96,26 +97,15 @@ const FooterLayout = styled.footer`
   background: var(--700, #f8f8fc);
 `;
 
-const FooterContainer = styled.div`
+const FooterContainer = styled(ResponsiveContainer)`
   display: flex;
-  width: 100%;
-  max-width: 1120px;
-  padding: 48px 0;
+  padding-top: 48px;
+  padding-bottom: 48px;
   justify-content: space-between;
   align-items: flex-end;
   align-content: flex-end;
   row-gap: 32px;
   flex-wrap: wrap;
-
-  @media (max-width: 1920px) {
-    padding: 48px 160px;
-  }
-  @media (max-width: 1440px) {
-    padding: 48px 32px;
-  }
-  @media (max-width: 744px) {
-    padding: 48px 20px;
-  }
 `;
 
 const FooterBlock = styled.div`

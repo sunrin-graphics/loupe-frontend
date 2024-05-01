@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import Logo from '../assets/logo.svg';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ResponsiveContainer } from './shared/styles';
 
 export default function HeaderScroll() {
   const location = useLocation();
@@ -31,31 +32,33 @@ export default function HeaderScroll() {
         display: visible ? 'flex' : 'none',
       }}
     >
-      <Link to={'/'} style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={Logo} />
-      </Link>
-      <Nav>
-        <li>
-          <NavItem $active={pathname === '/works'} to={'/works'}>
-            작품
-          </NavItem>
-        </li>
-        <li>
-          <NavItem $active={pathname === '/member'} to={'/member'}>
-            참여 인원
-          </NavItem>
-        </li>
-        <li>
-          <NavItem $active={pathname === '/guestbook'} to={'/guestbook'}>
-            방명록
-          </NavItem>
-        </li>
-        <li>
-          <NavItem $active={pathname === '/credit'} to={'/credit'}>
-            크레딧
-          </NavItem>
-        </li>
-      </Nav>
+      <Container>
+        <Link to={'/'} style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={Logo} />
+        </Link>
+        <Nav>
+          <li>
+            <NavItem active={pathname === '/work'} to={'/works'}>
+              작품
+            </NavItem>
+          </li>
+          <li>
+            <NavItem active={pathname === '/member'} to={'/member'}>
+              참여 인원
+            </NavItem>
+          </li>
+          <li>
+            <NavItem active={pathname === '/guestbook'} to={'/guestbook'}>
+              방명록
+            </NavItem>
+          </li>
+          <li>
+            <NavItem active={pathname === '/credit'} to={'/credit'}>
+              크레딧
+            </NavItem>
+          </li>
+        </Nav>
+      </Container>
     </Layout>
   );
 }
@@ -79,19 +82,9 @@ const Layout = styled.div`
   display: flex;
   width: 100%;
   height: 60px;
-  padding: 0px var(--New-group-Margin, 240px);
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background: var(--800, #fff);
-  @media (max-width: 1920px) {
-    padding: 0 160px;
-  }
-  @media (max-width: 1440px) {
-    padding: 0 32px;
-  }
-  @media (max-width: 744px) {
-    padding: 0 20px;
-  }
   animation: ${fadeIn} 0.5s;
 `;
 
@@ -125,4 +118,10 @@ const NavItem = styled(Link)<{ $active: boolean }>`
     transform: translateY(1px);
   }
   user-select: none;
+`;
+
+const Container = styled(ResponsiveContainer)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

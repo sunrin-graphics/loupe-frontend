@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ContentAuthor from './ContentAuthor';
+import { ResponsiveContainer } from './shared/styles';
 
 export default function WorkMain() {
   return (
@@ -73,20 +74,23 @@ const ArtImage = styled.img`
   }
 `;
 
-const WorkMainLayout = styled.div`
+const WorkMainLayout = styled(ResponsiveContainer)`
   display: flex;
-  width: 100%;
-  padding: 120px 240px;
+  padding-top: 120px;
+  padding-bottom: 120px;
   flex-direction: column;
   align-items: flex-start;
   gap: 48px;
   @media (max-width: 1920px) {
-    padding: 80px 160px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
   @media (max-width: 1440px) {
-    padding: 32px;
+    padding-top: 32px;
+    padding-bottom: 32px;
   }
   @media (max-width: 744px) {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 `;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Logo from '../assets/logo.svg';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ResponsiveContainer } from './shared/styles';
 
 export default function Header() {
   const location = useLocation();
@@ -102,20 +103,8 @@ const NavItem = styled(Link)<{ $active: boolean }>`
   user-select: none;
 `;
 
-const Container = styled.div`
-  max-width: 1120px;
-  width: 100%;
+const Container = styled(ResponsiveContainer)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  @media (max-width: 1920px) {
-    padding: 0 160px;
-  }
-  @media (max-width: 1440px) {
-    padding: 0 32px;
-  }
-  @media (max-width: 744px) {
-    padding: 0 20px;
-  }
 `;

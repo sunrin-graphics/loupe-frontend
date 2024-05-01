@@ -1,18 +1,10 @@
 import styled from 'styled-components';
 
-export const Section = styled.section`
-  display: flex;
+export const ResponsiveContainer = styled.div`
   width: 100%;
   max-width: 1120px;
-  margin-top: 60px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 48px;
-  @media (max-width: 1920px) {
-    padding: 0 160px;
-  }
-  @media (max-width: 1440px) {
-    padding: 0 32px;
+  @media (max-width: 1300px) {
+    padding: 0 38px;
   }
   @media (max-width: 744px) {
     padding: 0 20px;
@@ -26,4 +18,13 @@ export const SectionTop = styled.div`
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
+`;
+
+export const Section = styled(ResponsiveContainer)`
+  display: flex;
+  margin-top: 60px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+  min-height: 100vh;
 `;
