@@ -7,7 +7,6 @@ export default function Header() {
   const location = useLocation();
   const { pathname } = location;
   const [visible, setVisible] = useState(false);
-  // header visible when scroll down
 
   useEffect(() => {
     window.addEventListener('scroll', () => {

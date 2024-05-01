@@ -27,9 +27,9 @@ export default function Member() {
           <MemberCard
             name={'박시원'}
             mail={'whoisapple@kakao.com'}
-            insLink={"http://www.digital-media.kr/degreeshow/2022/"}
-            poLink={"http://www.digital-media.kr/degreeshow/2022/"}
-            artLink={"http://www.digital-media.kr/degreeshow/2022/"}
+            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
           />
         </MemberCardContainer>
       </Section>
@@ -38,72 +38,72 @@ export default function Member() {
   );
 }
 const Layout = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 const Section = styled.div`
-    display: flex;
-    position: relative;
-    margin-top: 60px;
-    width: 100%;
-    height: 100vh;
-    flex-direction: column;
-    @media (max-width: 1920px) {
-        padding: 0 160px;
-    }
-    @media (max-width: 1440px) {
-        padding: 0 32px;
-    }
-    @media (max-width: 744px) {
-        padding: 20px;
-    }
+  display: flex;
+  position: relative;
+  margin-top: 60px;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  @media (max-width: 1920px) {
+    padding: 0 160px;
+  }
+  @media (max-width: 1440px) {
+    padding: 0 32px;
+  }
+  @media (max-width: 744px) {
+    padding: 20px;
+  }
 `;
 
 const MemberTitleContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    //justify-content: flex-end;
-    align-items: flex-start;
-    color: var(--100, #181826);
-    font-style: normal;
-    font-weight: 600;
-    @media (max-width: 1920px) {
-        font-size: 56px;
-        line-height: 80px;
-        padding: 128px 0px 16px 0px;
-    }
-    @media (max-width: 1440px) {
-        font-size: 48px;
-        line-height: 64px;
-        padding: 96px 0px 16px 0px;
-    }
-    @media (max-width: 744px) {
-        font-size: 32px;
-        line-height: 48px;
-        padding: 64px 20px 16px 20px;
-    }
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  //justify-content: flex-end;
+  align-items: flex-start;
+  color: var(--100, #181826);
+  font-style: normal;
+  font-weight: 600;
+  @media (max-width: 1920px) {
+    font-size: 56px;
+    line-height: 80px;
+    padding: 128px 0px 16px 0px;
+  }
+  @media (max-width: 1440px) {
+    font-size: 48px;
+    line-height: 64px;
+    padding: 96px 0px 16px 0px;
+  }
+  @media (max-width: 744px) {
+    font-size: 32px;
+    line-height: 48px;
+    padding: 64px 20px 16px 20px;
+  }
 `;
 
 const MemberCardContainer = styled(motion.div)`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20%, auto));
-    flex-direction: column;
-    width: 100%;
-    padding: 24px 0px;
-    align-items: flex-start;
-    gap: 48px 16px;
-    @media (max-width: 744px) {
-        grid-template-columns: 1fr 1fr 1fr;
-        padding: 24px 20px;
-    }
-    @media (max-width: 720px) {
-        grid-template-columns: 1fr 1fr;
-    }
-    @media (max-width: 483px) {
-        grid-template-columns: 1fr;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20%, auto));
+  flex-direction: column;
+  width: 100%;
+  padding: 24px 0px;
+  align-items: flex-start;
+  gap: 48px 16px;
+  @media (max-width: 744px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 24px 20px;
+  }
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 483px) {
+    grid-template-columns: 1fr;
+  }
 `;

@@ -7,20 +7,17 @@ import HeaderTransparent from '../components/HeaderTransparent.tsx';
 export default function Main() {
   return (
     <MainLayout>
-      <MainBackgroundSphere/>
+      <MainBackgroundSphere />
       <HeaderTransparent />
-      <ThreeBackground/>
-      <MainBackground/>
-
+      <ThreeBackground />
+      <MainBackground />
     </MainLayout>
   );
 }
 
 const MainLayout = styled.div`
-  background-color:#2E2053;
-  position:relative;
-  width:100%;
-  height:100vh;
-`
-
-
+  background-color: #2e2053;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+`;

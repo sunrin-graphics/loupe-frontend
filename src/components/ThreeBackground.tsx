@@ -1,23 +1,22 @@
 import { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
-// @ts-ignore
+
 import * as random from 'maath/random/dist/maath-random.esm';
-
-
 
 export default function ThreeBackground() {
   return (
-    <Canvas style={{ position: "absolute", zIndex: "999" }}>
+    <Canvas style={{ position: 'absolute', zIndex: '999' }}>
       <Stars />
     </Canvas>
-  )
+  );
 }
 
-
-function Stars(props:any) {
-  const ref:any = useRef();
-  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 5.5 }));
+function Stars(props) {
+  const ref = useRef();
+  const [sphere] = useState(() =>
+    random.inSphere(new Float32Array(5000), { radius: 5.5 }),
+  );
 
   useFrame((state, delta) => {
     const mouseX = (state.mouse.x * state.viewport.width) / 2;
@@ -33,8 +32,14 @@ function Stars(props:any) {
   return (
     <group ref={ref} rotation={[0, 0, Math.PI / 4]}>
       <Points positions={sphere} stride={3} frustumCulled={false} {...props}>
-        <PointMaterial transparent color="#B880FF" size={0.02} sizeAttenuation={true} depthWrite={false} />
+        <PointMaterial
+          transparent
+          color="#B880FF"
+          size={0.02}
+          sizeAttenuation={true}
+          depthWrite={false}
+        />
       </Points>
     </group>
   );
-};
+}
