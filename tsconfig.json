@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "svg.d.ts"],
+  "include": ["src", "declaration.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
