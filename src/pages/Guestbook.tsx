@@ -6,7 +6,7 @@ import GuestbookCard from '../components/GuestbookCard';
 import { useState } from 'react';
 import PostGuestbookModal from '../components/modal/PostGuestbookModal';
 import { motion } from 'framer-motion';
-import { Section } from '../components/shared/styles';
+import { Section, SectionTop } from '../components/shared/styles';
 export default function Guestbook() {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -125,15 +125,6 @@ const Layout = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
-
-const SectionTop = styled.div`
-  width: 100%;
-  display: flex;
-  padding: 128px 0px 16px 0px;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
 `;
 
 const PageTitle = styled.div`

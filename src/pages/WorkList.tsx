@@ -3,7 +3,7 @@ import Footer from '../components/Footer';
 import styled from 'styled-components';
 import Artwork from '../components/Artwork';
 import { motion } from 'framer-motion';
-import { Section } from '../components/shared/styles';
+import { Section, SectionTop } from '../components/shared/styles';
 
 export default function WorkList() {
   const gridAnimation = {
@@ -48,15 +48,6 @@ const Layout = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`;
-
-const SectionTop = styled.div`
-  width: 100%;
-  display: flex;
-  padding: 128px 0px 16px 0px;
-  justify-content: space-between;
-  align-items: center;
-  align-self: stretch;
 `;
 
 const PageTitle = styled.div`

@@ -18,3 +18,12 @@ export const Section = styled.section`
     padding: 0 20px;
   }
 `;
+
+export const SectionTop = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 128px 0px 16px 0px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+`;
