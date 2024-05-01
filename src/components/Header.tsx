@@ -10,14 +10,18 @@ export default function Header() {
   // header visible when scroll down
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        setVisible(true);
-      } else {
-        setVisible(false);
-      }
-    });
-  }, []);
+    if (pathname === '/work') {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
+      });
+    } else {
+      setVisible(true);
+    }
+  }, [pathname]);
 
   return (
     <Layout
@@ -40,7 +44,7 @@ export default function Header() {
           </NavItem>
         </li>
         <li>
-          <NavItem active={pathname === '/letter'} to={'/letter'}>
+          <NavItem active={pathname === '/guestbook'} to={'/guestbook'}>
             방명록
           </NavItem>
         </li>
@@ -108,7 +112,9 @@ const NavItem = styled(Link)<{ active: boolean }>`
   line-height: 150%; /* 24px */
   cursor: pointer;
   text-decoration: none;
-  transition: color 0.2s, transform 0.2s;
+  transition:
+    color 0.2s,
+    transform 0.2s;
   &:hover {
     color: var(--100, #181826);
   }
