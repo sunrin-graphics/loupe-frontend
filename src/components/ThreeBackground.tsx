@@ -2,14 +2,11 @@ import React, { useRef, useState, Suspense } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial} from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
-import MainBackground from './MainBackground';
 
 export default function ThreeBackground(p){
     return(
-        <Canvas>
-            <color attach={'background'} args={['#2E2053']}/> 
+        <Canvas style={{position:"absolute", zIndex:"99"}}>
             <Stars/>
-            <MainBackground/>
         </Canvas>
     )
 }

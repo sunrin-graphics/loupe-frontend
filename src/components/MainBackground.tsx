@@ -1,10 +1,10 @@
-import { Html } from "@react-three/drei"
 import styled from "styled-components"
+import { motion } from "framer-motion"
 
 export default function MainBackground(p) {
     return (
-        <Html fullscreen style={{ width: "100%", height: "100%" }}>
-            <MainLayout>
+        <MainLayout>
+            <MainLayoutContent>
                 <svg xmlns="http://www.w3.org/2000/svg" width="267" height="360" viewBox="0 0 267 360" fill="none">
                     <path d="M16.3403 137.218C16.3403 137.218 49.2056 120.848 105.282 82.8704C152.697 50.7593 142.071 1.82766 103.005 20.8277C63.9383 39.8277 58.8917 86.4827 95.4574 181.393C132.023 276.303 138.483 339.878 101.422 343.913C88.8054 345.288 62.2895 324.067 100.729 289.51C150.979 223.792 224.976 261.433 250.537 195.334" stroke="#A180FF" strokeWidth="31.4948" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M16.3403 137.218C16.3403 137.218 49.2056 120.848 105.282 82.8704C152.697 50.7593 142.071 1.82766 103.005 20.8277C63.9383 39.8277 58.8917 86.4827 95.4574 181.393C132.023 276.303 138.483 339.878 101.422 343.913C88.8054 345.288 62.2895 324.067 100.729 289.51C150.979 223.792 224.976 261.433 250.537 195.334" stroke="url(#paint0_linear_253_3849)" strokeWidth="31.4948" strokeLinecap="round" strokeLinejoin="round" />
@@ -49,25 +49,36 @@ export default function MainBackground(p) {
                     </defs>
                 </svg>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="229" height="379" viewBox="0 0 229 379" fill="none">
+                <svg style={{position:'relative'}} xmlns="http://www.w3.org/2000/svg" width="229" height="454" viewBox="0 0 229 454" fill="none">
                     <path d="M212.647 16.664C212.647 16.664 160.879 66.8035 100.457 50.2284C100.457 50.2284 94.6581 151.175 16.7368 220.739C16.7368 220.739 140.088 275.593 186.088 362.8" stroke="#A180FF" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M212.647 16.664C212.647 16.664 160.879 66.8035 100.457 50.2284C100.457 50.2284 94.6581 151.175 16.7368 220.739C16.7368 220.739 140.088 275.593 186.088 362.8" stroke="url(#paint0_linear_253_3854)" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
+                    <path transform="translate(60, 130)" d="M15.7544 15.7563C15.7544 15.7563 64.7971 64.1073 138.318 57.9607" stroke="#A180FF" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
+                    <path transform="translate(60, 130)" d="M15.7544 15.7563C15.7544 15.7563 64.7971 64.1073 138.318 57.9607" stroke="url(#paint0_linear_253_3855)" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
                     <defs>
                         <linearGradient id="paint0_linear_253_3854" x1="118.565" y1="13.2097" x2="105.887" y2="358.526" gradientUnits="userSpaceOnUse">
                             <stop stopColor="white" stopOpacity="0.3" />
                             <stop offset="1" stopColor="white" />
                         </linearGradient>
+                        <linearGradient id="paint0_linear_253_3855" x1="77.7276" y1="18.0317" x2="76.3096" y2="56.6533" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="white" stopOpacity="0.3" />
+                            <stop offset="1" stopColor="white" />
+                        </linearGradient>
                     </defs>
                 </svg>
-            </MainLayout>
-        </Html>
+            </MainLayoutContent>
+        </MainLayout>
     )
 }
 
 const MainLayout = styled.div`
-  display:flex;
-  width:100%;
-  height:100vh;
+    position:absolute;
+    width:100%;
+    height:100%;
 `
+const MainLayoutContent = styled.div`
+    display:flex;
+    padding: 0 160px;
+`
+
 
 
