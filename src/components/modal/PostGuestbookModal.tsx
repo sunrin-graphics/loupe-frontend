@@ -58,7 +58,7 @@ const CloseButton = styled.div`
 
 const slideIn = keyframes`
   from {
-    transform: translateY(-30px);
+    transform: translateY(-70px);
   }
   to {
     transform: translateY(0);
@@ -97,7 +97,7 @@ const Modal = styled.div`
   gap: 12px;
   border-radius: 8px;
   background: #fff;
-  animation: ${slideIn} 0.3s;
+  animation: ${slideIn} 0.5s ease;
 `;
 
 const ModalTop = styled.div`
