@@ -25,32 +25,34 @@ export default function Header() {
         transition: 'box-shadow 0.2s',
       }}
     >
-      <Link to={'/'} style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={Logo} />
-      </Link>
+      <Container>
+        <Link to={'/'} style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={Logo} />
+        </Link>
 
-      <Nav>
-        <li>
-          <NavItem active={pathname === '/works'} to={'/works'}>
-            작품
-          </NavItem>
-        </li>
-        <li>
-          <NavItem active={pathname === '/member'} to={'/member'}>
-            참여 인원
-          </NavItem>
-        </li>
-        <li>
-          <NavItem active={pathname === '/guestbook'} to={'/guestbook'}>
-            방명록
-          </NavItem>
-        </li>
-        <li>
-          <NavItem active={pathname === '/credit'} to={'/credit'}>
-            크레딧
-          </NavItem>
-        </li>
-      </Nav>
+        <Nav>
+          <li>
+            <NavItem active={pathname === '/works'} to={'/works'}>
+              작품
+            </NavItem>
+          </li>
+          <li>
+            <NavItem active={pathname === '/member'} to={'/member'}>
+              참여 인원
+            </NavItem>
+          </li>
+          <li>
+            <NavItem active={pathname === '/guestbook'} to={'/guestbook'}>
+              방명록
+            </NavItem>
+          </li>
+          <li>
+            <NavItem active={pathname === '/credit'} to={'/credit'}>
+              크레딧
+            </NavItem>
+          </li>
+        </Nav>
+      </Container>
     </Layout>
   );
 }
@@ -61,21 +63,11 @@ const Layout = styled.div`
   left: 0;
   z-index: 1000;
   display: flex;
+  justify-content: center;
   width: 100%;
-  height: 60px;
-  padding: 0px var(--New-group-Margin, 240px);
-  justify-content: space-between;
   align-items: center;
+  height: 60px;
   background: var(--800, #fff);
-  @media (max-width: 1920px) {
-    padding: 0 160px;
-  }
-  @media (max-width: 1440px) {
-    padding: 0 32px;
-  }
-  @media (max-width: 744px) {
-    padding: 0 20px;
-  }
 `;
 
 const Nav = styled.ul`
@@ -108,4 +100,22 @@ const NavItem = styled(Link)<{ active: boolean }>`
     transform: translateY(1px);
   }
   user-select: none;
+`;
+
+const Container = styled.div`
+  max-width: 1120px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 1920px) {
+    padding: 0 160px;
+  }
+  @media (max-width: 1440px) {
+    padding: 0 32px;
+  }
+  @media (max-width: 744px) {
+    padding: 0 20px;
+  }
 `;

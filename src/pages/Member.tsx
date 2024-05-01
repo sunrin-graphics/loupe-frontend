@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MemberCard from '../components/MemberCard';
 import { motion } from 'framer-motion';
+import { Section } from '../components/shared/styles';
 
 export default function Member() {
   const gridAnimation = {
@@ -31,6 +32,48 @@ export default function Member() {
             poLink={'http://www.digital-media.kr/degreeshow/2022/'}
             artLink={'http://www.digital-media.kr/degreeshow/2022/'}
           />
+          <MemberCard
+            name={'박시원'}
+            mail={'whoisapple@kakao.com'}
+            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
+          />
+          <MemberCard
+            name={'박시원'}
+            mail={'whoisapple@kakao.com'}
+            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
+          />
+          <MemberCard
+            name={'박시원'}
+            mail={'whoisapple@kakao.com'}
+            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
+          />
+          <MemberCard
+            name={'박시원'}
+            mail={'whoisapple@kakao.com'}
+            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
+          />
+          <MemberCard
+            name={'박시원'}
+            mail={'whoisapple@kakao.com'}
+            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
+          />
+          <MemberCard
+            name={'박시원'}
+            mail={'whoisapple@kakao.com'}
+            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
+            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
+          />
         </MemberCardContainer>
       </Section>
       <Footer />
@@ -44,24 +87,6 @@ const Layout = styled.div`
   flex-direction: column;
 `;
 
-const Section = styled.div`
-  display: flex;
-  position: relative;
-  margin-top: 60px;
-  width: 100%;
-  height: 100vh;
-  flex-direction: column;
-  @media (max-width: 1920px) {
-    padding: 0 160px;
-  }
-  @media (max-width: 1440px) {
-    padding: 0 32px;
-  }
-  @media (max-width: 744px) {
-    padding: 20px;
-  }
-`;
-
 const MemberTitleContainer = styled.div`
   width: 100%;
   display: flex;
@@ -71,11 +96,10 @@ const MemberTitleContainer = styled.div`
   color: var(--100, #181826);
   font-style: normal;
   font-weight: 600;
-  @media (max-width: 1920px) {
-    font-size: 56px;
-    line-height: 80px;
-    padding: 128px 0px 16px 0px;
-  }
+  font-size: 56px;
+  line-height: 80px;
+  padding: 128px 0px 16px 0px;
+
   @media (max-width: 1440px) {
     font-size: 48px;
     line-height: 64px;

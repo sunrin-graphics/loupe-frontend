@@ -85,7 +85,6 @@ const NavItem = styled(Link)<{ active: boolean }>`
     color: #bbbbc4;
   }
   &:active {
-    color: var(--100, #181826);
     transform: translateY(1px);
   }
   user-select: none;

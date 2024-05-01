@@ -89,21 +89,24 @@ const FooterSemiLabel = styled.div`
 const FooterLayout = styled.footer`
   display: flex;
   width: 100%;
-  padding-top: 48px;
+  margin-top: 48px;
   align-items: flex-end;
+  justify-content: center;
+  border-top: 1px solid var(--600, #ececf1);
+  background: var(--700, #f8f8fc);
 `;
 
 const FooterContainer = styled.div`
   display: flex;
-  padding: 48px var(--New-group-Margin, 240px);
+  width: 100%;
+  max-width: 1120px;
+  padding: 48px 0;
   justify-content: space-between;
   align-items: flex-end;
   align-content: flex-end;
   row-gap: 32px;
-  flex: 1 0 0;
   flex-wrap: wrap;
-  border-top: 1px solid var(--600, #ececf1);
-  background: var(--700, #f8f8fc);
+
   @media (max-width: 1920px) {
     padding: 48px 160px;
   }
