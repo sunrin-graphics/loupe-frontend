@@ -1,18 +1,17 @@
 import { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
-
+import { Points, PointMaterial,Stars} from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
 
 export default function ThreeBackground() {
   return (
-    <Canvas style={{ position: 'absolute', zIndex: '999' }}>
-      <Stars />
+    <Canvas camera={{type:'orthographic'}} style={{ position: 'absolute', zIndex: '999' }}>
+      <Starss />
     </Canvas>
   );
 }
 
-function Stars(props) {
+function Starss(props) {
   const ref = useRef();
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(5000), { radius: 5.5 }),
@@ -34,6 +33,7 @@ function Stars(props) {
       <Points positions={sphere} stride={3} frustumCulled={false} {...props}>
         <PointMaterial
           transparent
+          opacity={0.5} 
           color="#B880FF"
           size={0.02}
           sizeAttenuation={true}
