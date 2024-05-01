@@ -1,5 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 interface GuestbookCardProps {
   from: string;
@@ -12,8 +12,20 @@ export default function GuestbookCard({
   to,
   content,
 }: GuestbookCardProps) {
+  const imgAnimation = {
+    show: {
+      y: [40, 0],
+      opacity: [0, 1],
+      scale: [0.98, 1],
+    },
+    hide: {
+      y: [0, 40],
+      opacity: [1, 0],
+      scale: [1, 0.98],
+    },
+  };
   return (
-    <GuestbookCardLayout>
+    <GuestbookCardLayout variants={imgAnimation}>
       <GuestbookCardTop>To. {to}</GuestbookCardTop>
       <GuestbookContent>{content}</GuestbookContent>
       <From>From. {from}</From>
@@ -21,7 +33,7 @@ export default function GuestbookCard({
   );
 }
 
-const GuestbookCardLayout = styled.div`
+const GuestbookCardLayout = styled(motion.div)`
   display: flex;
   padding: 16px;
   flex-direction: column;
@@ -45,7 +57,7 @@ const GuestbookContent = styled.div`
   color: var(--300, #59596f);
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 150%; /* 21px */
 `;
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 interface ArtworkProps {
   title: string;
@@ -6,8 +7,21 @@ interface ArtworkProps {
 }
 
 export default function Artwork({ title, owner }: ArtworkProps) {
+
+  const imgAnimation = {
+    show: {
+      y: [40, 0],
+      opacity: [0, 1],
+      scale: [0.98, 1]
+    },
+    hide: {
+      y: [0, 40],
+      opacity: [1, 0],
+      scale: [1, 0.98]
+    },
+  }
   return (
-    <Layout>
+    <Layout   variants={imgAnimation}>
       <ArtImage src="thumbnail.png" />
       <ArtInfo>
         <ArtTitle>{title}</ArtTitle>
@@ -17,7 +31,7 @@ export default function Artwork({ title, owner }: ArtworkProps) {
   );
 }
 
-const Layout = styled.div`
+const Layout = styled(motion.div)`
   max-width: 267px;
   display: flex;
   flex-direction: column;

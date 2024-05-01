@@ -2,8 +2,20 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styled from 'styled-components';
 import Artwork from '../components/Artwork';
+import { motion } from 'framer-motion';
 
 export default function WorkList() {
+
+  const gridAnimation = {
+    show: {
+      transition: { staggerChildren: 0.1 }
+    },
+    hide: {
+      transition: { staggerChildren: 0.1, staggerDirection: -1 }
+    },
+  }
+
+
   return (
     <Layout>
       <Header />
@@ -11,7 +23,9 @@ export default function WorkList() {
         <SectionTop>
           <PageTitle>UI/UX</PageTitle>
         </SectionTop>
-        <Gallery>
+        <Gallery  variants={gridAnimation}
+                  animate="show"
+                  exit="hide">
           <Artwork
             title="라온 - 어플리케이션 기반 반자유여행 서비스"
             owner="박시원"
@@ -75,7 +89,7 @@ const PageTitle = styled.div`
   line-height: 80px; /* 142.857% */
 `;
 
-const Gallery = styled.div`
+const Gallery = styled(motion.div)`
   display: flex;
   align-items: flex-start;
   align-content: flex-start;

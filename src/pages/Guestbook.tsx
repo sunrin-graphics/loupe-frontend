@@ -5,8 +5,28 @@ import PlusIcon from '../assets/plus.svg';
 import GuestbookCard from '../components/GuestbookCard';
 import { useState } from 'react';
 import PostGuestbookModal from '../components/modal/PostGuestbookModal';
+import { motion } from 'framer-motion';
 export default function Guestbook() {
   const [modalOpen, setModalOpen] = useState(false);
+
+  const gridAnimation = {
+    show: {
+      transition: { staggerChildren: 0.1 },
+    },
+    hide: {
+      transition: { staggerChildren: 0.1, staggerDirection: -1 },
+    },
+  };
+
+  const columnAnimation = {
+    show: {
+      transition: { staggerChildren: 0.1 },
+    },
+    hide: {
+      transition: { staggerChildren: 0.1, staggerDirection: -1 },
+    },
+  };
+
   return (
     <Layout>
       {modalOpen && (
@@ -21,8 +41,8 @@ export default function Guestbook() {
             작성하기
           </PageCTAButton>
         </SectionTop>
-        <Gallery>
-          <GuestbookColumn>
+        <Gallery variants={gridAnimation} animate="show" exit="hide">
+          <GuestbookColumn variants={columnAnimation}>
             <GuestbookCard
               from="박시원"
               content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? "
@@ -39,7 +59,7 @@ export default function Guestbook() {
               to="박시원"
             />
           </GuestbookColumn>
-          <GuestbookColumn>
+          <GuestbookColumn variants={columnAnimation}>
             <GuestbookCard
               from="박시원"
               content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업"
@@ -57,7 +77,7 @@ export default function Guestbook() {
             />
             <GuestbookCard from="박시원" content="안녕하세요!" to="박시원" />
           </GuestbookColumn>
-          <GuestbookColumn>
+          <GuestbookColumn variants={columnAnimation}>
             <GuestbookCard
               from="박시원"
               content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? "
@@ -74,7 +94,7 @@ export default function Guestbook() {
               to="박시원"
             />
           </GuestbookColumn>
-          <GuestbookColumn>
+          <GuestbookColumn variants={columnAnimation}>
             <GuestbookCard
               from="박시원"
               content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업"
@@ -167,7 +187,7 @@ const PageCTAButton = styled.button`
   }
 `;
 
-const Gallery = styled.div`
+const Gallery = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -175,7 +195,7 @@ const Gallery = styled.div`
   align-self: stretch;
 `;
 
-const GuestbookColumn = styled.div`
+const GuestbookColumn = styled(motion.div)`
   display: flex;
   padding: 24px 0px;
   flex-direction: column;
