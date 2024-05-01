@@ -1,9 +1,11 @@
 import styled, { keyframes } from 'styled-components';
 import Logo from '../assets/logo.svg';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
+  const location = useLocation();
+  const { pathname } = location;
   const [visible, setVisible] = useState(false);
   // header visible when scroll down
 
@@ -16,6 +18,7 @@ export default function Header() {
       }
     });
   }, []);
+
   return (
     <Layout
       style={{
@@ -27,16 +30,24 @@ export default function Header() {
       <img src={Logo} />
       <Nav>
         <li>
-          <NavItem to={'/work'}>작품</NavItem>
+          <NavItem active={pathname === '/work'} to={'/work'}>
+            작품
+          </NavItem>
         </li>
         <li>
-          <NavItem to={'/member'}>참여 인원</NavItem>
+          <NavItem active={pathname === '/member'} to={'/member'}>
+            참여 인원
+          </NavItem>
         </li>
         <li>
-          <NavItem to={'/letter'}>방명록</NavItem>
+          <NavItem active={pathname === '/letter'} to={'/letter'}>
+            방명록
+          </NavItem>
         </li>
         <li>
-          <NavItem to={'/credit'}>크레딧</NavItem>
+          <NavItem active={pathname === '/credit'} to={'/credit'}>
+            크레딧
+          </NavItem>
         </li>
       </Nav>
     </Layout>
@@ -88,8 +99,9 @@ const Nav = styled.ul`
   }
 `;
 
-const NavItem = styled(Link)`
-  color: var(--500, #bbbbc4);
+const NavItem = styled(Link)<{ active: boolean }>`
+  color: ${(props) =>
+    props.active ? 'var(--100, #181826)' : 'var(--500, #BBBBC4)'};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
