@@ -3,27 +3,32 @@ import Logo from '../assets/logo.svg';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function Header() {
+export default function HeaderScroll() {
   const location = useLocation();
   const { pathname } = location;
   const [visible, setVisible] = useState(false);
   // header visible when scroll down
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        setVisible(true);
-      } else {
-        setVisible(false);
-      }
-    });
-  }, []);
+    if (pathname === '/work') {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
+      });
+    } else {
+      setVisible(true);
+    }
+  }, [pathname]);
 
   return (
     <Layout
       style={{
         boxShadow: visible ? '0px 4px 8px rgba(0, 0, 0, 0.05)' : 'none',
         transition: 'box-shadow 0.2s',
+        display: visible ? 'flex' : 'none',
       }}
     >
       <img src={Logo} />
@@ -53,6 +58,17 @@ export default function Header() {
   );
 }
 
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    `;
+
 const Layout = styled.div`
   position: fixed;
   top: 0;
@@ -74,6 +90,7 @@ const Layout = styled.div`
   @media (max-width: 744px) {
     padding: 0 20px;
   }
+  animation: ${fadeIn} 0.5s;
 `;
 
 const Nav = styled.ul`

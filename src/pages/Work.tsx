@@ -3,11 +3,12 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WorkTop from '../components/WorkTop';
 import WorkMain from '../components/WorkMain';
+import HeaderScroll from '../components/HeaderScroll';
 
 function Work() {
   return (
     <Layout>
-      <Header />
+      <HeaderScroll />
       <WorkTop />
       <WorkMain />
       <Footer />
