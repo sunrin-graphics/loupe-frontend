@@ -34,4 +34,3 @@ const Stars = (props) => {
       </group>
     );
   };
-  
