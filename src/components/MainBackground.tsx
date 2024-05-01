@@ -5,12 +5,12 @@ export default function MainBackground() {
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: (i: number) => {
-      const delay = 0.4 + i * 0.1;
+      const delay = 1 + i * 0.3;
       return {
         pathLength: 1,
         opacity: 1,
         transition: {
-          pathLength: { delay, type: 'spring', duration: 1.5, bounce: 0 },
+          pathLength: { delay, type: 'spring', duration: 1.3, bounce: 0 },
           opacity: { delay, duration: 0.01 },
         },
       };
