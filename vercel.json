@@ -2,6 +2,8 @@
   "routes": [
     { "src": "/", "dest": "/" },
     { "src": "/work", "dest": "/" },
-    { "src": "/member", "dest": "/" }
+    { "src": "/member", "dest": "/" },
+    { "src": "/works", "dest": "/" },
+    { "src": "/guestbook", "dest": "/" }
   ]
 }
