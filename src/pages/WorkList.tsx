@@ -4,8 +4,10 @@ import styled from 'styled-components';
 import Artwork from '../components/Artwork';
 import { motion } from 'framer-motion';
 import { Section, SectionTop } from '../components/shared/styles';
+import { useNavigate } from 'react-router-dom';
 
 export default function WorkList() {
+  const navigate = useNavigate();
   const gridAnimation = {
     show: {
       transition: { staggerChildren: 0.1 },
@@ -24,18 +26,40 @@ export default function WorkList() {
         </SectionTop>
         <Gallery variants={gridAnimation} animate="show" exit="hide">
           <Artwork
+            onClick={() => navigate('/work')}
             title="라온 - 어플리케이션 기반 반자유여행 서비스"
             owner="박시원"
           />
           <Artwork
+            onClick={() => navigate('/work')}
             title="LOUPE - 세상을 보는 창구"
             owner="박시원, 박정우, 오지후"
           />
-          <Artwork title="너울" owner="박시원, 박정우" />
-          <Artwork title="Artwork 1" owner="박시원" />
-          <Artwork title="Artwork 1" owner="박시원" />
-          <Artwork title="Artwork 1" owner="박시원" />
-          <Artwork title="Artwork 1" owner="박시원" />
+          <Artwork
+            onClick={() => navigate('/work')}
+            title="너울"
+            owner="박시원, 박정우"
+          />
+          <Artwork
+            onClick={() => navigate('/work')}
+            title="Artwork 1"
+            owner="박시원"
+          />
+          <Artwork
+            onClick={() => navigate('/work')}
+            title="Artwork 1"
+            owner="박시원"
+          />
+          <Artwork
+            onClick={() => navigate('/work')}
+            title="Artwork 1"
+            owner="박시원"
+          />
+          <Artwork
+            onClick={() => navigate('/work')}
+            title="Artwork 1"
+            owner="박시원"
+          />
         </Gallery>
       </Section>
       <Footer />
