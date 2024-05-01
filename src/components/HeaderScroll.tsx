@@ -12,7 +12,7 @@ export default function HeaderScroll() {
   useEffect(() => {
     if (pathname === '/work') {
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
+        if (window.scrollY > 40) {
           setVisible(true);
         } else {
           setVisible(false);
@@ -34,7 +34,7 @@ export default function HeaderScroll() {
       <img src={Logo} />
       <Nav>
         <li>
-          <NavItem active={pathname === '/work'} to={'/work'}>
+          <NavItem active={pathname === '/works'} to={'/works'}>
             작품
           </NavItem>
         </li>

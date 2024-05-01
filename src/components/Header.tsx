@@ -29,7 +29,7 @@ export default function Header() {
       <img src={Logo} />
       <Nav>
         <li>
-          <NavItem active={pathname === '/work'} to={'/work'}>
+          <NavItem active={pathname === '/works'} to={'/works'}>
             작품
           </NavItem>
         </li>

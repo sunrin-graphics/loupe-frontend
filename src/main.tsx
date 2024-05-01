@@ -6,6 +6,7 @@ import Work from './pages/Work';
 import Member from './pages/Member';
 import Main from './pages/Main';
 import Guestbook from './pages/Guestbook';
+import WorkList from './pages/WorkList';
 
 // 브라우저 라우터 만들기
 // 파라미터로 경로와 컴포넌트 입력하기
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: '/guestbook',
     element: <Guestbook />,
+  },
+  {
+    path: '/works',
+    element: <WorkList />,
   },
 ]);
 
