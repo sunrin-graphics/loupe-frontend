@@ -7,7 +7,7 @@ import LinkIcon from '../assets/linkSmall.svg?react';
 import ArtIcon from '../assets/art.svg?react';
 
 
-export default function Member(/*이름, 사진, 링크3개*/) {
+export default function Member() {
   return (
     <Layout>
       <Header />
@@ -97,7 +97,7 @@ const MemberCardContainer = styled.div`
     }
 `;
 
-const MemberCard = () => {
+const MemberCard = (/*이름, 사진, 링크3개*/) => {
   return (
     <MemberCardLayout>
       <MemberCardImg src={'author.png'} alt={'이미지'} />
