@@ -17,7 +17,6 @@ export const SectionTop = styled.div`
   padding: 128px 0px 16px 0px;
   justify-content: space-between;
   align-items: center;
-  align-self: stretch;
 `;
 
 export const Section = styled(ResponsiveContainer)`
@@ -27,4 +26,28 @@ export const Section = styled(ResponsiveContainer)`
   align-items: flex-start;
   gap: 48px;
   min-height: 100vh;
+`;
+
+export const PageTitle = styled.div`
+  color: var(--100, #181826);
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 80px; /* 142.857% */
+
+  @media (max-width: 1440px) {
+    font-size: 48px;
+    line-height: 64px;
+  }
+  @media (max-width: 744px) {
+    font-size: 32px;
+    line-height: 48px;
+  }
+`;
+
+const Layout = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;

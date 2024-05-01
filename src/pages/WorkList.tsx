@@ -3,7 +3,12 @@ import Footer from '../components/Footer';
 import styled from 'styled-components';
 import Artwork from '../components/Artwork';
 import { motion } from 'framer-motion';
-import { Section, SectionTop } from '../components/shared/styles';
+import {
+  PageLayout,
+  PageTitle,
+  Section,
+  SectionTop,
+} from '../components/shared/styles';
 import { useNavigate } from 'react-router-dom';
 
 export default function WorkList() {
@@ -18,7 +23,7 @@ export default function WorkList() {
   };
 
   return (
-    <Layout>
+    <PageLayout>
       <Header />
       <Section>
         <SectionTop>
@@ -63,24 +68,9 @@ export default function WorkList() {
         </Gallery>
       </Section>
       <Footer />
-    </Layout>
+    </PageLayout>
   );
 }
-
-const Layout = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const PageTitle = styled.div`
-  color: var(--100, #181826);
-  font-size: 56px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 80px; /* 142.857% */
-`;
 
 const Gallery = styled(motion.div)`
   display: flex;

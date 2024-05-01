@@ -3,7 +3,12 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MemberCard from '../components/MemberCard';
 import { motion } from 'framer-motion';
-import { Section } from '../components/shared/styles';
+import {
+  PageLayout,
+  PageTitle,
+  Section,
+  SectionTop,
+} from '../components/shared/styles';
 
 export default function Member() {
   const gridAnimation = {
@@ -16,10 +21,12 @@ export default function Member() {
   };
 
   return (
-    <Layout>
+    <PageLayout>
       <Header />
       <Section>
-        <MemberTitleContainer>참여 인원</MemberTitleContainer>
+        <SectionTop>
+          <PageTitle>참여 인원</PageTitle>
+        </SectionTop>
         <MemberCardContainer
           variants={gridAnimation}
           animate="show"
@@ -77,40 +84,9 @@ export default function Member() {
         </MemberCardContainer>
       </Section>
       <Footer />
-    </Layout>
+    </PageLayout>
   );
 }
-const Layout = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const MemberTitleContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  //justify-content: flex-end;
-  align-items: flex-start;
-  color: var(--100, #181826);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 56px;
-  line-height: 80px;
-  padding: 128px 0px 16px 0px;
-
-  @media (max-width: 1440px) {
-    font-size: 48px;
-    line-height: 64px;
-    padding: 96px 0px 16px 0px;
-  }
-  @media (max-width: 744px) {
-    font-size: 32px;
-    line-height: 48px;
-    padding: 64px 20px 16px 20px;
-  }
-`;
 
 const MemberCardContainer = styled(motion.div)`
   display: grid;
