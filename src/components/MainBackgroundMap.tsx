@@ -1,15 +1,15 @@
 import styled from "styled-components"
 
 export default function MainBackgroundMap(){
-    return(
-        <MainLayout>
-            <Layout1>
-                <Layout2>
-                   <LayoutImg src="/map.png" alt="" /> 
-                </Layout2>
-            </Layout1>
-        </MainLayout>
-    )
+  return(
+    <MainLayout>
+      <Layout1>
+        <Layout2>
+          <LayoutImg src="/map.png" alt="" />
+        </Layout2>
+      </Layout1>
+    </MainLayout>
+  )
 }
 
 const MainLayout = styled.div`
