@@ -1,14 +1,12 @@
-import React, { useRef, useState, Suspense } from 'react';
-import { Canvas, extend, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial, Html, Box, Sphere, useTexture, Environment, OrbitControls } from '@react-three/drei';
+import { useRef, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Points, PointMaterial } from '@react-three/drei';
+// @ts-ignore
 import * as random from 'maath/random/dist/maath-random.esm';
-import * as THREE from 'three'
-import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
-import { LUTPass } from 'three-stdlib';
 
 
 
-export default function ThreeBackground(p) {
+export default function ThreeBackground() {
   return (
     <Canvas style={{ position: "absolute", zIndex: "999" }}>
       <Stars />
@@ -17,8 +15,8 @@ export default function ThreeBackground(p) {
 }
 
 
-function Stars(props) {
-  const ref = useRef();
+function Stars(props:any) {
+  const ref:any = useRef();
   const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 5.5 }));
 
   useFrame((state, delta) => {

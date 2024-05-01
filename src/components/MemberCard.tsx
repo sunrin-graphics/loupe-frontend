@@ -1,10 +1,18 @@
-import InstagramIcon from '../assets/instagramSmall.svg?react';
-import LinkIcon from '../assets/linkSmall.svg?react';
-import ArtIcon from '../assets/art.svg?react';
+import { ReactComponent as InstagramIcon } from '../assets/instagramSmall.svg';
+import { ReactComponent as LinkIcon } from '../assets/linkSmall.svg';
+import { ReactComponent as ArtIcon } from '../assets/art.svg';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const MemberCard = ({name, mail, insLink, poLink, artLink}) => {
+interface MemberCardProps {
+  name:string;
+  mail:string;
+  insLink:string;
+  poLink:string;
+  artLink:string;
+}
+
+const MemberCard = ({name, mail, insLink, poLink, artLink}:MemberCardProps) => {
   const imgAnimation = {
     show: {
       y: [40, 0],

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-export default function MainBackground(p) {
+export default function MainBackground() {
   const draw = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: (i: number) => {

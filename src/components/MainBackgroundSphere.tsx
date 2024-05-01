@@ -1,11 +1,11 @@
-import React, { useRef, useState, Suspense, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, useTexture,OrbitControls } from '@react-three/drei';
+import { useState, useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { useTexture } from '@react-three/drei';
 import * as THREE from 'three'
 import styled from 'styled-components';
 import { useSpring, animated } from '@react-spring/three'
 
-export default function MainBackgroundSphere(p) {
+export default function MainBackgroundSphere() {
   return (
     <MaibLayout>
       <Canvas gl={{ antialias: true }} shadows style={{ width: "100%", height: '100%', zIndex: "99" }}>
@@ -16,9 +16,8 @@ export default function MainBackgroundSphere(p) {
   )
 }
 
-function SphereMesh(props) {
+function SphereMesh() {
   const map = useTexture("/test.png")
-  const ref = useRef();
   const [on,setOn]=useState(false)
 
   const spring1 = useSpring({
@@ -35,6 +34,7 @@ function SphereMesh(props) {
   useEffect(() => {
     setOn(true);
   }, []);
+
 
   return (
     <>
