@@ -8,8 +8,7 @@ export default function Main() {
     <MainLayout>
       <ThreeBackground/>
       <MainBackground/>
-      {/* <MainBackgroundSphere/> */}
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <MainBackgroundSphere/>
     </MainLayout>
   );
 }
