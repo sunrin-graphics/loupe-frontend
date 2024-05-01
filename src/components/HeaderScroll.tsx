@@ -36,22 +36,22 @@ export default function HeaderScroll() {
       </Link>
       <Nav>
         <li>
-          <NavItem active={pathname === '/works'} to={'/works'}>
+          <NavItem $active={pathname === '/works'} to={'/works'}>
             작품
           </NavItem>
         </li>
         <li>
-          <NavItem active={pathname === '/member'} to={'/member'}>
+          <NavItem $active={pathname === '/member'} to={'/member'}>
             참여 인원
           </NavItem>
         </li>
         <li>
-          <NavItem active={pathname === '/guestbook'} to={'/guestbook'}>
+          <NavItem $active={pathname === '/guestbook'} to={'/guestbook'}>
             방명록
           </NavItem>
         </li>
         <li>
-          <NavItem active={pathname === '/credit'} to={'/credit'}>
+          <NavItem $active={pathname === '/credit'} to={'/credit'}>
             크레딧
           </NavItem>
         </li>
@@ -105,9 +105,9 @@ const Nav = styled.ul`
   }
 `;
 
-const NavItem = styled(Link)<{ active: boolean }>`
+const NavItem = styled(Link)<{ $active: boolean }>`
   color: ${(props) =>
-    props.active ? 'var(--100, #181826)' : 'var(--500, #BBBBC4)'};
+    props.$active ? 'var(--100, #181826)' : 'var(--500, #BBBBC4)'};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
