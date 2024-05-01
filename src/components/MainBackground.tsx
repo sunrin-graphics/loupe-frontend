@@ -1,84 +1,197 @@
-import styled from "styled-components"
-import { motion } from "framer-motion"
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export default function MainBackground(p) {
-    return (
-        <MainLayout>
-            <MainLayoutContent>
-                <svg xmlns="http://www.w3.org/2000/svg" width="267" height="360" viewBox="0 0 267 360" fill="none">
-                    <path d="M16.3403 137.218C16.3403 137.218 49.2056 120.848 105.282 82.8704C152.697 50.7593 142.071 1.82766 103.005 20.8277C63.9383 39.8277 58.8917 86.4827 95.4574 181.393C132.023 276.303 138.483 339.878 101.422 343.913C88.8054 345.288 62.2895 324.067 100.729 289.51C150.979 223.792 224.976 261.433 250.537 195.334" stroke="#A180FF" strokeWidth="31.4948" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M16.3403 137.218C16.3403 137.218 49.2056 120.848 105.282 82.8704C152.697 50.7593 142.071 1.82766 103.005 20.8277C63.9383 39.8277 58.8917 86.4827 95.4574 181.393C132.023 276.303 138.483 339.878 101.422 343.913C88.8054 345.288 62.2895 324.067 100.729 289.51C150.979 223.792 224.976 261.433 250.537 195.334" stroke="url(#paint0_linear_253_3849)" strokeWidth="31.4948" strokeLinecap="round" strokeLinejoin="round" />
-                    <defs>
-                        <linearGradient id="paint0_linear_253_3849" x1="133.438" y1="16.5732" x2="133.438" y2="342.722" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="white" stopOpacity="0.3" />
-                            <stop offset="1" stopColor="white" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+  const draw = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: (i: number) => {
+      const delay = 0.4 + i * 0.1;
+      return {
+        pathLength: 1,
+        opacity: 1,
+        transition: {
+          pathLength: { delay, type: 'spring', duration: 1.5, bounce: 0 },
+          opacity: { delay, duration: 0.01 },
+        },
+      };
+    },
+  };
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="187" height="203" viewBox="0 0 187 203" fill="none">
-                    <path d="M16.4323 139.027C21.8324 48.3963 52.4954 22.9691 86.1355 17.5318C119.776 12.0946 161.403 24.8068 169.346 83.4173C177.288 142.028 150.261 181.376 118.501 186.51C86.7416 191.643 66.5563 167.832 60.2238 154.343" stroke="#A180FF" strokeWidth="31.4948" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M16.4323 139.027C21.8324 48.3963 52.4954 22.9691 86.1355 17.5318C119.776 12.0946 161.403 24.8068 169.346 83.4173C177.288 142.028 150.261 181.376 118.501 186.51C86.7416 191.643 66.5563 167.832 60.2238 154.343" stroke="url(#paint0_linear_253_3850)" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
-                    <defs>
-                        <linearGradient id="paint0_linear_253_3850" x1="77.9804" y1="18.8499" x2="105.316" y2="187.974" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="white" stopOpacity="0.3" />
-                            <stop offset="1" stopColor="white" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+  const titleAnimation = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        delay: 0.5,
+        duration: 1.5,
+      },
+    },
+  };
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="256" height="194" viewBox="0 0 256 194" fill="none">
-                    <path d="M240.057 51.0183C227.548 51.091 209.453 16.0187 209.453 16.0187C209.453 16.0187 230.513 181.546 124.109 177.639C17.692 173.732 49.319 16.9496 49.319 16.9496C49.319 16.9496 31.6906 52.2297 16.699 52.3168" stroke="#A180FF" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M240.057 51.0183C227.548 51.091 209.453 16.0187 209.453 16.0187C209.453 16.0187 230.513 181.546 124.109 177.639C17.692 173.732 49.319 16.9496 49.319 16.9496C49.319 16.9496 31.6906 52.2297 16.699 52.3168" stroke="url(#paint0_linear_253_3851)" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
-                    <defs>
-                        <linearGradient id="paint0_linear_253_3851" x1="129.794" y1="13.094" x2="123.776" y2="176.996" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="white" stopOpacity="0.3" />
-                            <stop offset="1" stopColor="white" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+  return (
+    <MainLayout>
+      <MainLayoutContent>
+        <Title initial="hidden" animate="visible" variants={titleAnimation}>
+          제13회 선린인터넷고등학교 콘텐츠디자인과 졸업전시회
+        </Title>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="213" height="221" viewBox="0 0 213 221" fill="none">
-                    <path d="M22.6017 47.7079C22.6017 47.7079 55.7048 -3.8989 134.813 24.6669C173.373 38.5881 217.634 72.6065 186.265 140.167C154.896 207.728 47.5114 154.456 23.6714 124.613C23.6714 124.613 12.7303 166.903 17.9277 205.144" stroke="#A180FF" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M22.6017 47.7079C22.6017 47.7079 55.7048 -3.8989 134.813 24.6669C173.373 38.5881 217.634 72.6065 186.265 140.167C154.896 207.728 47.5114 154.456 23.6714 124.613C23.6714 124.613 12.7303 166.903 17.9277 205.144" stroke="url(#paint0_linear_253_3852)" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
-                    <defs>
-                        <linearGradient id="paint0_linear_253_3852" x1="117.816" y1="18.9519" x2="89.8306" y2="214.658" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="white" stopOpacity="0.3" />
-                            <stop offset="1" stopColor="white" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-
-                <svg style={{position:'relative'}} xmlns="http://www.w3.org/2000/svg" width="229" height="454" viewBox="0 0 229 454" fill="none">
-                    <path d="M212.647 16.664C212.647 16.664 160.879 66.8035 100.457 50.2284C100.457 50.2284 94.6581 151.175 16.7368 220.739C16.7368 220.739 140.088 275.593 186.088 362.8" stroke="#A180FF" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M212.647 16.664C212.647 16.664 160.879 66.8035 100.457 50.2284C100.457 50.2284 94.6581 151.175 16.7368 220.739C16.7368 220.739 140.088 275.593 186.088 362.8" stroke="url(#paint0_linear_253_3854)" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
-                    <path transform="translate(60, 130)" d="M15.7544 15.7563C15.7544 15.7563 64.7971 64.1073 138.318 57.9607" stroke="#A180FF" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
-                    <path transform="translate(60, 130)" d="M15.7544 15.7563C15.7544 15.7563 64.7971 64.1073 138.318 57.9607" stroke="url(#paint0_linear_253_3855)" stroke-width="31.4948" stroke-linecap="round" stroke-linejoin="round" />
-                    <defs>
-                        <linearGradient id="paint0_linear_253_3854" x1="118.565" y1="13.2097" x2="105.887" y2="358.526" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="white" stopOpacity="0.3" />
-                            <stop offset="1" stopColor="white" />
-                        </linearGradient>
-                        <linearGradient id="paint0_linear_253_3855" x1="77.7276" y1="18.0317" x2="76.3096" y2="56.6533" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="white" stopOpacity="0.3" />
-                            <stop offset="1" stopColor="white" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </MainLayoutContent>
-        </MainLayout>
-    )
+        <motion.svg
+          initial="hidden"
+          animate="visible"
+          width="1082"
+          height="431"
+          viewBox="0 0 1082 431"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <motion.path
+            d="M16 167.218C16 167.218 48.8653 150.848 104.942 112.87C152.357 80.7593 141.731 31.8277 102.665 50.8277C63.598 69.8277 58.5513 116.483 95.117 211.393C131.683 306.303 138.143 369.878 101.082 373.913C88.4651 375.288 61.9491 354.067 100.389 319.51C150.638 253.792 224.636 291.433 250.196 225.334"
+            stroke="url(#paint0_linear_292_785)"
+            strokeWidth="31.4948"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            variants={draw}
+            custom={0}
+          />
+          <motion.path
+            d="M249.092 144.027C254.492 53.3963 285.155 27.9691 318.795 22.5318C352.435 17.0946 394.063 29.8068 402.005 88.4173C409.947 147.028 382.921 186.376 351.161 191.51C319.401 196.643 299.216 172.832 292.883 159.343"
+            stroke="url(#paint1_linear_292_785)"
+            strokeWidth="31.4948"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            variants={draw}
+            custom={1}
+          />
+          <motion.path
+            d="M666.716 51.0183C654.207 51.091 636.112 16.0187 636.112 16.0187C636.112 16.0187 657.172 181.546 550.769 177.639C444.352 173.732 475.979 16.9496 475.979 16.9496C475.979 16.9496 458.35 52.2297 443.359 52.3168"
+            stroke="url(#paint2_linear_292_785)"
+            strokeWidth="31.4948"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            variants={draw}
+            custom={2}
+          />
+          <motion.path
+            d="M719.261 52.7079C719.261 52.7079 752.364 1.1011 831.473 29.6669C870.033 43.5881 914.294 77.6065 882.925 145.167C851.556 212.728 744.171 159.456 720.331 129.613C720.331 129.613 709.39 171.903 714.587 210.144"
+            stroke="url(#paint3_linear_292_785)"
+            strokeWidth="31.4948"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            variants={draw}
+            custom={3}
+          />
+          <motion.path
+            d="M1065.31 68.664C1065.31 68.664 1013.54 118.803 953.117 102.228C953.117 102.228 947.318 203.175 869.397 272.739C869.397 272.739 992.748 327.593 1038.75 414.8"
+            stroke="url(#paint4_linear_292_785)"
+            strokeWidth="31.4948"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            variants={draw}
+            custom={4}
+          />
+          <motion.path
+            d="M929.414 189.756C929.414 189.756 978.457 238.107 1051.98 231.961"
+            stroke="url(#paint5_linear_292_785)"
+            strokeWidth="31.4948"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            variants={draw}
+            custom={5}
+          />
+          <motion.defs>
+            <linearGradient
+              id="paint0_linear_292_785"
+              x1="133.098"
+              y1="46.5732"
+              x2="133.098"
+              y2="372.722"
+              gradientUnits="userSpaceOnUse"
+            >
+              <motion.stop stopColor="#BDA6FF" />
+              <motion.stop offset="1" stopColor="white" />
+            </linearGradient>
+            <linearGradient
+              id="paint1_linear_292_785"
+              x1="310.64"
+              y1="23.8499"
+              x2="337.975"
+              y2="192.974"
+              gradientUnits="userSpaceOnUse"
+            >
+              <motion.stop stopColor="#BDA6FF" />
+              <motion.stop offset="1" stopColor="white" />
+            </linearGradient>
+            <linearGradient
+              id="paint2_linear_292_785"
+              x1="556.454"
+              y1="13.094"
+              x2="550.436"
+              y2="176.996"
+              gradientUnits="userSpaceOnUse"
+            >
+              <motion.stop stopColor="#BDA6FF" />
+              <motion.stop offset="1" stopColor="white" />
+            </linearGradient>
+            <linearGradient
+              id="paint3_linear_292_785"
+              x1="814.476"
+              y1="23.9519"
+              x2="786.49"
+              y2="219.658"
+              gradientUnits="userSpaceOnUse"
+            >
+              <motion.stop stopColor="#BDA6FF" />
+              <motion.stop offset="1" stopColor="white" />
+            </linearGradient>
+            <linearGradient
+              id="paint4_linear_292_785"
+              x1="971.225"
+              y1="65.2097"
+              x2="958.547"
+              y2="410.526"
+              gradientUnits="userSpaceOnUse"
+            >
+              <motion.stop stopColor="#BDA6FF" />
+              <motion.stop offset="1" stopColor="white" />
+            </linearGradient>
+            <linearGradient
+              id="paint5_linear_292_785"
+              x1="991.387"
+              y1="192.032"
+              x2="989.969"
+              y2="230.653"
+              gradientUnits="userSpaceOnUse"
+            >
+              <motion.stop stopColor="#BDA6FF" />
+              <motion.stop offset="1" stopColor="white" />
+            </linearGradient>
+          </motion.defs>
+        </motion.svg>
+      </MainLayoutContent>
+    </MainLayout>
+  );
 }
 
 const MainLayout = styled.div`
-    position:absolute;
-    width:100%;
-    height:100%;
-`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
 const MainLayoutContent = styled.div`
-    display:flex;
-    padding: 0 160px;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 128px;
+  gap: 32px;
+`;
 
-
-
+const Title = styled(motion.div)`
+  color: #fff;
+  font-family: SUITE;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 30px */
+`;
