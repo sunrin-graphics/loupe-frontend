@@ -31,7 +31,9 @@ export default function HeaderScroll() {
         display: visible ? 'flex' : 'none',
       }}
     >
-      <img src={Logo} />
+      <Link to={'/'} style={{ display: 'flex', alignItems: 'center' }}>
+        <img src={Logo} />
+      </Link>
       <Nav>
         <li>
           <NavItem active={pathname === '/works'} to={'/works'}>

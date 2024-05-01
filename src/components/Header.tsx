@@ -26,7 +26,10 @@ export default function Header() {
         transition: 'box-shadow 0.2s',
       }}
     >
-      <img src={Logo} />
+      <Link to={'/'} style={{ display: 'flex', alignItems: 'center' }}>
+        <img src={Logo} />
+      </Link>
+
       <Nav>
         <li>
           <NavItem active={pathname === '/works'} to={'/works'}>
