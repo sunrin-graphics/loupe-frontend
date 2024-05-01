@@ -5,16 +5,14 @@ import Artwork from '../components/Artwork';
 import { motion } from 'framer-motion';
 
 export default function WorkList() {
-
   const gridAnimation = {
     show: {
-      transition: { staggerChildren: 0.1 }
+      transition: { staggerChildren: 0.1 },
     },
     hide: {
-      transition: { staggerChildren: 0.1, staggerDirection: -1 }
+      transition: { staggerChildren: 0.1, staggerDirection: -1 },
     },
-  }
-
+  };
 
   return (
     <Layout>
@@ -23,9 +21,7 @@ export default function WorkList() {
         <SectionTop>
           <PageTitle>UI/UX</PageTitle>
         </SectionTop>
-        <Gallery  variants={gridAnimation}
-                  animate="show"
-                  exit="hide">
+        <Gallery variants={gridAnimation} animate="show" exit="hide">
           <Artwork
             title="라온 - 어플리케이션 기반 반자유여행 서비스"
             owner="박시원"
