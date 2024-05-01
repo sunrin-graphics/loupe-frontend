@@ -21,14 +21,15 @@ function SphereMesh() {
   const [on,setOn]=useState(false)
 
   const spring1 = useSpring({
+    opacity: on? 1:0,
     position : on? [0,-2.5,0]:[0,-4,0],
-    rotation : on? [0,1.5,0]:[0,0,0],
-    config: { duration: 1000,},
+    rotation : on? [0,1.6,0.15]:[0,0,0],
+    config: { tension: 200, friction: 50},
   })
 
   const spring2 = useSpring({
     position : on? [0.1,-2.5,0]:[0.1,-4,0],
-    config: { duration: 1000,},
+    config: { tension: 200, friction: 50},
   })
 
   useEffect(() => {
@@ -45,7 +46,7 @@ function SphereMesh() {
       </animated.mesh>
       <animated.mesh rotation={spring1.rotation} position={spring1.position} scale={2.75}>
         <sphereGeometry/>
-        <meshPhysicalMaterial side={THREE.BackSide} map={map} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.5} />
+        <meshPhysicalMaterial side={THREE.BackSide} color={'#d7ceee'} map={map} clearcoat={1} clearcoatRoughness={0} roughness={0} metalness={0.5} />
       </animated.mesh>
     </>
   )
