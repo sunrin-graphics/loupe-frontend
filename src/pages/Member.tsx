@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import Footer from '../components/common/Footer';
-import Header from '../components/common/Header';
-import MemberCard from '../components/MemberCard';
+import Header from '@/components/common/Header';
+import MemberCard from '@/components/MemberCard';
 import { motion } from 'framer-motion';
 import {
   PageLayout,
   PageTitle,
   Section,
   SectionTop,
-} from '../components/shared/styles';
+} from '@/components/shared/Styles';
 
 export default function Member() {
   const gridAnimation = {
