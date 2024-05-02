@@ -110,7 +110,6 @@ const ModalTop = styled.div`
 const ModalTitle = styled.div`
   color: #000;
   text-align: right;
-  font-family: SUITE;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -128,7 +127,6 @@ const ContentInput = styled.textarea`
   border: 1px solid var(--600, #ececf1);
   background: var(--700, #f8f8fc);
   color: var(--100, #181826);
-  font-family: SUITE;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -174,7 +172,6 @@ const NameInput = styled.input`
   border-radius: 8px;
   border: 1px solid var(--600, #ececf1);
   background: var(--700, #f8f8fc);
-  font-family: SUITE;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
