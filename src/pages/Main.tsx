@@ -1,14 +1,12 @@
 import styled from 'styled-components';
-import ThreeBackground from '../components/ThreeBackground';
-import MainBackground from '../components/MainBackground';
-import MainBackgroundSphere from '../components/MainBackgroundSphere';
-import HeaderTransparent from '../components/HeaderTransparent.tsx';
+import ThreeBackground from '@/components/main/ThreeBackground.tsx';
+import MainBackground from '@/components/main/MainBackground.tsx';
+import Header from '../components/common/Header.tsx';
 
 export default function Main() {
   return (
     <MainLayout>
-      <MainBackgroundSphere />
-      <HeaderTransparent />
+      <Header transparent />
       <ThreeBackground />
       <MainBackground />
     </MainLayout>

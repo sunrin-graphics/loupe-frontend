@@ -1,14 +1,14 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '@/components/common/Header';
+import Footer from '@/components/common/Footer';
 import styled from 'styled-components';
-import Artwork from '../components/Artwork';
+import Artwork from '@/components/Artwork';
 import { motion } from 'framer-motion';
 import {
   PageLayout,
   PageTitle,
   Section,
   SectionTop,
-} from '../components/shared/styles';
+} from '../components/shared/Styles';
 import { useNavigate } from 'react-router-dom';
 
 export default function WorkList() {
@@ -24,7 +24,7 @@ export default function WorkList() {
 
   return (
     <PageLayout>
-      <Header />
+      <Header scroll={{ y: 50 }} />
       <Section>
         <SectionTop>
           <PageTitle>UI/UX</PageTitle>
@@ -73,10 +73,8 @@ export default function WorkList() {
 }
 
 const Gallery = styled(motion.div)`
-  display: flex;
-  align-items: flex-start;
-  align-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
   gap: 32px 16px;
-  align-self: stretch;
-  flex-wrap: wrap;
+  padding: 24px 0;
 `;

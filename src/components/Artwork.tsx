@@ -32,7 +32,6 @@ export default function Artwork({ title, owner, onClick }: ArtworkProps) {
 }
 
 const Layout = styled(motion.div)`
-  max-width: 267px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

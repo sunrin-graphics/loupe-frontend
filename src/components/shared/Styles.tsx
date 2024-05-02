@@ -1,3 +1,4 @@
+import { ScrollRestoration } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const ResponsiveContainer = styled.div`
@@ -17,6 +18,9 @@ export const SectionTop = styled.div`
   padding: 128px 0px 16px 0px;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 1300px) {
+    padding: 96px 0px 16px 0px;
+  }
 `;
 
 export const Section = styled(ResponsiveContainer)`
@@ -24,7 +28,6 @@ export const Section = styled(ResponsiveContainer)`
   margin-top: 60px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 48px;
   min-height: 100vh;
 `;
 
@@ -45,9 +48,18 @@ export const PageTitle = styled.div`
   }
 `;
 
-export const PageLayout = styled.div`
+export const PageLayoutStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
+
+export const PageLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      <ScrollRestoration />
+      <PageLayoutStyle>{children}</PageLayoutStyle>
+    </>
+  );
+};

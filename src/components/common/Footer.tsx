@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import sunrinLogo from '../assets/sunrin.svg';
-import youtube from '../assets/youtube.svg';
-import link from '../assets/link.svg';
-import instagram from '../assets/instagram.svg';
-import { ResponsiveContainer } from './shared/styles';
+import sunrinLogo from '@/assets/sunrin.svg';
+import youtube from '@/assets/youtube.svg';
+import link from '@/assets/link.svg';
+import instagram from '@/assets/instagram.svg';
+import { ResponsiveContainer } from '../shared/Styles';
 
 export default function Footer() {
   return (
@@ -171,6 +171,7 @@ const FooterLink = styled.a`
   transition: color 0.2s;
   &:hover {
     color: var(--100, #181826);
+    font-weight: 600;
   }
 `;
 

@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import MemberCard from '../components/MemberCard';
+import Footer from '../components/common/Footer';
+import Header from '@/components/common/Header';
+import MemberCard from '@/components/MemberCard';
 import { motion } from 'framer-motion';
 import {
   PageLayout,
   PageTitle,
   Section,
   SectionTop,
-} from '../components/shared/styles';
+} from '@/components/shared/Styles';
 
 export default function Member() {
   const gridAnimation = {
@@ -22,7 +22,7 @@ export default function Member() {
 
   return (
     <PageLayout>
-      <Header />
+      <Header scroll={{ y: 50 }} />
       <Section>
         <SectionTop>
           <PageTitle>참여 인원</PageTitle>
@@ -90,20 +90,10 @@ export default function Member() {
 
 const MemberCardContainer = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20%, auto));
+  grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
   flex-direction: column;
   width: 100%;
   padding: 24px 0px;
   align-items: flex-start;
   gap: 48px 16px;
-  @media (max-width: 744px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 24px 20px;
-  }
-  @media (max-width: 720px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media (max-width: 483px) {
-    grid-template-columns: 1fr;
-  }
 `;

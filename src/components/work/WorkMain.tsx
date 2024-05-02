@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import ContentAuthor from './ContentAuthor';
-import { ResponsiveContainer } from './shared/styles';
+import ContentAuthor from '@/components/work/ContentAuthor';
+import { ResponsiveContainer } from '@/components/shared/Styles';
 
 export default function WorkMain() {
   return (

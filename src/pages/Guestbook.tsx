@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import PlusIcon from '../assets/plus.svg';
-import GuestbookCard from '../components/GuestbookCard';
+import Footer from '@/components/common/Footer';
+import Header from '@/components/common/Header';
+import PlusIcon from '@/assets/plus.svg';
+import GuestbookCard from '@/components/GuestbookCard';
 import { useState } from 'react';
-import PostGuestbookModal from '../components/modal/PostGuestbookModal';
+import PostGuestbookModal from '@/components/modal/PostGuestbookModal';
 import { motion } from 'framer-motion';
 import {
   PageLayout,
   PageTitle,
   Section,
   SectionTop,
-} from '../components/shared/styles';
+} from '@/components/shared/Styles';
 export default function Guestbook() {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -38,7 +38,7 @@ export default function Guestbook() {
       {modalOpen && (
         <PostGuestbookModal open={modalOpen} setOpen={setModalOpen} />
       )}
-      <Header />
+      <Header scroll={{ y: 50 }} />
       <Section>
         <SectionTop>
           <PageTitle>방명록</PageTitle>
@@ -151,11 +151,9 @@ const PageCTAButton = styled.button`
 `;
 
 const Gallery = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
   gap: 16px;
-  align-self: stretch;
 `;
 
 const GuestbookColumn = styled(motion.div)`
