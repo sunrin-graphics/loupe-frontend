@@ -189,7 +189,6 @@ const MainLayoutContent = styled.div`
 
 const Title = styled(motion.div)`
   color: #fff;
-  font-family: SUITE;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
