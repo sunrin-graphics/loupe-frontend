@@ -4,6 +4,7 @@
     { "src": "/work", "dest": "/" },
     { "src": "/member", "dest": "/" },
     { "src": "/works", "dest": "/" },
-    { "src": "/guestbook", "dest": "/" }
+    { "src": "/guestbook", "dest": "/" },
+    { "src": "/credit", "dest": "/" }
   ]
 }
