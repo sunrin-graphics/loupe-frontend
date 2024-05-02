@@ -12,7 +12,7 @@ export default function ThreeBackground() {
       style={{ position: 'absolute', zIndex: '99' }}
     >
       <Html fullscreen>
-        <MainBackgroundSphere/>
+        <MainBackgroundSphere />
       </Html>
       <Stars />
     </Canvas>

@@ -2,13 +2,18 @@ import { useEffect, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, useTexture } from '@react-three/drei';
 import styled from 'styled-components';
-import { useSpring, animated } from '@react-spring/three';
+import { useSpring, animated, Globals } from '@react-spring/three';
 import { PointLight } from 'three';
+
+Globals.assign({
+  frameLoop: 'always',
+});
 
 export default function MainBackgroundSphere() {
   return (
-    <MaibLayout>
+    <MainLayout>
       <Canvas
+        frameloop="always"
         camera={{ type: 'orthographic' }}
         gl={{ antialias: true }}
         shadows
@@ -18,24 +23,26 @@ export default function MainBackgroundSphere() {
         <Environment preset="city" />
         <SphereMesh />
       </Canvas>
-    </MaibLayout>
+    </MainLayout>
   );
 }
 
 function Light() {
   const lightRef = useRef<PointLight>(null);
   const { pointer } = useThree();
+
   useFrame(() => {
     if (lightRef.current) {
       lightRef.current.position.x = pointer.x * 2;
       lightRef.current.position.y = pointer.y * 2;
     }
   });
+
   return (
     <>
       <pointLight
         ref={lightRef}
-        intensity={60}
+        intensity={20}
         position={[3, 0, 1]}
         distance={100}
       />
@@ -45,23 +52,21 @@ function Light() {
 
 function SphereMesh() {
   const map = useTexture('/map.png');
-  const [spring, springApi] = useSpring(() => ({
-    opacity: 0,
+  const [{ position }, api] = useSpring(() => ({
     position: [0, -6, 0],
-    rotation: [0, 0, 0],
     config: { tension: 200, friction: 50 },
   }));
+
   useEffect(() => {
-    springApi.start({
+    api.start({
       position: [0, -3.7, 0],
     });
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
-      <animated.mesh
-        scale={3.8}
-        position={spring.position.to((x, y, z) => [x, y, z])}
-      >
+      <animated.mesh scale={3.9} position={position.to((x, y, z) => [x, y, z])}>
         <circleGeometry />
         <meshStandardMaterial metalness={1} map={map} />
       </animated.mesh>
@@ -69,7 +74,7 @@ function SphereMesh() {
   );
 }
 
-const MaibLayout = styled.div`
+const MainLayout = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
