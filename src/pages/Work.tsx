@@ -1,13 +1,18 @@
 import Footer from '../components/Footer';
 import WorkTop from '../components/WorkTop';
 import WorkMain from '../components/WorkMain';
-import HeaderScroll from '../components/HeaderScroll';
 import { PageLayout } from '../components/shared/styles';
+import Header from '../components/Header';
 
 function Work() {
   return (
     <PageLayout>
-      <HeaderScroll />
+      <Header
+        scroll={{
+          transparent: true,
+          y: 40,
+        }}
+      />
       <WorkTop />
       <WorkMain />
       <Footer />

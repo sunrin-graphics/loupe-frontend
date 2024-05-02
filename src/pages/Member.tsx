@@ -22,7 +22,7 @@ export default function Member() {
 
   return (
     <PageLayout>
-      <Header />
+      <Header scroll={{ y: 50 }} />
       <Section>
         <SectionTop>
           <PageTitle>참여 인원</PageTitle>

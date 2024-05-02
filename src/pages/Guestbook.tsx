@@ -38,7 +38,7 @@ export default function Guestbook() {
       {modalOpen && (
         <PostGuestbookModal open={modalOpen} setOpen={setModalOpen} />
       )}
-      <Header />
+      <Header scroll={{ y: 50 }} />
       <Section>
         <SectionTop>
           <PageTitle>방명록</PageTitle>

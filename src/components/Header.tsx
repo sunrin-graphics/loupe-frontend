@@ -1,29 +1,42 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import Logo from '../assets/logo.svg';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ResponsiveContainer } from './shared/styles';
 
-export default function Header() {
+interface Props {
+  scroll?: {
+    transparent?: boolean;
+    y: number;
+  };
+  transparent?: boolean;
+}
+export default function Header({ scroll, transparent }: Props) {
   const location = useLocation();
   const { pathname } = location;
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (!scroll) return;
+
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > scroll.y) {
         setVisible(true);
       } else {
         setVisible(false);
       }
     });
-  }, []);
+  }, [scroll]);
 
   return (
     <Layout
+      $animation={!!scroll?.transparent}
       style={{
-        boxShadow: visible ? '0px 4px 8px rgba(0, 0, 0, 0.05)' : 'none',
+        boxShadow:
+          visible && scroll ? '0px 4px 8px rgba(0, 0, 0, 0.05)' : 'none',
         transition: 'box-shadow 0.2s',
+        ...(scroll?.transparent && { display: visible ? 'flex' : 'none' }),
+        backgroundColor: transparent ? 'transparent' : 'var(--100, #ffffff)',
       }}
     >
       <Container>
@@ -33,22 +46,38 @@ export default function Header() {
 
         <Nav>
           <li>
-            <NavItem $active={pathname === '/works'} to={'/works'}>
+            <NavItem
+              $transparent={!!transparent}
+              $active={pathname.startsWith('/work')}
+              to={'/works'}
+            >
               작품
             </NavItem>
           </li>
           <li>
-            <NavItem $active={pathname === '/member'} to={'/member'}>
+            <NavItem
+              $transparent={!!transparent}
+              $active={pathname === '/member'}
+              to={'/member'}
+            >
               참여 인원
             </NavItem>
           </li>
           <li>
-            <NavItem $active={pathname === '/guestbook'} to={'/guestbook'}>
+            <NavItem
+              $transparent={!!transparent}
+              $active={pathname === '/guestbook'}
+              to={'/guestbook'}
+            >
               방명록
             </NavItem>
           </li>
           <li>
-            <NavItem $active={pathname === '/credit'} to={'/credit'}>
+            <NavItem
+              $transparent={!!transparent}
+              $active={pathname === '/credit'}
+              to={'/credit'}
+            >
               크레딧
             </NavItem>
           </li>
@@ -58,7 +87,18 @@ export default function Header() {
   );
 }
 
-const Layout = styled.div`
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
+
+const Layout = styled.div<{ $animation: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -68,7 +108,11 @@ const Layout = styled.div`
   width: 100%;
   align-items: center;
   height: 60px;
-  background: var(--800, #fff);
+  ${(props) =>
+    props.$animation &&
+    css`
+      animation: ${fadeIn} 0.5s;
+    `}
 `;
 
 const Nav = styled.ul`
@@ -81,9 +125,11 @@ const Nav = styled.ul`
   }
 `;
 
-const NavItem = styled(Link)<{ $active: boolean }>`
+const NavItem = styled(Link)<{ $active: boolean; $transparent: boolean }>`
   color: ${(props) =>
-    props.$active ? 'var(--100, #181826)' : 'var(--500, #BBBBC4)'};
+    props.$active
+      ? 'var(--100, #181826)'
+      : `${props.$transparent ? '#F8F8FC' : 'var(--500, #BBBBC4)'}`};
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -94,10 +140,10 @@ const NavItem = styled(Link)<{ $active: boolean }>`
     color 0.2s,
     transform 0.2s;
   &:hover {
-    color: var(--100, #181826);
+    color: ${(props) => (props.$transparent ? '#bbbbc4' : '#181826')};
   }
   &:active {
-    color: var(--100, #181826);
+    ${(props) => props.$transparent && 'color: var(--100, #181826)'};
     transform: translateY(1px);
   }
   user-select: none;

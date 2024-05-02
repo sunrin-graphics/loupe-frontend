@@ -24,7 +24,7 @@ export default function WorkList() {
 
   return (
     <PageLayout>
-      <Header />
+      <Header scroll={{ y: 50 }} />
       <Section>
         <SectionTop>
           <PageTitle>UI/UX</PageTitle>
