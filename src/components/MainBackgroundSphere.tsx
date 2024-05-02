@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { useTexture } from '@react-three/drei';
-import * as THREE from 'three';
+import { useEffect, useRef } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Environment, useTexture } from '@react-three/drei';
 import styled from 'styled-components';
 import { useSpring, animated } from '@react-spring/three';
 
@@ -9,79 +8,54 @@ export default function MainBackgroundSphere() {
   return (
     <MaibLayout>
       <Canvas
+        camera={{ type: 'orthographic' }}
         gl={{ antialias: true }}
         shadows
         style={{ width: '100%', height: '100%', zIndex: '99' }}
       >
+        <Light/>
+        <Environment preset='city'/>
         <SphereMesh />
       </Canvas>
     </MaibLayout>
   );
 }
 
-function SphereMesh() {
-  const map = useTexture('/test.png');
+function Light(){
+  const lightPosition = [3,0,1]
+  const lightRef = useRef();
+  const { mouse } = useThree();
+  useFrame(() => {
+    if (lightRef.current) {
+      lightRef.current.position.x = mouse.x * 2;
+      lightRef.current.position.y = mouse.y * 2; 
+    }
+  });
+  return(
+    <>
+      <pointLight ref={lightRef} intensity={60} position={lightPosition} distance={100} />
+    </>
+  )
+}
 
+function SphereMesh() {
+  const map = useTexture('/map.png');
   const [spring, springApi] = useSpring(() => ({
     opacity: 0,
-    position: [0, -4, 0],
+    position: [0, -6, 0],
     rotation: [0, 0, 0],
     config: { tension: 200, friction: 50 },
   }));
-
-  const [backgroundSpring, backgroundSpringApi] = useSpring(() => ({
-    position: [0.1, -4, 0],
-    config: { tension: 200, friction: 50 },
-  }));
-
   useEffect(() => {
     springApi.start({
-      position: [0, -2.5, 0],
-      rotation: [0, 1.6, 0.15],
-      opacity: 1,
-    });
-
-    backgroundSpringApi.start({
-      position: [0.1, -2.5, 0],
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+      position: [0, -3.7, 0],
+    })
+  })
   return (
     <>
-      <ambientLight intensity={5} />
-      <animated.mesh
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        rotation={spring.rotation}
-        position={backgroundSpring.position.to((x, y, z) => [x, y, z])}
-        scale={2.9}
-      >
-        <sphereGeometry />
-        <meshStandardMaterial
-          color={'#26184a'}
-          side={THREE.BackSide}
-          roughness={0}
-          metalness={0.5}
-        />
-      </animated.mesh>
-      <animated.mesh
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        rotation={spring.rotation.to((x, y, z) => [x, y, z])}
-        position={spring.position.to((x, y, z) => [x, y, z])}
-        scale={2.75}
-      >
-        <sphereGeometry />
-        <meshPhysicalMaterial
-          side={THREE.BackSide}
-          color={'#d7ceee'}
-          map={map}
-          clearcoat={1}
-          clearcoatRoughness={0}
-          roughness={0}
-          metalness={0.5}
-        />
+      <animated.mesh scale={3.8} position={spring.position}>
+        <circleGeometry />
+        <meshStandardMaterial  metalness={1} map={map} />
       </animated.mesh>
     </>
   );

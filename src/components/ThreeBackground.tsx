@@ -1,16 +1,19 @@
 import { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial } from '@react-three/drei';
-
+import { Points, PointMaterial, Html } from '@react-three/drei';
 import { random } from 'maath';
 import type { Group } from 'three';
+import MainBackgroundSphere from './MainBackgroundSphere';
 
 export default function ThreeBackground() {
   return (
     <Canvas
       camera={{ type: 'orthographic' }}
-      style={{ position: 'absolute', zIndex: '999' }}
+      style={{ position: 'absolute', zIndex: '99' }}
     >
+      <Html fullscreen>
+        <MainBackgroundSphere/>
+      </Html>
       <Stars />
     </Canvas>
   );
