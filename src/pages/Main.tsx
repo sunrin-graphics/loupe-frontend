@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import ThreeBackground from '../components/ThreeBackground';
-import MainBackground from '../components/MainBackground';
-import Header from '../components/Header.tsx';
+import ThreeBackground from '@/components/main/ThreeBackground.tsx';
+import MainBackground from '@/components/main/MainBackground.tsx';
+import Header from '../components/common/Header.tsx';
 
 export default function Main() {
   return (

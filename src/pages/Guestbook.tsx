@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import PlusIcon from '../assets/plus.svg';
-import GuestbookCard from '../components/GuestbookCard';
+import Footer from '@/components/common/Footer';
+import Header from '@/components/common/Header';
+import PlusIcon from '@/assets/plus.svg';
+import GuestbookCard from '@/components/GuestbookCard';
 import { useState } from 'react';
-import PostGuestbookModal from '../components/modal/PostGuestbookModal';
+import PostGuestbookModal from '@/components/modal/PostGuestbookModal';
 import { motion } from 'framer-motion';
 import {
   PageLayout,
   PageTitle,
   Section,
   SectionTop,
-} from '../components/shared/styles';
+} from '@/components/shared/Styles';
 export default function Guestbook() {
   const [modalOpen, setModalOpen] = useState(false);
 

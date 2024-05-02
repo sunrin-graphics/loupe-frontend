@@ -1,3 +1,4 @@
+import { ScrollRestoration } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const ResponsiveContainer = styled.div`
@@ -45,9 +46,18 @@ export const PageTitle = styled.div`
   }
 `;
 
-export const PageLayout = styled.div`
+export const PageLayoutStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 `;
+
+export const PageLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      <ScrollRestoration />
+      <PageLayoutStyle>{children}</PageLayoutStyle>
+    </>
+  );
+};

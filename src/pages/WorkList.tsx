@@ -1,14 +1,14 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '@/components/common/Header';
+import Footer from '@/components/common/Footer';
 import styled from 'styled-components';
-import Artwork from '../components/Artwork';
+import Artwork from '@/components/Artwork';
 import { motion } from 'framer-motion';
 import {
   PageLayout,
   PageTitle,
   Section,
   SectionTop,
-} from '../components/shared/styles';
+} from '../components/shared/Styles';
 import { useNavigate } from 'react-router-dom';
 
 export default function WorkList() {

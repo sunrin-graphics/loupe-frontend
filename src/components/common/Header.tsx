@@ -1,8 +1,8 @@
 import styled, { css, keyframes } from 'styled-components';
-import Logo from '../assets/logo.svg';
+import Logo from '@/assets/logo.svg';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ResponsiveContainer } from './shared/styles';
+import { ResponsiveContainer } from '../shared/Styles';
 
 interface Props {
   scroll?: {

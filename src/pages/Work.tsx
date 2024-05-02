@@ -1,8 +1,8 @@
-import Footer from '../components/Footer';
-import WorkTop from '../components/WorkTop';
-import WorkMain from '../components/WorkMain';
-import { PageLayout } from '../components/shared/styles';
-import Header from '../components/Header';
+import Footer from '@/components/common/Footer';
+import WorkTop from '@/components/work/WorkTop';
+import WorkMain from '@/components/work/WorkMain';
+import { PageLayout } from '../components/shared/Styles';
+import Header from '../components/common/Header';
 
 function Work() {
   return (
