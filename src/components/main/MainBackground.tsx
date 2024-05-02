@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { ReactComponent as ArrowBottomIcon } from '@/assets/arrowbottom.svg';
 
 export default function MainBackground() {
   const draw = {
@@ -169,9 +170,35 @@ export default function MainBackground() {
           </motion.defs>
         </motion.svg>
       </MainLayoutContent>
+      <BottomContent>
+        <BottomLabel>아래로 스크롤해보세요!</BottomLabel>
+        <ArrowBottomIcon />
+      </BottomContent>
     </MainLayout>
   );
 }
+
+const BottomLabel = styled.div`
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+`;
+
+const BottomContent = styled.div`
+  z-index: 100000;
+  display: flex;
+  width: 100%;
+  padding: 32px 0px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(42, 29, 76, 0) 0%, #2a1d4c 100%);
+`;
 
 const MainLayout = styled.div`
   display: flex;
