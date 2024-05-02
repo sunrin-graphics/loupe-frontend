@@ -151,11 +151,9 @@ const PageCTAButton = styled.button`
 `;
 
 const Gallery = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
   gap: 16px;
-  align-self: stretch;
 `;
 
 const GuestbookColumn = styled(motion.div)`

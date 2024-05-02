@@ -90,20 +90,10 @@ export default function Member() {
 
 const MemberCardContainer = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20%, auto));
+  grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
   flex-direction: column;
   width: 100%;
   padding: 24px 0px;
   align-items: flex-start;
   gap: 48px 16px;
-  @media (max-width: 744px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    padding: 24px 20px;
-  }
-  @media (max-width: 720px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media (max-width: 483px) {
-    grid-template-columns: 1fr;
-  }
 `;

@@ -171,6 +171,7 @@ const FooterLink = styled.a`
   transition: color 0.2s;
   &:hover {
     color: var(--100, #181826);
+    font-weight: 600;
   }
 `;
 

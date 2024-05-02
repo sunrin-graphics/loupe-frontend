@@ -73,10 +73,8 @@ export default function WorkList() {
 }
 
 const Gallery = styled(motion.div)`
-  display: flex;
-  align-items: flex-start;
-  align-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
   gap: 32px 16px;
-  align-self: stretch;
-  flex-wrap: wrap;
+  padding: 24px 0;
 `;
