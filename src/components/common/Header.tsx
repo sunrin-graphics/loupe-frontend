@@ -3,6 +3,9 @@ import Logo from '@/assets/logo.svg';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ResponsiveContainer } from '../shared/Styles';
+import { ReactComponent as NavButton } from '@/assets/nav-button.svg';
+import { ReactComponent as CloseButton } from '@/assets/nav-close.svg';
+import { motion } from 'framer-motion';
 
 interface Props {
   scroll?: {
@@ -12,14 +15,24 @@ interface Props {
   transparent?: boolean;
 }
 export default function Header({ scroll, transparent }: Props) {
+  const [open, setOpen] = useState(false);
   const location = useLocation();
   const { pathname } = location;
   const [visible, setVisible] = useState(false);
+
+  const mobileNavAnimation = {
+    hidden: { y: -20 },
+    visible: {
+      y: 0,
+      transition: { duration: 0.3 },
+    },
+  };
 
   useEffect(() => {
     if (!scroll) return;
 
     window.addEventListener('scroll', () => {
+      console.log(window.scrollY, scroll.y);
       if (window.scrollY > scroll.y) {
         setVisible(true);
       } else {
@@ -27,6 +40,23 @@ export default function Header({ scroll, transparent }: Props) {
       }
     });
   }, [scroll]);
+
+  const openNav = () => {
+    setOpen(!open);
+  };
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    // 컴포넌트 unmount 시에 원래 스타일로 복구
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [open]);
 
   return (
     <Layout
@@ -82,7 +112,50 @@ export default function Header({ scroll, transparent }: Props) {
             </NavItem>
           </li>
         </Nav>
+        <MobileNavButton $transparent={transparent} onClick={openNav}>
+          {open ? <CloseButton /> : <NavButton />}
+        </MobileNavButton>
       </Container>
+      {open && (
+        <>
+          <MobileNav
+            variants={mobileNavAnimation}
+            initial="hidden"
+            animate="visible"
+            $transparent={transparent}
+          >
+            <MobileNavItem
+              $transparent={!!transparent}
+              $active={pathname.startsWith('/work')}
+              to={'/works'}
+            >
+              작품
+            </MobileNavItem>
+            <MobileNavItem
+              $transparent={!!transparent}
+              $active={pathname === '/member'}
+              to={'/member'}
+            >
+              참여 인원
+            </MobileNavItem>
+            <MobileNavItem
+              $transparent={!!transparent}
+              $active={pathname === '/guestbook'}
+              to={'/guestbook'}
+            >
+              방명록
+            </MobileNavItem>
+            <MobileNavItem
+              $transparent={!!transparent}
+              $active={pathname === '/credit'}
+              to={'/credit'}
+            >
+              크레딧
+            </MobileNavItem>
+          </MobileNav>
+          <Overlay onClick={openNav} />
+        </>
+      )}
     </Layout>
   );
 }
@@ -96,6 +169,52 @@ const fadeIn = keyframes`
         opacity: 1;
         transform: translateY(0);
     }
+`;
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  top: 60px;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  animation: ${fadeIn} 0.3s;
+`;
+
+const MobileNavButton = styled.div<{
+  $active?: boolean;
+  $transparent?: boolean;
+}>`
+  color: ${(props) =>
+    `${props.$transparent ? '#ffffff' : 'var(--500, #BBBBC4)'}`};
+  display: none;
+  @media (max-width: 744px) {
+    display: flex;
+    width: 28px;
+    height: 28px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+`;
+
+const MobileNav = styled(motion.div)<{ $transparent?: boolean }>`
+  display: none;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  top: 60px;
+  padding-bottom: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  background: ${(props) =>
+    `${props.$transparent ? 'rgba(0, 0, 0, 0.5)' : '#ffffff'}`};
+  @media (max-width: 744px) {
+    display: flex;
+  }
 `;
 
 const Layout = styled.div<{ $animation: boolean }>`
@@ -149,8 +268,17 @@ const NavItem = styled(Link)<{ $active: boolean; $transparent: boolean }>`
   user-select: none;
 `;
 
+const MobileNavItem = styled(NavItem)`
+  display: flex;
+  padding: 16px 20px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+`;
+
 const Container = styled(ResponsiveContainer)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1001;
 `;
