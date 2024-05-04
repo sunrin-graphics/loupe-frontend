@@ -13,12 +13,12 @@ interface MemberCardProps {
 }
 
 const MemberCard = ({
-  name,
-  mail,
-  insLink,
-  poLink,
-  artLink,
-}: MemberCardProps) => {
+                      name,
+                      mail,
+                      insLink,
+                      poLink,
+                      artLink,
+                    }: MemberCardProps) => {
   const imgAnimation = {
     show: {
       y: [40, 0],
@@ -61,57 +61,57 @@ const MemberCard = ({
 };
 
 const MemberCardLayout = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 `;
 
 const MemberCardImg = styled.img`
-  width: 56px;
-  height: 56px;
-  border-radius: 56px;
+    width: 56px;
+    height: 56px;
+    border-radius: 56px;
 `;
 
 const MemberCardName = styled.div`
-  color: var(--100, #181826);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%; /* 27px */
+    color: var(--100, #181826);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 27px */
 `;
 
 const MemberCardMailaddress = styled.div`
-  color: var(--100, #181826);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 24px */
+    color: var(--100, #181826);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
 `;
 
 const CardLinkItem = styled.a`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
 `;
 
 const CardLinkTitle = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 21px */
-  color: ${(props) => props.color || 'red'};
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 21px */
+    color: ${(props) => props.color || 'red'};
+    text-decoration: none;
 `;
 const CardLinkIcon = styled.div`
-  display: flex;
-  width: 20px;
-  height: 20px;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
 `;
 
 export default MemberCard;
