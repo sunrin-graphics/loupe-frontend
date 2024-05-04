@@ -92,14 +92,13 @@ const MemberCardMailaddress = styled.div`
 const CardLinkItem = styled.a`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   text-decoration: none;
 `;
 
 const CardLinkTitle = styled.div`
   display: flex;
   align-items: center;
-  gap: 4px;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
