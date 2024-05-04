@@ -87,6 +87,15 @@ export default function Header({ scroll, transparent }: Props) {
           <li>
             <NavItem
               $transparent={!!transparent}
+              $active={pathname === '/introduce'}
+              to={'/introduce'}
+            >
+              소개
+            </NavItem>
+          </li>
+          <li>
+            <NavItem
+              $transparent={!!transparent}
               $active={pathname === '/member'}
               to={'/member'}
             >
@@ -100,15 +109,6 @@ export default function Header({ scroll, transparent }: Props) {
               to={'/guestbook'}
             >
               방명록
-            </NavItem>
-          </li>
-          <li>
-            <NavItem
-              $transparent={!!transparent}
-              $active={pathname === '/credit'}
-              to={'/credit'}
-            >
-              크레딧
             </NavItem>
           </li>
         </Nav>

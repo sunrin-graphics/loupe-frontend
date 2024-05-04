@@ -99,7 +99,7 @@ const FooterLayout = styled.footer`
 
 const FooterContainer = styled(ResponsiveContainer)`
   display: flex;
-  padding-top: 48px;
+  padding-top: 32px;
   padding-bottom: 48px;
   justify-content: space-between;
   align-items: flex-end;

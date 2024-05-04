@@ -26,7 +26,6 @@ export default function GuestbookCard({
   };
   return (
     <GuestbookCardLayout variants={imgAnimation}>
-      <GuestbookCardTop>To. {to}</GuestbookCardTop>
       <GuestbookContent>{content}</GuestbookContent>
       <From>From. {from}</From>
     </GuestbookCardLayout>
@@ -45,28 +44,21 @@ const GuestbookCardLayout = styled(motion.div)`
   background: var(--700, #f8f8fc);
 `;
 
-const GuestbookCardTop = styled.div`
-  color: var(--100, #181826);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%; /* 27px */
-`;
 
 const GuestbookContent = styled.div`
-  color: var(--300, #59596f);
-  font-size: 14px;
+  color: var(--300, #302F4B);
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 21px */
 `;
 
 const From = styled.div`
-  color: var(--200, #302f4b);
+  color: var(--200, #878797);
   text-align: right;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 150%; /* 24px */
   align-self: flex-end;
 `;
