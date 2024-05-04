@@ -96,4 +96,7 @@ const MemberCardContainer = styled(motion.div)`
   padding: 24px 0px;
   align-items: flex-start;
   gap: 48px 16px;
+  @media (max-width: 774px) {
+    padding: 24px 24px;
+  }
 `;
