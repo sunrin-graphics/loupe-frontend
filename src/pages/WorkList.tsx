@@ -3,12 +3,7 @@ import Footer from '@/components/common/Footer';
 import styled from 'styled-components';
 import Artwork from '@/components/Artwork';
 import { motion } from 'framer-motion';
-import {
-  PageLayout,
-  PageTitle,
-  Section,
-  SectionTop,
-} from '../components/shared/Styles';
+import { PageLayout, Section, SectionTop } from '../components/shared/Styles';
 import { useNavigate } from 'react-router-dom';
 import TitlePagination from '@/components/work/TitlePagination';
 import { useState } from 'react';
