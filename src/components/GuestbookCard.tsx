@@ -3,15 +3,10 @@ import { motion } from 'framer-motion';
 
 interface GuestbookCardProps {
   from: string;
-  to: string;
   content: string;
 }
 
-export default function GuestbookCard({
-  from,
-  to,
-  content,
-}: GuestbookCardProps) {
+export default function GuestbookCard({ from, content }: GuestbookCardProps) {
   const imgAnimation = {
     show: {
       y: [40, 0],
@@ -44,9 +39,8 @@ const GuestbookCardLayout = styled(motion.div)`
   background: var(--700, #f8f8fc);
 `;
 
-
 const GuestbookContent = styled.div`
-  color: var(--300, #302F4B);
+  color: var(--300, #302f4b);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
