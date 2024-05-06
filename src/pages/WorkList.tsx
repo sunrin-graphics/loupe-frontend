@@ -10,9 +10,16 @@ import {
   SectionTop,
 } from '../components/shared/Styles';
 import { useNavigate } from 'react-router-dom';
+import TitlePagination from '@/components/work/TitlePagination';
+import { useState } from 'react';
+
+const dummy = ['3D Design', 'Graphic Design', 'Photography'];
 
 export default function WorkList() {
   const navigate = useNavigate();
+
+  const [_, setTitle] = useState(dummy[0]);
+
   const gridAnimation = {
     show: {
       transition: { staggerChildren: 0.1 },
@@ -27,7 +34,8 @@ export default function WorkList() {
       <Header scroll={{ y: 50 }} />
       <Section>
         <SectionTop>
-          <PageTitle>UI/UX</PageTitle>
+          <TitlePagination state={[_, setTitle]} title={dummy} />
+          {/* <PageTitle>UI/UX</PageTitle> */}
         </SectionTop>
         <Gallery variants={gridAnimation} animate="show" exit="hide">
           <Artwork
