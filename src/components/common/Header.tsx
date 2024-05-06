@@ -39,6 +39,11 @@ export default function Header({ scroll, transparent }: Props) {
         setVisible(false);
       }
     });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 744) {
+        setOpen(false);
+      }
+    });
   }, [scroll]);
 
   const openNav = () => {
