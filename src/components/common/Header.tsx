@@ -71,7 +71,11 @@ export default function Header({ scroll, transparent }: Props) {
           visible && scroll ? '0px 4px 8px rgba(0, 0, 0, 0.05)' : 'none',
         transition: 'box-shadow 0.2s',
         ...(scroll?.transparent && { display: visible ? 'flex' : 'none' }),
-        backgroundColor: transparent ? 'transparent' : 'var(--100, #ffffff)',
+        backgroundColor: open
+          ? '#fff'
+          : transparent
+            ? 'transparent'
+            : 'var(--100, #ffffff)',
       }}
     >
       <Container>
@@ -117,7 +121,11 @@ export default function Header({ scroll, transparent }: Props) {
             </NavItem>
           </li>
         </Nav>
-        <MobileNavButton $transparent={transparent} onClick={openNav}>
+        <MobileNavButton
+          $open={open}
+          $transparent={transparent}
+          onClick={openNav}
+        >
           {open ? <CloseButton /> : <NavButton />}
         </MobileNavButton>
       </Container>
@@ -191,9 +199,10 @@ const Overlay = styled.div`
 const MobileNavButton = styled.div<{
   $active?: boolean;
   $transparent?: boolean;
+  $open?: boolean;
 }>`
   color: ${(props) =>
-    `${props.$transparent ? '#ffffff' : 'var(--500, #BBBBC4)'}`};
+    `${props.$open ? '#BBBBC4' : props.$transparent ? '#ffffff' : 'var(--500, #BBBBC4)'}`};
   display: none;
   @media (max-width: 744px) {
     display: flex;
@@ -215,8 +224,7 @@ const MobileNav = styled(motion.div)<{ $transparent?: boolean }>`
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
-  background: ${(props) =>
-    `${props.$transparent ? 'rgba(0, 0, 0, 0.5)' : '#ffffff'}`};
+  background: #fff;
   @media (max-width: 744px) {
     display: flex;
   }
@@ -279,6 +287,12 @@ const MobileNavItem = styled(NavItem)`
   align-items: center;
   gap: 10px;
   align-self: stretch;
+  color: ${(props) =>
+    props.$active ? 'var(--100, #181826)' : 'var(--500, #BBBBC4)'};
+  &:hover {
+    color: ${(props) =>
+      props.$active ? 'var(--100, #181826)' : 'var(--500, #BBBBC4)'};
+  }
 `;
 
 const Container = styled(ResponsiveContainer)`

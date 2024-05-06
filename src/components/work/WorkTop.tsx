@@ -126,7 +126,7 @@ const ContentDescription = styled.div`
   color: var(--300, #59596f);
   font-size: 20px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 150%; /* 30px */
   @media (max-width: 1440px) {
     font-size: 18px;

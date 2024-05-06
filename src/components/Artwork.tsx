@@ -55,7 +55,7 @@ const ArtOwner = styled.div`
   color: var(--400, #878797);
   font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 150%; /* 21px */
 `;
 
