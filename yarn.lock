@@ -2499,6 +2499,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/fontfaceobserver@npm:^2.1.3":
+  version: 2.1.3
+  resolution: "@types/fontfaceobserver@npm:2.1.3"
+  checksum: 10c0/7a0a3adbe630ea662bd11507178ab19a83317f6c0466b50ad9a21677307ecf7d9491a73ed9219a34be0fbb578e9937b3323c1303589469adeea7327046249446
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.15":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
@@ -3798,6 +3805,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fontfaceobserver@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "fontfaceobserver@npm:2.3.0"
+  checksum: 10c0/9b539d5021757d3ed73c355bdb839296d6654de473a992aa98993ef46d951f0361545323de68f6d70c5334d7e3e9f409c1ae7a03c168b00cb0f6c5dea6c77bfa
+  languageName: node
+  linkType: hard
+
 "foreground-child@npm:^3.1.0":
   version: 3.1.1
   resolution: "foreground-child@npm:3.1.1"
@@ -4385,6 +4399,7 @@ __metadata:
     "@react-three/drei": "npm:^9.105.5"
     "@react-three/fiber": "npm:^8.16.3"
     "@svgr/rollup": "npm:^8.1.0"
+    "@types/fontfaceobserver": "npm:^2.1.3"
     "@types/react": "npm:^18.2.66"
     "@types/react-dom": "npm:^18.2.22"
     "@types/three": "npm:^0.164.0"
@@ -4394,6 +4409,7 @@ __metadata:
     eslint: "npm:^8.57.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-refresh: "npm:^0.4.6"
+    fontfaceobserver: "npm:^2.3.0"
     framer-motion: "npm:^11.1.7"
     maath: "npm:^0.10.7"
     prettier: "npm:^3.2.5"

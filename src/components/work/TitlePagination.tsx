@@ -5,6 +5,8 @@ import ArrowLeftImg from '@/assets/arrow_left.svg';
 import ArrowRightImg from '@/assets/arrow_right.svg';
 import { useCallback, useEffect, useState } from 'react';
 
+import FontFaceObserver from 'fontfaceobserver';
+
 interface Props {
   title: string[];
   state: [string, (title: string) => void];
@@ -15,13 +17,32 @@ export default function TitlePagination(props: Props) {
   const [titleWidth, setTitleWidth] = useState<{ [key: string]: number }>({});
   const [spacerWidth, setSpacerWidth] = useState(0);
 
+  const [browserWidth, setBrowserWidth] = useState(window.innerWidth);
+  const [broswerDebounce, setBrowserDebounce] = useState(0);
+
   useEffect(() => {
     if (props.title.length === 0) return;
     setSpacerWidth(titleWidth[props.title[0]]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [titleWidth]);
 
-  console.log(titleWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setBrowserWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      setBrowserDebounce(browserWidth);
+    }, 100);
+
+    return () => {
+      clearTimeout(debounce);
+    };
+  }, [browserWidth]);
 
   const handleClick = useCallback(
     (direction: 'left' | 'right') => {
@@ -37,6 +58,23 @@ export default function TitlePagination(props: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [props.title, title, titleWidth],
   );
+
+  useEffect(() => {
+    const categoryEl = document.querySelectorAll('.category');
+
+    const observer = new FontFaceObserver('SUITE Variable');
+
+    observer.load().then(() => {
+      categoryEl.forEach((el) => {
+        const _title = el.textContent;
+        if (!_title) return;
+        setTitleWidth((prev) => ({
+          ...prev,
+          [_title]: _title === title ? el.clientWidth - 129 : el.clientWidth,
+        }));
+      });
+    });
+  }, [title, broswerDebounce]);
 
   useEffect(() => {
     setSpacerWidth(titleWidth[title]);
@@ -64,16 +102,9 @@ export default function TitlePagination(props: Props) {
       >
         {props.title.map((_title, index) => (
           <Title
+            className="category"
             $selected={_title === title}
             key={index}
-            ref={(el) => {
-              if (!el || titleWidth[_title]) return;
-              setTitleWidth((prev) => ({
-                ...prev,
-                [_title]:
-                  _title === title ? el.clientWidth - 129 : el.clientWidth - 25,
-              }));
-            }}
             onClick={() => {
               setTitle(_title);
             }}

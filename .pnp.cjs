@@ -31,6 +31,7 @@ const RAW_RUNTIME_STATE =
           ["@react-three/drei", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:9.105.5"],\
           ["@react-three/fiber", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:8.16.3"],\
           ["@svgr/rollup", "npm:8.1.0"],\
+          ["@types/fontfaceobserver", "npm:2.1.3"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
           ["@types/three", "npm:0.164.0"],\
@@ -40,6 +41,7 @@ const RAW_RUNTIME_STATE =
           ["eslint", "npm:8.57.0"],\
           ["eslint-plugin-react-hooks", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:4.6.2"],\
           ["eslint-plugin-react-refresh", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:0.4.6"],\
+          ["fontfaceobserver", "npm:2.3.0"],\
           ["framer-motion", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:11.1.7"],\
           ["maath", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:0.10.7"],\
           ["prettier", "npm:3.2.5"],\
@@ -4115,6 +4117,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/fontfaceobserver", [\
+      ["npm:2.1.3", {\
+        "packageLocation": "./.yarn/cache/@types-fontfaceobserver-npm-2.1.3-4ffab17259-7a0a3adbe6.zip/node_modules/@types/fontfaceobserver/",\
+        "packageDependencies": [\
+          ["@types/fontfaceobserver", "npm:2.1.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/json-schema", [\
       ["npm:7.0.15", {\
         "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.15-fd16381786-a996a745e6.zip/node_modules/@types/json-schema/",\
@@ -5721,6 +5732,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["fontfaceobserver", [\
+      ["npm:2.3.0", {\
+        "packageLocation": "./.yarn/cache/fontfaceobserver-npm-2.3.0-fe7e521e97-9b539d5021.zip/node_modules/fontfaceobserver/",\
+        "packageDependencies": [\
+          ["fontfaceobserver", "npm:2.3.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["foreground-child", [\
       ["npm:3.1.1", {\
         "packageLocation": "./.yarn/cache/foreground-child-npm-3.1.1-77e78ed774-9700a02856.zip/node_modules/foreground-child/",\
@@ -6395,6 +6415,7 @@ const RAW_RUNTIME_STATE =
           ["@react-three/drei", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:9.105.5"],\
           ["@react-three/fiber", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:8.16.3"],\
           ["@svgr/rollup", "npm:8.1.0"],\
+          ["@types/fontfaceobserver", "npm:2.1.3"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
           ["@types/three", "npm:0.164.0"],\
@@ -6404,6 +6425,7 @@ const RAW_RUNTIME_STATE =
           ["eslint", "npm:8.57.0"],\
           ["eslint-plugin-react-hooks", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:4.6.2"],\
           ["eslint-plugin-react-refresh", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:0.4.6"],\
+          ["fontfaceobserver", "npm:2.3.0"],\
           ["framer-motion", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:11.1.7"],\
           ["maath", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:0.10.7"],\
           ["prettier", "npm:3.2.5"],\
