@@ -130,11 +130,9 @@ const PageCTAButton = styled.button`
     background 0.2s,
     transform 0.2s;
   cursor: pointer;
-  &:hover {
-    background: var(--200, #302f4b);
-  }
   &:active {
     transform: scale(0.95);
+    background: var(--200, #302f4b);
   }
 `;
 
