@@ -156,6 +156,7 @@ const Title = styled(PageTitle)<{ $selected: boolean }>`
   padding: 0 ${({ $selected }) => ($selected ? 52 : 0)}px;
   color: ${({ $selected }) => ($selected ? '#000' : 'var(--500, #BBBBC4)')};
   transition: color 0.3s;
+  cursor: ${({ $selected }) => ($selected ? 'default' : 'pointer')};
 `;
 
 const TitleContainer = styled.div<{ $left: number; $right: number }>`
@@ -184,12 +185,21 @@ const Blur = styled.div.attrs({
   width: 240px;
   height: 100px;
   flex-shrink: 0;
+  pointer-events: none;
 
   background: linear-gradient(
     ${({ $position }) => ($position === 'left' ? '240' : '90')}deg,
     rgba(255, 255, 255, 0) 0%,
     #fff 100%
   );
+
+  @media screen and (max-width: 768px) {
+    width: 160px;
+  }
+
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const SelectContainer = styled.div`
