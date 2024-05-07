@@ -203,12 +203,16 @@ const CTAButton = styled.div<{ isComplete: boolean }>`
     transform 0.2s;
   font-size: 16px;
   font-style: normal;
+  word-break: keep-all;
   font-weight: 600;
   cursor: pointer;
   line-height: 150%; /* 24px */
   &:active {
     transform: scale(0.95);
     background: var(--200, #302f4b);
+  }
+  @media (max-width: 744px) {
+    font-size: 14px;
   }
 `;
 
