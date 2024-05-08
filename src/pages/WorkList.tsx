@@ -8,7 +8,14 @@ import { useNavigate } from 'react-router-dom';
 import TitlePagination from '@/components/work/TitlePagination';
 import { useState } from 'react';
 
-const dummy = ['3D Design', 'Graphic Design', 'Photography'];
+const dummy = [
+  'All',
+  'Illustration',
+  'UI/UX',
+  'VideoGraphy',
+  '3D Design',
+  'Photography',
+];
 
 export default function WorkList() {
   const navigate = useNavigate();

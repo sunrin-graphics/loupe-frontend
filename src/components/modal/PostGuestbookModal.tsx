@@ -186,7 +186,7 @@ const ModalBottom = styled.div`
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
-  align-self: stretch;
+  width: 100%;
 `;
 
 const CTAButton = styled.div<{ isComplete: boolean }>`
@@ -221,7 +221,9 @@ const NameInput = styled.input`
   padding: 12px;
   align-items: flex-start;
   gap: 10px;
-  flex: 1 0 0;
+  flex-basis: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   outline: none;
   border-radius: 8px;
   box-shadow: inset 0 0 0 1px #ececf1;
