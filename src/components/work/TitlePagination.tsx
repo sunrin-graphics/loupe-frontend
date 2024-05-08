@@ -123,7 +123,7 @@ export default function TitlePagination(props: Props) {
           <ArrowImg src={ArrowLeftImg} alt="left arrow" />
         </button>
 
-        <Spacer $width={spacerWidth} />
+        <Spacer $width={spacerWidth + 20} />
 
         <button
           onClick={() => {
@@ -155,8 +155,18 @@ const Layout = styled.div`
 const Title = styled(PageTitle)<{ $selected: boolean }>`
   padding: 0 ${({ $selected }) => ($selected ? 52 : 0)}px;
   color: ${({ $selected }) => ($selected ? '#000' : 'var(--500, #BBBBC4)')};
-  transition: color 0.3s;
+  transition:
+    color 0.3s,
+    transform 0.3s;
   cursor: ${({ $selected }) => ($selected ? 'default' : 'pointer')};
+  user-select: none;
+
+  &:hover {
+    color: #000;
+  }
+  &:active {
+    transform: scale(0.96);
+  }
 `;
 
 const TitleContainer = styled.div<{ $left: number; $right: number }>`
@@ -221,4 +231,8 @@ const Spacer = styled.div<{ $width: number }>`
 const ArrowImg = styled.img`
   width: 48px;
   height: 48px;
+  @media screen and (max-width: 744px) {
+    width: 32px;
+    height: 32px;
+  }
 `;
