@@ -150,6 +150,12 @@ const Layout = styled.div`
   overflow: hidden;
 
   height: 84px;
+  @media (max-width: 1300px) {
+    height: 72px;
+  }
+  @media (max-width: 744px) {
+    height: 48px;
+  }
 `;
 
 const Title = styled(PageTitle)<{ $selected: boolean }>`

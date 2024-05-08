@@ -35,10 +35,10 @@ export default function WorkList() {
     <PageLayout>
       <Header scroll={{ y: 50 }} />
       <Section>
-        <SectionTop>
+        <SectionTopV2>
           <TitlePagination state={[_, setTitle]} title={dummy} />
           {/* <PageTitle>UI/UX</PageTitle> */}
-        </SectionTop>
+        </SectionTopV2>
         <Gallery variants={gridAnimation} animate="show" exit="hide">
           <Artwork
             onClick={() => navigate('/work')}
@@ -87,4 +87,10 @@ const Gallery = styled(motion.div)`
   grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
   gap: 32px 16px;
   padding: 24px 0;
+`;
+
+const SectionTopV2 = styled(SectionTop)`
+  @media (max-width: 744px) {
+    padding: 64px 0px 16px 0px;
+  }
 `;
