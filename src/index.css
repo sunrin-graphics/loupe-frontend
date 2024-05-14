@@ -10,6 +10,10 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background: var(--grayscale-10);
   font-family: 'SUITE Variable', sans-serif;

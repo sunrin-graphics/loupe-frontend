@@ -7,6 +7,7 @@ import { PageLayout, Section, SectionTop } from '../components/shared/Styles';
 import { useNavigate } from 'react-router-dom';
 import TitlePagination from '@/components/work/TitlePagination';
 import { useState } from 'react';
+import { WorkType, useWorks } from '@/hooks/work';
 
 const dummy = [
   'All',
@@ -20,7 +21,11 @@ const dummy = [
 export default function WorkList() {
   const navigate = useNavigate();
 
-  const [_, setTitle] = useState(dummy[0]);
+  const [title, setTitle] = useState(dummy[0]);
+
+  const { data: works } = useWorks(
+    title === 'ALL' ? undefined : WorkType[title as keyof typeof WorkType],
+  );
 
   const gridAnimation = {
     show: {
@@ -36,45 +41,18 @@ export default function WorkList() {
       <Header scroll={{ y: 50 }} />
       <Section>
         <SectionTopV2>
-          <TitlePagination state={[_, setTitle]} title={dummy} />
-          {/* <PageTitle>UI/UX</PageTitle> */}
+          <TitlePagination state={[title, setTitle]} title={dummy} />
         </SectionTopV2>
         <Gallery variants={gridAnimation} animate="show" exit="hide">
-          <Artwork
-            onClick={() => navigate('/work')}
-            title="라온 - 어플리케이션 기반 반자유여행 서비스"
-            owner="박시원"
-          />
-          <Artwork
-            onClick={() => navigate('/work')}
-            title="LOUPE - 세상을 보는 창구"
-            owner="박시원, 박정우, 오지후"
-          />
-          <Artwork
-            onClick={() => navigate('/work')}
-            title="너울"
-            owner="박시원, 박정우"
-          />
-          <Artwork
-            onClick={() => navigate('/work')}
-            title="Artwork 1"
-            owner="박시원"
-          />
-          <Artwork
-            onClick={() => navigate('/work')}
-            title="Artwork 1"
-            owner="박시원"
-          />
-          <Artwork
-            onClick={() => navigate('/work')}
-            title="Artwork 1"
-            owner="박시원"
-          />
-          <Artwork
-            onClick={() => navigate('/work')}
-            title="Artwork 1"
-            owner="박시원"
-          />
+          {works?.map((work) => (
+            <Artwork
+              key={work.uuid}
+              onClick={() => navigate(`/work/${work.uuid}`)}
+              title={work.title}
+              owner={work.made?.map((m) => m?.user?.name).join(', ')}
+              thumbnail={work.thumbnail}
+            />
+          ))}
         </Gallery>
       </Section>
       <Footer />

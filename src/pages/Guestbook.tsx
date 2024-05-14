@@ -12,7 +12,10 @@ import {
   Section,
   SectionTop,
 } from '@/components/shared/Styles';
+import { useNotes } from '@/hooks/note';
 export default function Guestbook() {
+  const { data: notes } = useNotes();
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const gridAnimation = {
@@ -49,62 +52,13 @@ export default function Guestbook() {
         </SectionTop>
         <Gallery variants={gridAnimation} animate="show" exit="hide">
           <GuestbookColumn variants={columnAnimation}>
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? "
-            />
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업"
-            />
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업"
-            />
-          </GuestbookColumn>
-          <GuestbookColumn variants={columnAnimation}>
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업"
-            />
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? "
-            />
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업"
-            />
-            <GuestbookCard from="박시원" content="안녕하세요!" />
-          </GuestbookColumn>
-          <GuestbookColumn variants={columnAnimation}>
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? "
-            />
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업"
-            />
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업"
-            />
-          </GuestbookColumn>
-          <GuestbookColumn variants={columnAnimation}>
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업"
-            />
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? "
-            />
-            <GuestbookCard
-              from="박시원"
-              content="너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업한다고? 왜? 어떻게? 너가 졸업"
-            />
-            <GuestbookCard from="박시원" content="안녕하세요!" />
+            {notes?.map((note) => (
+              <GuestbookCard
+                key={note.id}
+                from={note.author}
+                content={note.message}
+              />
+            ))}
           </GuestbookColumn>
         </Gallery>
       </Section>

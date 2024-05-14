@@ -2,6 +2,7 @@ import { DetailedHTMLProps, HTMLAttributes, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled, { keyframes } from 'styled-components';
 import Close from '../../assets/close.svg';
+import { usePostNote } from '@/hooks/note';
 
 interface ModalProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -13,6 +14,8 @@ export default function PostGuestbookModal({
   open = false,
   setOpen,
 }: ModalProps) {
+  const { mutate: postNote } = usePostNote();
+
   const modalRoot = document.querySelector('#modal-root') as HTMLElement;
 
   const [content, setContent] = useState('');
@@ -34,6 +37,13 @@ export default function PostGuestbookModal({
     e.stopPropagation();
     e.preventDefault();
     setOpen(false);
+  };
+
+  const onSubmit = () => {
+    postNote({
+      message: content,
+      author: name,
+    });
   };
 
   return ReactDOM.createPortal(
@@ -58,7 +68,10 @@ export default function PostGuestbookModal({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <CTAButton onClick={onCancel} isComplete={isComplete}>
+              <CTAButton
+                onClick={isComplete ? onSubmit : onCancel}
+                isComplete={isComplete}
+              >
                 등록하기
               </CTAButton>
             </ModalBottom>

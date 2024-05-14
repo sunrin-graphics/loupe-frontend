@@ -1,21 +1,29 @@
 import styled from 'styled-components';
 import ContentAuthor from '@/components/work/ContentAuthor';
 import { ResponsiveContainer } from '@/components/shared/Styles';
+import { User } from '@/hooks/user';
 
-export default function WorkMain() {
+interface Props {
+  art: string;
+  authors: User[];
+}
+export default function WorkMain({ art, authors }: Props) {
   return (
     <WorkMainLayout>
-      <ArtImage src="art.png" alt="art" />
+      <ArtImage src={`${import.meta.env.VITE_API_URL}/file/${art}`} alt="art" />
       <ContentAuthorSection>
         <ContentAuthorTop>
           <ContentAuthorTopLabel>참여 인원 </ContentAuthorTopLabel>
           <Line />
         </ContentAuthorTop>
         <ContentAuthorGroup>
-          <ContentAuthor />
-          <ContentAuthor />
-          <ContentAuthor />
-          <ContentAuthor />
+          {authors?.map((author) => (
+            <ContentAuthor
+              key={author.uuid}
+              name={author.name}
+              email={author.email}
+            />
+          ))}
         </ContentAuthorGroup>
       </ContentAuthorSection>
     </WorkMainLayout>

@@ -7,12 +7,13 @@ import Member from './pages/Member';
 import Main from './pages/Main';
 import Guestbook from './pages/Guestbook';
 import WorkList from './pages/WorkList';
+import QueryProvider from './components/provider/QueryProvider';
 
 // 브라우저 라우터 만들기
 // 파라미터로 경로와 컴포넌트 입력하기
 const router = createBrowserRouter([
   {
-    path: '/work',
+    path: '/work/:id',
     element: <Work />,
   },
   {
@@ -36,6 +37,8 @@ const router = createBrowserRouter([
 // 프로바이더로 리액트 라우터 등록하기
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryProvider>
+      <RouterProvider router={router} />
+    </QueryProvider>
   </React.StrictMode>,
 );

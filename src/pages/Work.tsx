@@ -3,8 +3,15 @@ import WorkTop from '@/components/work/WorkTop';
 import WorkMain from '@/components/work/WorkMain';
 import { PageLayout } from '../components/shared/Styles';
 import Header from '../components/common/Header';
+import { useParams } from 'react-router-dom';
+import { useWork } from '@/hooks/work';
 
 function Work() {
+  const { id } = useParams();
+  const { data: work } = useWork(id as string);
+
+  console.log(work);
+
   return (
     <PageLayout>
       <Header
@@ -13,8 +20,16 @@ function Work() {
           y: 40,
         }}
       />
-      <WorkTop />
-      <WorkMain />
+      <WorkTop
+        title={work?.title ?? ''}
+        description={work?.description ?? ''}
+        authors={work?.made?.map((m) => m?.user) ?? []}
+        thumbnail={work?.thumbnail ?? ''}
+      />
+      <WorkMain
+        art={work?.artwork ?? ''}
+        authors={work?.made?.map((m) => m?.user) ?? []}
+      />
       <Footer />
     </PageLayout>
   );

@@ -4,10 +4,16 @@ import { motion } from 'framer-motion';
 interface ArtworkProps {
   title: string;
   owner: string;
+  thumbnail: string;
   onClick?: () => void;
 }
 
-export default function Artwork({ title, owner, onClick }: ArtworkProps) {
+export default function Artwork({
+  title,
+  owner,
+  thumbnail,
+  onClick,
+}: ArtworkProps) {
   const imgAnimation = {
     show: {
       y: [40, 0],
@@ -22,7 +28,14 @@ export default function Artwork({ title, owner, onClick }: ArtworkProps) {
   };
   return (
     <Layout onClick={onClick} variants={imgAnimation}>
-      <ArtImage src="thumbnail.png" />
+      <ArtImage
+        src={
+          thumbnail
+            ? `${import.meta.env.VITE_API_URL}/file/${thumbnail}`
+            : 'thumbnail.png'
+        }
+        alt={'이미지'}
+      />
       <ArtInfo>
         <ArtTitle>{title}</ArtTitle>
         <ArtOwner>{owner}</ArtOwner>

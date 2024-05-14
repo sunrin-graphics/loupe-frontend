@@ -1,42 +1,46 @@
+import { User } from '@/hooks/user';
 import styled from 'styled-components';
 
-export default function WorkTop() {
+interface Props {
+  title: string;
+  description: string;
+  thumbnail: string;
+  authors: User[];
+}
+export default function WorkTop({
+  title,
+  description,
+  thumbnail,
+  authors,
+}: Props) {
   return (
     <WorkTopLayout>
       <ThumbnailContainer>
-        <Thumbnail src="thumbnail.png" alt="thumbnail" />
+        <Thumbnail
+          src={`${import.meta.env.VITE_API_URL}/file/${thumbnail}`}
+          alt="thumbnail"
+        />
       </ThumbnailContainer>
       <ContentHeadSection>
         <ContentHeadContainer>
           <ContentHeadTop>
-            <ContentTitle>
-              라온 - 어플리케이션 기반 반자유여행 서비스
-            </ContentTitle>
-            <ContentDescription>
-              ‘라온!’은 지금까지 생소했던 여행 종류인 ‘반자유여행’을 전문으로
-              다루는 브랜드에요. 사용자들은 라온만의 모바일 어플리케이션을
-              활용하여 자신만의 여행을 만들어 갈 수 있게 도와주고, 이를 통해
-              사용자들은 자신만의 여행을 부담 없이 떠날 수 있도록 하는 것이
-              프로젝트의 목적이에요.
-            </ContentDescription>
+            <ContentTitle>{title}</ContentTitle>
+            <ContentDescription>{description}</ContentDescription>
           </ContentHeadTop>
           <Authors>
-            <Author>
-              <AuthorProfile src="author.png" alt="author1" />
-              <AuthorName>박시원</AuthorName>
-            </Author>
-            <Author>
-              <AuthorProfile src="author.png" alt="author1" />
-              <AuthorName>박시원</AuthorName>
-            </Author>
-            <Author>
-              <AuthorProfile src="author.png" alt="author1" />
-              <AuthorName>박시원</AuthorName>
-            </Author>
-            <Author>
-              <AuthorProfile src="author.png" alt="author1" />
-              <AuthorName>박시원</AuthorName>
-            </Author>
+            {authors?.map((author) => (
+              <Author key={author.uuid}>
+                <AuthorProfile
+                  src={
+                    author.avatar
+                      ? `${import.meta.env.VITE_API_URL}/file/${author.avatar}`
+                      : '/author.png'
+                  }
+                  alt="author1"
+                />
+                <AuthorName>{author.name}</AuthorName>
+              </Author>
+            ))}
           </Authors>
         </ContentHeadContainer>
       </ContentHeadSection>

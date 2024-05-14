@@ -1,12 +1,24 @@
 import styled from 'styled-components';
 
-export default function ContentAuthor() {
+interface Props {
+  name: string;
+  avatar?: string;
+  email: string;
+}
+export default function ContentAuthor({ name, avatar, email }: Props) {
   return (
     <ContentAuthorLayout>
-      <ContentAuthorProfile src="author.png" alt="author1" />
+      <ContentAuthorProfile
+        src={
+          avatar
+            ? `${import.meta.env.VITE_API_URL}/file/${avatar}`
+            : '/author.png'
+        }
+        alt="author1"
+      />
       <ContentAuthorInfo>
-        <ContentAuthorName>박시원</ContentAuthorName>
-        <ContentAuthorEmail>whoisapple@kakao.com</ContentAuthorEmail>
+        <ContentAuthorName>{name}</ContentAuthorName>
+        <ContentAuthorEmail>{email}</ContentAuthorEmail>
       </ContentAuthorInfo>
     </ContentAuthorLayout>
   );

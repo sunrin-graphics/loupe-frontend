@@ -3,22 +3,25 @@ import { ReactComponent as LinkIcon } from '../assets/linkSmall.svg';
 import { ReactComponent as ArtIcon } from '../assets/art.svg';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 interface MemberCardProps {
   name: string;
   mail: string;
-  insLink: string;
-  poLink: string;
-  artLink: string;
+  avatar?: string;
+  insLink?: string;
+  poLink?: string;
+  artLink?: string;
 }
 
 const MemberCard = ({
-                      name,
-                      mail,
-                      insLink,
-                      poLink,
-                      artLink,
-                    }: MemberCardProps) => {
+  name,
+  mail,
+  avatar,
+  insLink = '',
+  poLink = '',
+  artLink = '',
+}: MemberCardProps) => {
   const imgAnimation = {
     show: {
       y: [40, 0],
@@ -31,87 +34,111 @@ const MemberCard = ({
       scale: [1, 0.98],
     },
   };
+
   return (
     <MemberCardLayout variants={imgAnimation}>
-      <MemberCardImg src={'author.png'} alt={'이미지'} />
+      <MemberCardImg
+        src={
+          avatar
+            ? `${import.meta.env.VITE_API_URL}/file/${avatar}`
+            : 'author.png'
+        }
+        alt={'이미지'}
+      />
       <div>
         <MemberCardName>{name}</MemberCardName>
-        <MemberCardMailaddress>{mail}</MemberCardMailaddress>
+        <MemberCardMailAddress>{mail}</MemberCardMailAddress>
       </div>
-      <CardLinkItem href={insLink}>
+      <CardLinkItem
+        target="_blank"
+        to={`https://instagram.com/${insLink}`}
+        $disabled={!insLink}
+      >
         <CardLinkIcon>
           <InstagramIcon />
         </CardLinkIcon>
-        <CardLinkTitle color={'#59596F'}>인스타그램</CardLinkTitle>
+        <CardLinkTitle>인스타그램</CardLinkTitle>
       </CardLinkItem>
-      <CardLinkItem href={poLink}>
+
+      <CardLinkItem target="_blank" to={poLink} $disabled={!poLink}>
         <CardLinkIcon>
           <LinkIcon />
         </CardLinkIcon>
-        <CardLinkTitle color={'#BBBBC4'}>포트폴리오</CardLinkTitle>
+        <CardLinkTitle>포트폴리오</CardLinkTitle>
       </CardLinkItem>
-      <CardLinkItem href={artLink}>
+
+      <CardLinkItem to={`/work/${artLink}`} $disabled={!artLink}>
         <CardLinkIcon>
           <ArtIcon />
         </CardLinkIcon>
-        <CardLinkTitle color={'#BBBBC4'}>대표 작품보기</CardLinkTitle>
+        <CardLinkTitle>대표 작품보기</CardLinkTitle>
       </CardLinkItem>
     </MemberCardLayout>
   );
 };
 
 const MemberCardLayout = styled(motion.div)`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 `;
 
 const MemberCardImg = styled.img`
-    width: 56px;
-    height: 56px;
-    border-radius: 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 56px;
 `;
 
 const MemberCardName = styled.div`
-    color: var(--100, #181826);
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 150%; /* 27px */
+  color: var(--100, #181826);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 27px */
 `;
 
-const MemberCardMailaddress = styled.div`
-    color: var(--100, #181826);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 24px */
+const MemberCardMailAddress = styled.div`
+  color: var(--100, #181826);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
 `;
 
-const CardLinkItem = styled.a`
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    text-decoration: none;
+const CardLinkItem = styled(Link)<{ $disabled?: boolean }>`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+
+  ${({ $disabled }) => $disabled && 'pointer-events: none;'}
+
+  p {
+    color: ${(props) => (props.$disabled ? '#BBBBC4' : '#59596F')};
+  }
+
+  svg {
+    fill: ${(props) => (props.$disabled ? '#BBBBC4' : '#59596F')};
+  }
 `;
 
-const CardLinkTitle = styled.div`
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 21px */
-    color: ${(props) => props.color || 'red'};
-    text-decoration: none;
+const CardLinkTitle = styled.p`
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 21px */
+  color: ${(props) => props.color || 'red'};
+  text-decoration: none;
 `;
 const CardLinkIcon = styled.div`
-    display: flex;
-    width: 20px;
-    height: 20px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default MemberCard;

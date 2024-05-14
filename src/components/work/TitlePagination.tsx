@@ -3,7 +3,7 @@ import { PageTitle } from '../shared/Styles';
 
 import ArrowLeftImg from '@/assets/arrow_left.svg';
 import ArrowRightImg from '@/assets/arrow_right.svg';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import FontFaceObserver from 'fontfaceobserver';
 
@@ -19,6 +19,8 @@ export default function TitlePagination(props: Props) {
 
   const [browserWidth, setBrowserWidth] = useState(window.innerWidth);
   const [broswerDebounce, setBrowserDebounce] = useState(0);
+
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (props.title.length === 0) return;
@@ -60,6 +62,14 @@ export default function TitlePagination(props: Props) {
   );
 
   useEffect(() => {
+    if (!containerRef.current) return;
+
+    if (containerRef.current.style.paddingLeft === '0px') return;
+
+    containerRef.current.style.transition = '0.3s';
+  }, [containerRef, title]);
+
+  useEffect(() => {
     const categoryEl = document.querySelectorAll('.category');
 
     const observer = new FontFaceObserver('SUITE Variable');
@@ -83,22 +93,27 @@ export default function TitlePagination(props: Props) {
   return (
     <Layout>
       <TitleContainer
-        $left={(() => {
-          if (titleWidth[title] === undefined) return 0;
-          return Object.entries(titleWidth)
-            .filter(
-              ([key]) => props.title.indexOf(key) > props.title.indexOf(title),
-            )
-            .reduce((acc, [, value]) => acc + value + 24, 0);
-        })()}
-        $right={(() => {
-          if (titleWidth[title] === undefined) return 0;
-          return Object.entries(titleWidth)
-            .filter(
-              ([key]) => props.title.indexOf(key) < props.title.indexOf(title),
-            )
-            .reduce((acc, [, value]) => acc + value + 24, 0);
-        })()}
+        ref={containerRef}
+        style={{
+          paddingLeft: `${(() => {
+            if (titleWidth[title] === undefined) return 0;
+            return Object.entries(titleWidth)
+              .filter(
+                ([key]) =>
+                  props.title.indexOf(key) > props.title.indexOf(title),
+              )
+              .reduce((acc, [, value]) => acc + value + 24, 0);
+          })()}px`,
+          paddingRight: `${(() => {
+            if (titleWidth[title] === undefined) return 0;
+            return Object.entries(titleWidth)
+              .filter(
+                ([key]) =>
+                  props.title.indexOf(key) < props.title.indexOf(title),
+              )
+              .reduce((acc, [, value]) => acc + value + 24, 0);
+          })()}px`,
+        }}
       >
         {props.title.map((_title, index) => (
           <Title
@@ -175,15 +190,12 @@ const Title = styled(PageTitle)<{ $selected: boolean }>`
   }
 `;
 
-const TitleContainer = styled.div<{ $left: number; $right: number }>`
+const TitleContainer = styled.div<{}>`
   display: flex;
   align-items: center;
   gap: 24px;
 
   position: absolute;
-  padding-left: ${({ $left }) => $left}px;
-  padding-right: ${({ $right }) => $right}px;
-  transition: 0.3s;
 
   top: 50%;
   left: 50%;

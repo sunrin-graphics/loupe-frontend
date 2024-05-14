@@ -9,8 +9,12 @@ import {
   Section,
   SectionTop,
 } from '@/components/shared/Styles';
+import { useUsers } from '@/hooks/user';
 
 export default function Member() {
+  const { data: users } = useUsers();
+  console.log(users);
+
   const gridAnimation = {
     show: {
       transition: { staggerChildren: 0.1 },
@@ -32,55 +36,17 @@ export default function Member() {
           animate="show"
           exit="hide"
         >
-          <MemberCard
-            name={'박시원'}
-            mail={'whoisapple@kakao.com'}
-            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
-          />
-          <MemberCard
-            name={'박시원'}
-            mail={'whoisapple@kakao.com'}
-            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
-          />
-          <MemberCard
-            name={'박시원'}
-            mail={'whoisapple@kakao.com'}
-            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
-          />
-          <MemberCard
-            name={'박시원'}
-            mail={'whoisapple@kakao.com'}
-            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
-          />
-          <MemberCard
-            name={'박시원'}
-            mail={'whoisapple@kakao.com'}
-            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
-          />
-          <MemberCard
-            name={'박시원'}
-            mail={'whoisapple@kakao.com'}
-            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
-          />
-          <MemberCard
-            name={'박시원'}
-            mail={'whoisapple@kakao.com'}
-            insLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            poLink={'http://www.digital-media.kr/degreeshow/2022/'}
-            artLink={'http://www.digital-media.kr/degreeshow/2022/'}
-          />
+          {users?.map((user) => (
+            <MemberCard
+              key={user.uuid}
+              name={user.name}
+              mail={user.email}
+              avatar={user.avatar}
+              insLink={user.instagram}
+              poLink={user.portfolio}
+              artLink={user.made?.[0]?.work.uuid}
+            />
+          ))}
         </MemberCardContainer>
       </Section>
       <Footer />

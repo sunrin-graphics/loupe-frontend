@@ -4,6 +4,7 @@ import youtube from '@/assets/youtube.svg';
 import link from '@/assets/link.svg';
 import instagram from '@/assets/instagram.svg';
 import { ResponsiveContainer } from '../shared/Styles';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -48,24 +49,30 @@ export default function Footer() {
         </FooterBlock>
         <FooterBlock>
           <FooterSemiLabel>웹사이트 바로가기</FooterSemiLabel>
-          <FooterLinkItem>
+          <FooterLinkItem target="_blank" to="https://sunrint.sen.hs.kr">
             <FooterIcon>
               <img src={link} alt="youtube" />
             </FooterIcon>
 
-            <FooterLink>학교 공식 웹사이트</FooterLink>
+            <FooterLinkLabel>학교 공식 웹사이트</FooterLinkLabel>
           </FooterLinkItem>
-          <FooterLinkItem>
+          <FooterLinkItem
+            target="_blank"
+            to="https://www.instagram.com/sr_design_exhibit/"
+          >
             <FooterIcon>
               <img src={instagram} alt="youtube" />
             </FooterIcon>
-            <FooterLink>졸업전시회 인스타그램</FooterLink>
+            <FooterLinkLabel>졸업전시회 인스타그램</FooterLinkLabel>
           </FooterLinkItem>
-          <FooterLinkItem>
+          <FooterLinkItem
+            target="_blank"
+            to="https://www.youtube.com/@user-wi9bc4qg4g"
+          >
             <FooterIcon>
               <img src={youtube} alt="youtube" />
             </FooterIcon>
-            <FooterLink>졸업전시회 유튜브</FooterLink>
+            <FooterLinkLabel>졸업전시회 유튜브</FooterLinkLabel>
           </FooterLinkItem>
         </FooterBlock>
       </FooterContainer>
@@ -73,7 +80,7 @@ export default function Footer() {
   );
 }
 
-const FooterLinkItem = styled.div`
+const FooterLinkItem = styled(Link)`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -160,7 +167,7 @@ const Strong = styled.span`
   font-weight: 600;
 `;
 
-const FooterLink = styled.a`
+const FooterLinkLabel = styled.p`
   color: var(--300, #59596f);
   font-size: 14px;
   font-style: normal;
