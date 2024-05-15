@@ -27,7 +27,7 @@ function Work() {
         thumbnail={work?.thumbnail ?? ''}
       />
       <WorkMain
-        art={work?.artwork ?? ''}
+        art={work?.artwork ?? []}
         authors={work?.made?.map((m) => m?.user) ?? []}
       />
       <Footer />

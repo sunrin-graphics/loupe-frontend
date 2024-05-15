@@ -15,7 +15,7 @@ export interface Work {
   title: string;
   description: string;
   thumbnail: string;
-  artwork: string;
+  artwork: string[];
   youtubeUrl?: string;
   type: WorkType;
   made: Made[];

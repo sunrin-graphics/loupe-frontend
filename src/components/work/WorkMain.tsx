@@ -4,13 +4,21 @@ import { ResponsiveContainer } from '@/components/shared/Styles';
 import { User } from '@/hooks/user';
 
 interface Props {
-  art: string;
+  art: string[];
   authors: User[];
 }
 export default function WorkMain({ art, authors }: Props) {
   return (
     <WorkMainLayout>
-      <ArtImage src={`${import.meta.env.VITE_API_URL}/file/${art}`} alt="art" />
+      <ArtContainer>
+        {/* <ArtImage src={`${import.meta.env.VITE_API_URL}/file/${art}`} alt="art" /> */}
+        {art?.map((artwork) => (
+          <ArtImage
+            src={`${import.meta.env.VITE_API_URL}/file/${artwork}`}
+            alt="art"
+          />
+        ))}
+      </ArtContainer>
       <ContentAuthorSection>
         <ContentAuthorTop>
           <ContentAuthorTopLabel>참여 인원 </ContentAuthorTopLabel>
@@ -70,8 +78,11 @@ const ContentAuthorGroup = styled.div`
   flex-wrap: wrap;
 `;
 
-const ArtImage = styled.img`
+const ArtContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   align-self: stretch;
+  overflow: hidden;
   border-radius: 16px;
   background: url(<path-to-image>) lightgray 50% / cover no-repeat;
   @media (max-width: 1440px) {
@@ -80,6 +91,10 @@ const ArtImage = styled.img`
   @media (max-width: 744px) {
     border-radius: 8px;
   }
+`;
+
+const ArtImage = styled.img`
+  align-self: stretch;
 `;
 
 const WorkMainLayout = styled(ResponsiveContainer)`
