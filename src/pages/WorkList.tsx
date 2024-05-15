@@ -9,23 +9,14 @@ import TitlePagination from '@/components/work/TitlePagination';
 import { useState } from 'react';
 import { WorkType, useWorks } from '@/hooks/work';
 
-const dummy = [
-  'All',
-  'Illustration',
-  'UI/UX',
-  'VideoGraphy',
-  '3D Design',
-  'Photography',
-];
+const dummy = ['3D Design', 'Graphic Design', 'VideoGraphy', 'UIUX', 'Drawing'];
 
 export default function WorkList() {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState(dummy[0]);
 
-  const { data: works } = useWorks(
-    title === 'ALL' ? undefined : WorkType[title as keyof typeof WorkType],
-  );
+  const { data: works } = useWorks(WorkType[title as keyof typeof WorkType]);
 
   const gridAnimation = {
     show: {

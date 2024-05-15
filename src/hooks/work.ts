@@ -2,11 +2,10 @@ import { useQuery } from 'react-query';
 import { Made } from './user';
 
 export enum WorkType {
-  'Illustration' = 'Illustration',
-  'UI/UX' = 'UIUX',
+  'Drawing' = 'Drawing',
+  'UIUX' = 'UIUX',
   'VideoGraphy' = 'VideoGraphy',
   '3D Design' = '3D Design',
-  'Photography' = 'Photography',
   'Graphic Design' = 'Graphic Design',
 }
 
