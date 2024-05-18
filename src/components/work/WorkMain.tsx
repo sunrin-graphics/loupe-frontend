@@ -4,21 +4,48 @@ import { ResponsiveContainer } from '@/components/shared/Styles';
 import { User } from '@/hooks/user';
 
 interface Props {
-  art: string[];
+  youtubeUrl?: string;
+  artworks: string[];
   authors: User[];
 }
-export default function WorkMain({ art, authors }: Props) {
+export default function WorkMain({ youtubeUrl, artworks, authors }: Props) {
+  function formatYoutubeUrl(url: string) {
+    if (url.includes('embed')) return url;
+
+    let youtubeId;
+
+    if (url.includes('youtube.com/watch?v=')) youtubeId = url.split('v=')[1];
+
+    if (url.includes('youtu.be/')) youtubeId = url.split('youtu.be/')[1];
+
+    if (!youtubeId) return url;
+
+    if (youtubeId.includes('&')) youtubeId = youtubeId.split('&')[0];
+
+    return `https://www.youtube.com/embed/${youtubeId}`;
+  }
+
   return (
     <WorkMainLayout>
-      <ArtContainer>
-        {/* <ArtImage src={`${import.meta.env.VITE_API_URL}/file/${art}`} alt="art" /> */}
-        {art?.map((artwork) => (
-          <ArtImage
-            src={`${import.meta.env.VITE_API_URL}/file/${artwork}`}
-            alt="art"
-          />
-        ))}
-      </ArtContainer>
+      <ContentContainer>
+        {youtubeUrl && (
+          <Iframe
+            src={formatYoutubeUrl(youtubeUrl)}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            frameBorder={0}
+          ></Iframe>
+        )}
+
+        <ArtContainer>
+          {artworks?.map((artwork) => (
+            <ArtImage
+              src={`${import.meta.env.VITE_API_URL}/file/${artwork}`}
+              alt="art"
+            />
+          ))}
+        </ArtContainer>
+      </ContentContainer>
       <ContentAuthorSection>
         <ContentAuthorTop>
           <ContentAuthorTopLabel>참여 인원 </ContentAuthorTopLabel>
@@ -37,6 +64,13 @@ export default function WorkMain({ art, authors }: Props) {
     </WorkMainLayout>
   );
 }
+
+const ContentContainer = styled.div`
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
 
 const ContentAuthorSection = styled.div`
   display: flex;
@@ -116,4 +150,10 @@ const WorkMainLayout = styled(ResponsiveContainer)`
     padding-top: 20px;
     padding-bottom: 20px;
   }
+`;
+
+const Iframe = styled.iframe`
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
 `;
