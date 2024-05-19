@@ -14,6 +14,7 @@ interface Props {
   };
   transparent?: boolean;
 }
+
 export default function Header({ scroll, transparent }: Props) {
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -91,15 +92,6 @@ export default function Header({ scroll, transparent }: Props) {
               to={'/works'}
             >
               작품
-            </NavItem>
-          </li>
-          <li>
-            <NavItem
-              $transparent={!!transparent}
-              $active={pathname === '/introduce'}
-              to={'/introduce'}
-            >
-              소개
             </NavItem>
           </li>
           <li>
@@ -185,15 +177,15 @@ const fadeIn = keyframes`
 `;
 
 const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  top: 60px;
-  z-index: 999;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  animation: ${fadeIn} 0.3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    top: 60px;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    animation: ${fadeIn} 0.3s;
 `;
 
 const MobileNavButton = styled.div<{
@@ -201,103 +193,106 @@ const MobileNavButton = styled.div<{
   $transparent?: boolean;
   $open?: boolean;
 }>`
-  color: ${(props) =>
-    `${props.$open ? '#BBBBC4' : props.$transparent ? '#ffffff' : 'var(--500, #BBBBC4)'}`};
-  display: none;
-  @media (max-width: 744px) {
-    display: flex;
-    width: 28px;
-    height: 28px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
+    color: ${(props) =>
+            `${props.$open ? '#BBBBC4' : props.$transparent ? '#ffffff' : 'var(--500, #BBBBC4)'}`};
+    display: none;
+    @media (max-width: 744px) {
+        display: flex;
+        width: 28px;
+        height: 28px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
 `;
 
 const MobileNav = styled(motion.div)<{ $transparent?: boolean }>`
-  display: none;
-  position: absolute;
-  width: 100%;
-  z-index: 1000;
-  top: 60px;
-  padding-bottom: 8px;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
-  background: #fff;
-  @media (max-width: 744px) {
-    display: flex;
-  }
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    top: 60px;
+    padding-bottom: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    background: #fff;
+    @media (max-width: 744px) {
+        display: flex;
+    }
 `;
 
 const Layout = styled.div<{ $animation: boolean }>`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-  height: 60px;
-  ${(props) =>
-    props.$animation &&
-    css`
-      animation: ${fadeIn} 0.5s;
-    `}
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    height: 60px;
+    ${(props) =>
+            props.$animation &&
+            css`
+                animation: ${fadeIn} 0.5s;
+            `}
 `;
 
 const Nav = styled.ul`
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  list-style: none;
-  @media (max-width: 744px) {
-    display: none;
-  }
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+    @media (max-width: 744px) {
+        display: none;
+    }
 `;
 
 const NavItem = styled(Link)<{ $active: boolean; $transparent: boolean }>`
-  color: ${(props) =>
-    props.$active
-      ? 'var(--100, #181826)'
-      : `${props.$transparent ? '#F8F8FC' : 'var(--500, #BBBBC4)'}`};
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 24px */
-  cursor: pointer;
-  text-decoration: none;
-  transition:
-    color 0.2s,
+    color: ${(props) =>
+            props.$active
+                    ? 'var(--100, #181826)'
+                    : `${props.$transparent ? '#F8F8FC' : 'var(--500, #BBBBC4)'}`};
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s,
     transform 0.2s;
-  &:hover {
-    color: ${(props) => (props.$transparent ? '#bbbbc4' : '#181826')};
-  }
-  &:active {
-    ${(props) => props.$transparent && 'color: var(--100, #181826)'};
-    transform: translateY(1px);
-  }
-  user-select: none;
+
+    &:hover {
+        color: ${(props) => (props.$transparent ? '#bbbbc4' : '#181826')};
+    }
+
+    &:active {
+        ${(props) => props.$transparent && 'color: var(--100, #181826)'};
+        transform: translateY(1px);
+    }
+
+    user-select: none;
 `;
 
 const MobileNavItem = styled(NavItem)`
-  display: flex;
-  padding: 16px 20px;
-  align-items: center;
-  gap: 10px;
-  align-self: stretch;
-  color: ${(props) =>
-    props.$active ? 'var(--100, #181826)' : 'var(--500, #BBBBC4)'};
-  &:hover {
+    display: flex;
+    padding: 16px 20px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
     color: ${(props) =>
-      props.$active ? 'var(--100, #181826)' : 'var(--500, #BBBBC4)'};
-  }
+            props.$active ? 'var(--100, #181826)' : 'var(--500, #BBBBC4)'};
+
+    &:hover {
+        color: ${(props) =>
+                props.$active ? 'var(--100, #181826)' : 'var(--500, #BBBBC4)'};
+    }
 `;
 
 const Container = styled(ResponsiveContainer)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1001;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1001;
 `;
