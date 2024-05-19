@@ -37,8 +37,8 @@ const GuestbookCardLayout = styled(motion.div)`
   align-self: stretch;
   border-radius: 8px;
   background: var(--700, #f8f8fc);
-    overflow: hidden; /* 박스 내에서만 표시되도록 설정 */
-    max-width: 100%; /* 박스의 최대 너비를 설정하여 박스를 벗어나지 않도록 설정 */
+    overflow: hidden; 
+    max-width: 100%; 
 `;
 
 const GuestbookContent = styled.div`
@@ -48,9 +48,9 @@ const GuestbookContent = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 21px */
-    word-wrap: break-word; /* 단어가 박스를 벗어나지 않도록 설정 */
-    word-break: break-all; /* 길이가 긴 단어가 박스를 벗어나지 않도록 설정 */
-    overflow-wrap: break-word; /* 길이가 긴 단어가 줄바꿈되도록 설정 */
+    word-wrap: break-word; 
+    word-break: break-all; 
+    overflow-wrap: break-word; 
 `;
 
 const From = styled.div`
