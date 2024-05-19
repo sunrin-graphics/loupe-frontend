@@ -44,13 +44,14 @@ export default function PostGuestbookModal({
       message: content,
       author: name,
     });
+    setOpen(false);
   };
 
   return ReactDOM.createPortal(
     <>
       {open ? (
-        <ModalOverlay>
-          <Modal>
+        <ModalOverlay onClick={onCancel}>
+          <Modal onClick={(e) => e.stopPropagation()}>
             <ModalTop>
               <ModalTitle>방명록 작성하기</ModalTitle>
               <CloseButton onClick={onCancel}>

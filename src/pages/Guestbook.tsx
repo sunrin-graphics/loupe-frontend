@@ -3,7 +3,7 @@ import Footer from '@/components/common/Footer';
 import Header from '@/components/common/Header';
 import PlusIcon from '@/assets/plus.svg';
 import GuestbookCard from '@/components/GuestbookCard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PostGuestbookModal from '@/components/modal/PostGuestbookModal';
 import { motion } from 'framer-motion';
 import {
@@ -15,8 +15,9 @@ import {
 import { useNotes } from '@/hooks/note';
 export default function Guestbook() {
   const { data: notes } = useNotes();
-
   const [modalOpen, setModalOpen] = useState(false);
+  const [noteChunks, setNoteChunks] = useState<Note[][]>([]);
+  const [windowSize, setWindowSize] = useState<number>(document.documentElement.clientWidth);
 
   const gridAnimation = {
     show: {
@@ -35,6 +36,37 @@ export default function Guestbook() {
       transition: { staggerChildren: 0.1, staggerDirection: -1 },
     },
   };
+  const chunkArray = (array: Note[], windowsize: number): Note[][] => {
+    let arrayamount = 4;
+    if (windowsize < 590) arrayamount = 1;
+    else if (windowsize < 909) arrayamount = 2;
+    else if (windowsize <= 1300) arrayamount = 3;
+    else arrayamount = 4;
+    const chunks: Note[][] = Array.from({ length: arrayamount }, () => []);
+    let arrayindex = 0;
+    for (let i = 0; i < array.length; i += 1) {
+      chunks[arrayindex].push(array[i]);
+      arrayindex = (arrayindex + 1) % arrayamount;
+    }
+    return chunks;
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize(document.documentElement.clientWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    setNoteChunks(chunkArray(notes || [], windowSize));
+  }, [notes, windowSize]);
+
 
   return (
     <PageLayout>
@@ -51,15 +83,16 @@ export default function Guestbook() {
           </PageCTAButton>
         </SectionTop>
         <Gallery variants={gridAnimation} animate="show" exit="hide">
-          <GuestbookColumn variants={columnAnimation}>
-            {notes?.map((note) => (
-              <GuestbookCard
-                key={note.id}
-                from={note.author}
-                content={note.message}
-              />
-            ))}
-          </GuestbookColumn>
+          {noteChunks.map((chunk) => (
+            <GuestbookColumn variants={columnAnimation}>
+              {chunk.map((note) => (
+                <GuestbookCard
+                  from={note.author}
+                  content={note.message}
+                />
+              ))}
+            </GuestbookColumn>
+          ))}
         </Gallery>
       </Section>
       <Footer />
@@ -91,6 +124,7 @@ const PageCTAButton = styled.button`
 `;
 
 const Gallery = styled(motion.div)`
+    width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
   gap: 16px;
