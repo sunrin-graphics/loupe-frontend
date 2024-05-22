@@ -30,145 +30,209 @@ export default function MainBackground() {
     },
   };
 
+  const MapFloatAnimation = {
+    hidden: { y: '100%' },
+    visible: {
+      scale: 1.2,
+      y: 0,
+      transition: {
+        y: {
+          yoyo: Infinity,
+          duration: 1.3,
+          type: 'spring',
+        },
+      },
+    },
+  };
+
   return (
     <MainLayout>
       <MainLayoutContent>
         <Title initial="hidden" animate="visible" variants={titleAnimation}>
           제13회 선린인터넷고등학교 콘텐츠디자인과 졸업전시회
         </Title>
-
-        <motion.svg
-          initial="hidden"
-          animate="visible"
-          width="1082"
-          height="431"
-          viewBox="0 0 1082 431"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <div
+          style={{
+            width: '100%',
+            maxWidth: 1260,
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
         >
-          <motion.path
-            d="M16 167.218C16 167.218 48.8653 150.848 104.942 112.87C152.357 80.7593 141.731 31.8277 102.665 50.8277C63.598 69.8277 58.5513 116.483 95.117 211.393C131.683 306.303 138.143 369.878 101.082 373.913C88.4651 375.288 61.9491 354.067 100.389 319.51C150.638 253.792 224.636 291.433 250.196 225.334"
-            stroke="url(#paint0_linear_292_785)"
-            strokeWidth="31.4948"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            variants={draw}
-            custom={0}
+          <motion.svg
+            initial="hidden"
+            animate="visible"
+            width="100%"
+            viewBox="0 0 1242 439"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <motion.path
+              d="M16 209.441C16 209.441 105.481 168.515 131.246 147.668C175.537 111.821 154.516 67.588 121.976 83.7347C84.6196 102.261 74.5951 145.753 113.605 252.745C152.615 359.736 185.242 405.87 127.242 422.176C108.412 427.471 92.1925 389.085 128.591 361.608C208.295 301.417 268.863 331.94 294.163 279.729"
+              stroke="white"
+              stroke-width="32"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style={{ mixBlendMode: 'overlay' }}
+              variants={draw}
+              custom={0}
+            />
+            <motion.path
+              d="M16 209.441C16 209.441 105.481 168.515 131.246 147.668C175.537 111.821 154.516 67.588 121.976 83.7347C84.6196 102.261 74.5951 145.753 113.605 252.745C152.615 359.736 185.242 405.87 127.242 422.176C108.412 427.471 92.1925 389.085 128.591 361.608C208.295 301.417 268.863 331.94 294.163 279.729"
+              stroke="url(#paint0_linear_1090_3543)"
+              stroke-width="32"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              variants={draw}
+              custom={1}
+            />
+            <motion.path
+              d="M733.778 16.0142C733.778 16.0142 790.603 204.885 650.448 208.976C510.292 204.885 567.117 16.0142 567.117 16.0142"
+              stroke="white"
+              stroke-width="32"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style={{ mixBlendMode: 'overlay' }}
+              variants={draw}
+              custom={4}
+            />
+            <motion.path
+              d="M733.778 16.0142C733.778 16.0142 790.603 204.885 650.448 208.976C510.292 204.885 567.117 16.0142 567.117 16.0142"
+              stroke="url(#paint1_linear_1090_3543)"
+              stroke-width="32"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              variants={draw}
+              custom={5}
+            />
+            <motion.path
+              d="M305.463 134.046C294.162 78.5703 317.33 37.9643 376.129 27.7657C437.059 17.7556 479.406 80.0791 487.748 136.513C495.959 192.119 471.833 229.446 419.201 239.747C411.135 241.284 402.604 241.734 394.48 240.588C362.506 236.874 331.707 207.149 323.772 182.457"
+              stroke="white"
+              stroke-width="32"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style={{ mixBlendMode: 'overlay' }}
+              variants={draw}
+              custom={2}
+            />
+            <motion.path
+              d="M305.463 134.046C294.162 78.5703 317.33 37.9643 376.129 27.7657C437.059 17.7556 479.406 80.0791 487.748 136.513C495.959 192.119 471.833 229.446 419.201 239.747C411.135 241.284 402.604 241.734 394.48 240.588C362.506 236.874 331.707 207.149 323.772 182.457"
+              stroke="url(#paint2_linear_1090_3543)"
+              stroke-width="32"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              variants={draw}
+              custom={3}
+            />
+            <motion.path
+              d="M826.67 72.5205C826.67 72.5205 838.319 16 909.754 16C992.46 16 1016.48 76.4085 1001.41 120.873C978.866 187.36 860.269 152.05 821.926 130.796C821.926 130.796 808.246 193.323 819.344 234.857"
+              stroke="white"
+              stroke-width="32"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style={{ mixBlendMode: 'overlay' }}
+              variants={draw}
+              custom={6}
+            />
+            <motion.path
+              d="M826.67 72.5205C826.67 72.5205 838.319 16 909.754 16C992.46 16 1016.48 76.4085 1001.41 120.873C978.866 187.36 860.269 152.05 821.926 130.796C821.926 130.796 808.246 193.323 819.344 234.857"
+              stroke="url(#paint3_linear_1090_3543)"
+              stroke-width="32"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              variants={draw}
+              custom={7}
+            />
+            <motion.path
+              d="M1225.49 78.5698C1225.49 78.5698 1155.13 107.991 1084.39 89.5374C1084.39 89.5374 1076.66 131.244 1054.18 181.5M1172.1 417.562C1102.87 338.498 980.272 290.754 980.272 290.754C1014.26 258.119 1038.03 217.603 1054.18 181.5M1054.18 181.5C1080.5 213.5 1175.2 240.8 1202 234"
+              stroke="white"
+              stroke-width="32"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style={{ mixBlendMode: 'overlay' }}
+              variants={draw}
+              custom={8}
+            />
+            <motion.path
+              d="M1225.49 78.5698C1225.49 78.5698 1155.13 107.991 1084.39 89.5374C1084.39 89.5374 1076.66 131.244 1054.18 181.5M1172.1 417.562C1102.87 338.498 980.272 290.754 980.272 290.754C1014.26 258.119 1038.03 217.603 1054.18 181.5M1054.18 181.5C1080.5 213.5 1175.2 240.8 1202 234"
+              stroke="url(#paint4_linear_1090_3543)"
+              stroke-width="32"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              variants={draw}
+              custom={9}
+            />
+            <motion.defs>
+              <linearGradient
+                id="paint0_linear_1090_3543"
+                x1="155.082"
+                y1="80.3096"
+                x2="155.082"
+                y2="422.67"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0" />
+                <stop offset="1" stop-color="white" />
+              </linearGradient>
+              <linearGradient
+                id="paint1_linear_1090_3543"
+                x1="650.448"
+                y1="16.0142"
+                x2="650.448"
+                y2="208.976"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0" />
+                <stop offset="1" stop-color="white" />
+              </linearGradient>
+              <linearGradient
+                id="paint2_linear_1090_3543"
+                x1="396.005"
+                y1="26.6992"
+                x2="396.005"
+                y2="241.231"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0" />
+                <stop offset="1" stop-color="white" />
+              </linearGradient>
+              <linearGradient
+                id="paint3_linear_1090_3543"
+                x1="910.32"
+                y1="16"
+                x2="910.32"
+                y2="234.857"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0" />
+                <stop offset="1" stop-color="white" />
+              </linearGradient>
+              <linearGradient
+                id="paint4_linear_1090_3543"
+                x1="1102.88"
+                y1="78.5698"
+                x2="1102.88"
+                y2="417.562"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="white" stop-opacity="0" />
+                <stop offset="1" stop-color="white" />
+              </linearGradient>
+            </motion.defs>
+          </motion.svg>
+          <motion.img
+            initial="hidden"
+            animate="visible"
+            variants={MapFloatAnimation}
+            style={{
+              width: '100%',
+              margin: '0 auto',
+            }}
+            src="/map.png"
+            alt=""
           />
-          <motion.path
-            d="M249.092 144.027C254.492 53.3963 285.155 27.9691 318.795 22.5318C352.435 17.0946 394.063 29.8068 402.005 88.4173C409.947 147.028 382.921 186.376 351.161 191.51C319.401 196.643 299.216 172.832 292.883 159.343"
-            stroke="url(#paint1_linear_292_785)"
-            strokeWidth="31.4948"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            variants={draw}
-            custom={1}
-          />
-          <motion.path
-            d="M666.716 51.0183C654.207 51.091 636.112 16.0187 636.112 16.0187C636.112 16.0187 657.172 181.546 550.769 177.639C444.352 173.732 475.979 16.9496 475.979 16.9496C475.979 16.9496 458.35 52.2297 443.359 52.3168"
-            stroke="url(#paint2_linear_292_785)"
-            strokeWidth="31.4948"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            variants={draw}
-            custom={2}
-          />
-          <motion.path
-            d="M719.261 52.7079C719.261 52.7079 752.364 1.1011 831.473 29.6669C870.033 43.5881 914.294 77.6065 882.925 145.167C851.556 212.728 744.171 159.456 720.331 129.613C720.331 129.613 709.39 171.903 714.587 210.144"
-            stroke="url(#paint3_linear_292_785)"
-            strokeWidth="31.4948"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            variants={draw}
-            custom={3}
-          />
-          <motion.path
-            d="M1065.31 68.664C1065.31 68.664 1013.54 118.803 953.117 102.228C953.117 102.228 947.318 203.175 869.397 272.739C869.397 272.739 992.748 327.593 1038.75 414.8"
-            stroke="url(#paint4_linear_292_785)"
-            strokeWidth="31.4948"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            variants={draw}
-            custom={4}
-          />
-          <motion.path
-            d="M929.414 189.756C929.414 189.756 978.457 238.107 1051.98 231.961"
-            stroke="url(#paint5_linear_292_785)"
-            strokeWidth="31.4948"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            variants={draw}
-            custom={5}
-          />
-          <motion.defs>
-            <linearGradient
-              id="paint0_linear_292_785"
-              x1="133.098"
-              y1="46.5732"
-              x2="133.098"
-              y2="372.722"
-              gradientUnits="userSpaceOnUse"
-            >
-              <motion.stop stopColor="#BDA6FF" />
-              <motion.stop offset="1" stopColor="white" />
-            </linearGradient>
-            <linearGradient
-              id="paint1_linear_292_785"
-              x1="310.64"
-              y1="23.8499"
-              x2="337.975"
-              y2="192.974"
-              gradientUnits="userSpaceOnUse"
-            >
-              <motion.stop stopColor="#BDA6FF" />
-              <motion.stop offset="1" stopColor="white" />
-            </linearGradient>
-            <linearGradient
-              id="paint2_linear_292_785"
-              x1="556.454"
-              y1="13.094"
-              x2="550.436"
-              y2="176.996"
-              gradientUnits="userSpaceOnUse"
-            >
-              <motion.stop stopColor="#BDA6FF" />
-              <motion.stop offset="1" stopColor="white" />
-            </linearGradient>
-            <linearGradient
-              id="paint3_linear_292_785"
-              x1="814.476"
-              y1="23.9519"
-              x2="786.49"
-              y2="219.658"
-              gradientUnits="userSpaceOnUse"
-            >
-              <motion.stop stopColor="#BDA6FF" />
-              <motion.stop offset="1" stopColor="white" />
-            </linearGradient>
-            <linearGradient
-              id="paint4_linear_292_785"
-              x1="971.225"
-              y1="65.2097"
-              x2="958.547"
-              y2="410.526"
-              gradientUnits="userSpaceOnUse"
-            >
-              <motion.stop stopColor="#BDA6FF" />
-              <motion.stop offset="1" stopColor="white" />
-            </linearGradient>
-            <linearGradient
-              id="paint5_linear_292_785"
-              x1="991.387"
-              y1="192.032"
-              x2="989.969"
-              y2="230.653"
-              gradientUnits="userSpaceOnUse"
-            >
-              <motion.stop stopColor="#BDA6FF" />
-              <motion.stop offset="1" stopColor="white" />
-            </linearGradient>
-          </motion.defs>
-        </motion.svg>
+        </div>
       </MainLayoutContent>
       <BottomContent>
         <BottomLabel>아래로 스크롤해보세요!</BottomLabel>
@@ -209,9 +273,11 @@ const MainLayout = styled.div`
 const MainLayoutContent = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   margin-top: 128px;
   gap: 32px;
+  width: 100%;
 `;
 
 const Title = styled(motion.div)`
