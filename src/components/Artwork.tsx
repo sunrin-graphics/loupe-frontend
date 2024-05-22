@@ -52,10 +52,6 @@ const Layout = styled(motion.div)`
   align-items: flex-start;
   gap: 16px;
   cursor: pointer;
-  &:hover {
-    transform: translateY(-4px);
-    transition: transform 0.2s ease-in-out;
-  }
 `;
 
 const ArtTitle = styled.div`

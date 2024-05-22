@@ -1,5 +1,6 @@
 import { User } from '@/hooks/user';
-import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import styled, { keyframes } from 'styled-components';
 
 interface Props {
   title: string;
@@ -13,15 +14,54 @@ export default function WorkTop({
   thumbnail,
   authors,
 }: Props) {
+  const slideUpAnimation = {
+    initial: {
+      y: '40%',
+    },
+    show: {
+      y: 0,
+      transition: {
+        y: {
+          yoyo: Infinity,
+          duration: 0.7,
+          type: 'spring',
+        },
+      },
+    },
+  };
+
+  const slideDownAnimation = {
+    initial: {
+      y: '-40%',
+    },
+    show: {
+      y: 0,
+      transition: {
+        y: {
+          yoyo: Infinity,
+          duration: 0.7,
+          type: 'spring',
+        },
+      },
+    },
+  };
+
   return (
     <WorkTopLayout>
       <ThumbnailContainer>
         <Thumbnail
+          initial="initial"
+          animate="show"
+          variants={slideUpAnimation}
           src={`${import.meta.env.VITE_API_URL}/file/${thumbnail}`}
           alt="thumbnail"
         />
       </ThumbnailContainer>
-      <ContentHeadSection>
+      <ContentHeadSection
+        initial="initial"
+        animate="show"
+        variants={slideDownAnimation}
+      >
         <ContentHeadContainer>
           <ContentHeadTop>
             <ContentTitle>{title}</ContentTitle>
@@ -53,6 +93,7 @@ const WorkTopLayout = styled.div`
   position: relative;
   width: 100%;
   height: 100vh;
+
   @media (max-width: 1440px) {
     flex-direction: column;
     height: auto;
@@ -64,7 +105,7 @@ const ThumbnailContainer = styled.div`
   align-self: stretch;
 `;
 
-const Thumbnail = styled.img`
+const Thumbnail = styled(motion.img)`
   object-fit: cover;
   background-position: center;
   background-size: cover;
@@ -72,7 +113,7 @@ const Thumbnail = styled.img`
   height: 100%;
 `;
 
-const ContentHeadSection = styled.div`
+const ContentHeadSection = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
