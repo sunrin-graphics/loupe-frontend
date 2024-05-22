@@ -12,12 +12,14 @@ import {
   Section,
   SectionTop,
 } from '@/components/shared/Styles';
-import { useNotes } from '@/hooks/note';
+import { Note, useNotes } from '@/hooks/note';
 export default function Guestbook() {
   const { data: notes } = useNotes();
   const [modalOpen, setModalOpen] = useState(false);
   const [noteChunks, setNoteChunks] = useState<Note[][]>([]);
-  const [windowSize, setWindowSize] = useState<number>(document.documentElement.clientWidth);
+  const [windowSize, setWindowSize] = useState<number>(
+    document.documentElement.clientWidth,
+  );
 
   const gridAnimation = {
     show: {
@@ -67,7 +69,6 @@ export default function Guestbook() {
     setNoteChunks(chunkArray(notes || [], windowSize));
   }, [notes, windowSize]);
 
-
   return (
     <PageLayout>
       {modalOpen && (
@@ -86,10 +87,7 @@ export default function Guestbook() {
           {noteChunks.map((chunk) => (
             <GuestbookColumn variants={columnAnimation}>
               {chunk.map((note) => (
-                <GuestbookCard
-                  from={note.author}
-                  content={note.message}
-                />
+                <GuestbookCard from={note.author} content={note.message} />
               ))}
             </GuestbookColumn>
           ))}
@@ -124,7 +122,7 @@ const PageCTAButton = styled.button`
 `;
 
 const Gallery = styled(motion.div)`
-    width: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
   gap: 16px;

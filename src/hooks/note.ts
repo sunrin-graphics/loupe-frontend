@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
-interface Note {
+export interface Note {
   id?: string;
   message: string;
   author: string;
