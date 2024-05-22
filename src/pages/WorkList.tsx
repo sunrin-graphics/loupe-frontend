@@ -9,7 +9,14 @@ import TitlePagination from '@/components/work/TitlePagination';
 import { useState } from 'react';
 import { WorkType, useWorks } from '@/hooks/work';
 
-const dummy = ['3D Design', 'Graphic Design', 'VideoGraphy', 'UIUX', 'Drawing'];
+const dummy = [
+  'ALL',
+  '3D Design',
+  'Graphic Design',
+  'VideoGraphy',
+  'UIUX',
+  'Drawing',
+];
 
 export default function WorkList() {
   const navigate = useNavigate();

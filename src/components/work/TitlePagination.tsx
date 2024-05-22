@@ -14,13 +14,56 @@ interface Props {
 export default function TitlePagination(props: Props) {
   const [title, setTitle] = props.state;
 
+  const [titleList, setTitleList] = useState<string[]>();
+
   const [titleWidth, setTitleWidth] = useState<{ [key: string]: number }>({});
   const [spacerWidth, setSpacerWidth] = useState(0);
 
   const [browserWidth, setBrowserWidth] = useState(window.innerWidth);
-  const [broswerDebounce, setBrowserDebounce] = useState(0);
+  const [browserDebounce, setBrowserDebounce] = useState(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleClick = useCallback(
+    (direction: 'left' | 'right') => {
+      // if (handleDelay) return;
+
+      const index = props.title.indexOf(title);
+      if (direction === 'left') {
+        if (index === 0) return setTitle(props.title[props.title.length - 1]);
+        setTitle(props.title[index - 1]);
+      } else {
+        if (index === props.title.length - 1) return setTitle(props.title[0]);
+        setTitle(props.title[index + 1]);
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [props.title, title, titleWidth],
+  );
+
+  const keyboardEvent = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') handleClick('left');
+    if (e.key === 'ArrowRight') handleClick('right');
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', keyboardEvent);
+
+    return () => {
+      document.removeEventListener('keydown', keyboardEvent);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleClick, title]);
+
+  useEffect(() => {
+    const titleIndex = props.title.indexOf(title);
+    const leftTitleSlice = props.title.slice(
+      titleIndex + 1,
+      props.title.length,
+    );
+    const rightTitleSlice = props.title.slice(0, titleIndex);
+    setTitleList([...leftTitleSlice, ...props.title, ...rightTitleSlice]);
+  }, [props.title, title]);
 
   useEffect(() => {
     if (props.title.length === 0) return;
@@ -46,29 +89,6 @@ export default function TitlePagination(props: Props) {
     };
   }, [browserWidth]);
 
-  const handleClick = useCallback(
-    (direction: 'left' | 'right') => {
-      const index = props.title.indexOf(title);
-      if (direction === 'left') {
-        if (index === 0) return;
-        setTitle(props.title[index - 1]);
-      } else {
-        if (index === props.title.length - 1) return;
-        setTitle(props.title[index + 1]);
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [props.title, title, titleWidth],
-  );
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    if (containerRef.current.style.paddingLeft === '0px') return;
-
-    containerRef.current.style.transition = '0.3s';
-  }, [containerRef, title]);
-
   useEffect(() => {
     const categoryEl = document.querySelectorAll('.category');
 
@@ -84,7 +104,7 @@ export default function TitlePagination(props: Props) {
         }));
       });
     });
-  }, [title, broswerDebounce]);
+  }, [title, browserDebounce]);
 
   useEffect(() => {
     setSpacerWidth(titleWidth[title]);
@@ -92,30 +112,8 @@ export default function TitlePagination(props: Props) {
 
   return (
     <Layout>
-      <TitleContainer
-        ref={containerRef}
-        style={{
-          paddingLeft: `${(() => {
-            if (titleWidth[title] === undefined) return 0;
-            return Object.entries(titleWidth)
-              .filter(
-                ([key]) =>
-                  props.title.indexOf(key) > props.title.indexOf(title),
-              )
-              .reduce((acc, [, value]) => acc + value + 24, 0);
-          })()}px`,
-          paddingRight: `${(() => {
-            if (titleWidth[title] === undefined) return 0;
-            return Object.entries(titleWidth)
-              .filter(
-                ([key]) =>
-                  props.title.indexOf(key) < props.title.indexOf(title),
-              )
-              .reduce((acc, [, value]) => acc + value + 24, 0);
-          })()}px`,
-        }}
-      >
-        {props.title.map((_title, index) => (
+      <TitleContainer ref={containerRef}>
+        {titleList?.map((_title, index) => (
           <Title
             className="category"
             $selected={_title === title}
@@ -190,7 +188,7 @@ const Title = styled(PageTitle)<{ $selected: boolean }>`
   }
 `;
 
-const TitleContainer = styled.div<{}>`
+const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
