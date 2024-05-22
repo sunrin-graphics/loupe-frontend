@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import ProgressiveImg from './ProgressiveImg';
 
 interface ArtworkProps {
   title: string;
@@ -29,9 +30,10 @@ export default function Artwork({
   return (
     <Layout onClick={onClick} variants={imgAnimation}>
       <ArtImage
+        placeholderSrc={`${import.meta.env.VITE_API_URL}/file/${thumbnail.split('/')[0]}/low.png`}
         src={
           thumbnail
-            ? `${import.meta.env.VITE_API_URL}/file/${thumbnail}`
+            ? `${import.meta.env.VITE_API_URL}/file/${thumbnail.split('/')[0]}/middle.png`
             : 'thumbnail.png'
         }
         alt={'이미지'}
@@ -80,7 +82,9 @@ const ArtInfo = styled.div`
   align-self: stretch;
 `;
 
-const ArtImage = styled.img`
+const ArtImage = styled(ProgressiveImg)`
   width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 4px;
+  background-color: #D9D9D9;
 `;

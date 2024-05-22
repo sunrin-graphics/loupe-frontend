@@ -56,6 +56,7 @@ const Gallery = styled(motion.div)`
   grid-template-columns: repeat(auto-fill, minmax(267px, 1fr));
   gap: 32px 16px;
   padding: 24px 0;
+  width: 100%;
 `;
 
 const SectionTopV2 = styled(SectionTop)`
