@@ -34,6 +34,14 @@ const router = createBrowserRouter([
   },
 ]);
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init({
+  duration: 600,
+  offset: 200,
+});
+
 // 프로바이더로 리액트 라우터 등록하기
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

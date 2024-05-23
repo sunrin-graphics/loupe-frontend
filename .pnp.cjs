@@ -31,6 +31,7 @@ const RAW_RUNTIME_STATE =
           ["@react-three/drei", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:9.105.6"],\
           ["@react-three/fiber", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:8.16.6"],\
           ["@svgr/rollup", "npm:8.1.0"],\
+          ["@types/aos", "npm:3.0.7"],\
           ["@types/fontfaceobserver", "npm:2.1.3"],\
           ["@types/luxon", "npm:3.4.2"],\
           ["@types/react", "npm:18.3.2"],\
@@ -40,6 +41,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:7.10.0"],\
           ["@typescript-eslint/parser", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:7.10.0"],\
           ["@vitejs/plugin-react-swc", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:3.7.0"],\
+          ["aos", "npm:3.0.0-beta.6"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-plugin-react-hooks", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:4.6.2"],\
           ["eslint-plugin-react-refresh", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:0.4.7"],\
@@ -4263,6 +4265,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/aos", [\
+      ["npm:3.0.7", {\
+        "packageLocation": "./.yarn/cache/@types-aos-npm-3.0.7-613a988d67-816a1840ab.zip/node_modules/@types/aos/",\
+        "packageDependencies": [\
+          ["@types/aos", "npm:3.0.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/draco3d", [\
       ["npm:1.4.10", {\
         "packageLocation": "./.yarn/cache/@types-draco3d-npm-1.4.10-1af3ea4bb0-431e333b2f.zip/node_modules/@types/draco3d/",\
@@ -4824,6 +4835,18 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["aos", [\
+      ["npm:3.0.0-beta.6", {\
+        "packageLocation": "./.yarn/cache/aos-npm-3.0.0-beta.6-236f89f979-e64840f872.zip/node_modules/aos/",\
+        "packageDependencies": [\
+          ["aos", "npm:3.0.0-beta.6"],\
+          ["classlist-polyfill", "npm:1.2.0"],\
+          ["lodash.debounce", "npm:4.0.8"],\
+          ["lodash.throttle", "npm:4.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["argparse", [\
       ["npm:2.0.1", {\
         "packageLocation": "./.yarn/cache/argparse-npm-2.0.1-faff7999e6-c5640c2d89.zip/node_modules/argparse/",\
@@ -5135,6 +5158,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/chownr-npm-2.0.0-638f1c9c61-594754e130.zip/node_modules/chownr/",\
         "packageDependencies": [\
           ["chownr", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["classlist-polyfill", [\
+      ["npm:1.2.0", {\
+        "packageLocation": "./.yarn/cache/classlist-polyfill-npm-1.2.0-e5d1976a47-97a6c6865d.zip/node_modules/classlist-polyfill/",\
+        "packageDependencies": [\
+          ["classlist-polyfill", "npm:1.2.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6734,6 +6766,7 @@ const RAW_RUNTIME_STATE =
           ["@react-three/drei", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:9.105.6"],\
           ["@react-three/fiber", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:8.16.6"],\
           ["@svgr/rollup", "npm:8.1.0"],\
+          ["@types/aos", "npm:3.0.7"],\
           ["@types/fontfaceobserver", "npm:2.1.3"],\
           ["@types/luxon", "npm:3.4.2"],\
           ["@types/react", "npm:18.3.2"],\
@@ -6743,6 +6776,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:7.10.0"],\
           ["@typescript-eslint/parser", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:7.10.0"],\
           ["@vitejs/plugin-react-swc", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:3.7.0"],\
+          ["aos", "npm:3.0.0-beta.6"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-plugin-react-hooks", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:4.6.2"],\
           ["eslint-plugin-react-refresh", "virtual:7790bfa30f469a583d10b6b3896bbf8f5d4201c78f71c5b0f628345f9037d2caf79bd3eb311486670e7a0a9e3cdf31cbd901a1dddc439ae6ec2ccf900fecdf1a#npm:0.4.7"],\
