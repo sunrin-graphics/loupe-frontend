@@ -8,11 +8,8 @@ export default function ThreeBackground() {
   return (
     <Canvas
       camera={{ type: 'orthographic' }}
-      style={{ position: 'absolute', zIndex: '99' }}
+      style={{ position: 'absolute', zIndex: '99', height: '100vh' }}
     >
-      {/* <Html fullscreen>
-        <MainBackgroundSphere />
-      </Html> */}
       <Stars />
     </Canvas>
   );
@@ -23,7 +20,7 @@ function Stars() {
   const [sphere] = useState(
     () =>
       new Float32Array(
-        random.inSphere(new Float32Array(5000), { radius: 5.5 }),
+        random.inSphere(new Float32Array(1000), { radius: 5.5 }),
       ),
   );
 
@@ -47,7 +44,7 @@ function Stars() {
           transparent
           opacity={0.5}
           color="#B880FF"
-          size={0.02}
+          size={0.05}
           sizeAttenuation={true}
           depthWrite={false}
         />

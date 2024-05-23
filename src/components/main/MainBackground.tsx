@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 
 export default function MainBackground() {
   const [scrollY, setScrollY] = useState(0);
+  const [progress, setProgress] = useState(0);
   const controls = useAnimation();
   const blockHeight = 800; // 스크롤을 막을 길이
 
@@ -26,9 +27,7 @@ export default function MainBackground() {
   useEffect(() => {
     if (scrollY <= blockHeight) {
       const progress = scrollY / blockHeight;
-      controls.start({
-        opacity: Math.max(0, 1 - progress * 1.3),
-      });
+      setProgress(Math.max(0, 1 - progress * 1.3));
     }
   }, [scrollY, controls, blockHeight]);
 
@@ -73,15 +72,15 @@ export default function MainBackground() {
             animate="visible"
             variants={MapFloatAnimation}
           >
-            <motion.img
-              initial={{ opacity: 1, scale: 1.2 }}
-              animate={controls}
+            <img
               style={{
                 zIndex: 9,
                 width: '100%',
                 margin: '0 auto',
                 borderRadius: '50%',
                 boxShadow: '0px -20.059px 23.294px 0px rgba(0, 0, 0, 0.15)',
+                scale: '1.2',
+                opacity: progress,
               }}
               src="/map.png"
               alt=""
@@ -91,10 +90,7 @@ export default function MainBackground() {
       </MainLayoutContent>
       <BottomContainer
         style={{
-          background: `linear-gradient(180deg, rgba(42, 29, 76, 0) 0%, rgb(42, 29, 76, ${(() => {
-            const progress = scrollY / blockHeight;
-            return Math.max(0, 1 - progress * 1.3);
-          })()}) 100%)`,
+          background: `linear-gradient(180deg, rgba(42, 29, 76, 0) 0%, rgb(42, 29, 76, ${progress}) 100%)`,
         }}
       >
         <ButtonGroup>
@@ -199,7 +195,6 @@ const BottomContainer = styled.div`
   align-items: center;
   position: absolute;
   bottom: 0;
-  background: linear-gradient(180deg, rgba(42, 29, 76, 0) 0%, #2a1d4c 100%);
 `;
 
 const BottomLabel = styled.div`
@@ -220,7 +215,7 @@ const BottomContent = styled.div`
 `;
 
 const MainLayout = styled.div`
-  background-color: #2a1d4c;
+  background-color: #2e2053;
   position: relative;
   display: flex;
   justify-content: center;
