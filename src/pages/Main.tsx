@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MainBackground from '@/components/main/MainBackground.tsx';
 import Header from '../components/common/Header.tsx';
 import Introduce from '@/components/main/Introduce.tsx';
+import IntroduceArt from '@/components/main/IntroduceArt.tsx';
 // import MainBackgroundMap from '@/components/main/MainBackgroundMap.tsx';
 
 export default function Main() {
@@ -12,6 +13,7 @@ export default function Main() {
       {/* <ThreeBackground /> */}
       <MainBackground />
       <Introduce />
+      <IntroduceArt/>
     </MainLayout>
   );
 }
