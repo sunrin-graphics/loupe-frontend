@@ -241,7 +241,7 @@ const SelectContainer = styled.div`
 
 const Spacer = styled.div<{ $width: number }>`
   width: ${({ $width }) => $width}px;
-  transition: width 0.3s;
+  /* transition: width 0.3s; */
 `;
 
 const ArrowImg = styled.img`

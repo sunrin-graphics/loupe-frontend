@@ -90,7 +90,7 @@ export default function MainBackground() {
       </MainLayoutContent>
       <BottomContainer
         style={{
-          background: `linear-gradient(180deg, rgba(42, 29, 76, 0) 0%, rgb(42, 29, 76, ${progress}) 100%)`,
+          background: `linear-gradient(180deg, rgba(42, 29, 76, 0) 0%,#2e2053 100%)`,
         }}
       >
         <ButtonGroup>
@@ -201,7 +201,7 @@ const FloatingAnimation = keyframes`
     transform: translateY(0);
   }
   50% {
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   100% {
     transform: translateY(0);
@@ -227,7 +227,7 @@ const BottomContainer = styled.div`
   z-index: 100;
   display: flex;
   width: 100%;
-  padding: 32px 0;
+  padding: 120px 0 32px 0;
   flex-direction: column;
   gap: 24px;
   justify-content: center;
