@@ -4,6 +4,7 @@ import { DateTime, Duration } from 'luxon';
 import { ReactComponent as CinematicImg } from '@/assets/cinematic.svg';
 import { ReactComponent as InstagramImg } from '@/assets/instagramBig.svg';
 import { motion } from 'framer-motion';
+import { ResponsiveContainer } from '../shared/Styles';
 
 const OPEN_DATE = DateTime.fromISO('2024-05-29T13:00:00');
 
@@ -21,44 +22,58 @@ export default function Available() {
   }, [time]);
 
   return (
-    <Container>
-      <ContentWrapper>
-        <Content>
-          <h1>
-            작품 공개까지
-            <br />
-            {Duration.fromObject({ seconds: time }).toFormat(
-              'd일 hh시 mm분 ss초',
-            )}{' '}
-            남았어요!
-          </h1>
+    <Layout>
+      <ResponsiveContainer>
+        <Container>
+          <ContentWrapper>
+            <Content>
+              <h1>
+                작품 공개까지
+                <br />
+                {Duration.fromObject({ seconds: time }).toFormat(
+                  'd일 hh시 mm분 ss초',
+                )}{' '}
+                남았어요!
+              </h1>
 
-          <p>
-            학생들의 3년간의 여정 끝에 발견한 또 다른 세계가 궁금하다면,
-            <br />
-            공식 티저 및 학생들의 작품에도 많은 관심 부탁드립니다!
-          </p>
-        </Content>
+              <p>
+                학생들의 3년간의 여정 끝에 발견한 또 다른 세계가 궁금하다면,
+                <br />
+                공식 티저 및 학생들의 작품에도 많은 관심 부탁드립니다!
+              </p>
+            </Content>
 
-        <ButtonGroup>
-          <button>
-            <CinematicImg />
-            <p>공식 티저</p>
-          </button>
+            <ButtonGroup>
+              <button>
+                <CinematicImg />
+                <p>공식 티저</p>
+              </button>
 
-          <button>
-            <InstagramImg />
-            <p>공식 인스타그램</p>
-          </button>
-        </ButtonGroup>
-      </ContentWrapper>
+              <button>
+                <InstagramImg />
+                <p>공식 인스타그램</p>
+              </button>
+            </ButtonGroup>
+          </ContentWrapper>
 
-      <img src="/smap.png" alt="loupe" />
-    </Container>
+          <img src="/smap.png" alt="loupe" />
+        </Container>
+      </ResponsiveContainer>
+    </Layout>
   );
 }
 
-const Container = styled(motion.div)`
+const Layout = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 48px 0;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  background: #fff;
+`;
+
+const Container = styled(ResponsiveContainer)`
   display: flex;
   padding: 48px;
   align-items: center;
@@ -74,6 +89,14 @@ const Container = styled(motion.div)`
     border-radius: 280px;
     padding: 12px;
     background: linear-gradient(90deg, #5c40a6, #b1a4d5);
+  }
+  @media (max-width: 1300px) {
+    padding: 40px;
+  }
+  @media (max-width: 744px) {
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
@@ -93,6 +116,12 @@ const Content = styled.div`
     font-size: 56px;
     font-weight: 600;
     line-height: 150%;
+    @media (max-width: 1300px) {
+      font-size: 48px;
+    }
+    @media (max-width: 744px) {
+      font-size: 32px;
+    }
   }
 
   p {
@@ -100,6 +129,12 @@ const Content = styled.div`
     font-size: 20px;
     font-weight: 500;
     line-height: 150%;
+    @media (max-width: 1300px) {
+      font-size: 18px;
+    }
+    @media (max-width: 744px) {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -111,6 +146,10 @@ const ButtonGroup = styled.div`
   svg {
     width: 24px;
     height: 24px;
+    @media (max-width: 1300px) {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   button {
@@ -127,6 +166,12 @@ const ButtonGroup = styled.div`
       font-size: 18px;
       font-weight: 600;
       line-height: 150%; /* 27px */
+      @media (max-width: 1300px) {
+        font-size: 16px;
+      }
+      @media (max-width: 744px) {
+        font-size: 14px;
+      }
     }
   }
 `;

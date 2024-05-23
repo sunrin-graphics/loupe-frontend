@@ -61,7 +61,7 @@ export default function Footer() {
             to="https://www.instagram.com/sr_design_exhibit/"
           >
             <FooterIcon>
-              <img src={instagram} alt="youtube" />
+              <img src={instagram} f alt="youtube" />
             </FooterIcon>
             <FooterLinkLabel>졸업전시회 인스타그램</FooterLinkLabel>
           </FooterLinkItem>
