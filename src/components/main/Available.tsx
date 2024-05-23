@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { DateTime, Duration } from 'luxon';
 import { ReactComponent as CinematicImg } from '@/assets/cinematic.svg';
 import { ReactComponent as InstagramImg } from '@/assets/instagramBig.svg';
-import { motion } from 'framer-motion';
 import { ResponsiveContainer } from '../shared/Styles';
 
 const OPEN_DATE = DateTime.fromISO('2024-05-29T13:00:00');
@@ -89,6 +88,9 @@ const Container = styled(ResponsiveContainer)`
     border-radius: 280px;
     padding: 12px;
     background: linear-gradient(90deg, #5c40a6, #b1a4d5);
+    @media (max-width: 744px) {
+      display: none;
+    }
   }
   @media (max-width: 1300px) {
     padding: 40px;
@@ -156,11 +158,20 @@ const ButtonGroup = styled.div`
     display: flex;
     padding: 12px 20px 12px 16px;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
     border-radius: 100px;
-    border: 2px solid var(--600, #ececf1);
+    border: 1.5px solid var(--600, #ececf1);
     background: var(--800, #fff);
-
+    transition:
+      background 0.2s,
+      transform 0.2s;
+    &:hover {
+      background: var(--700, #f8f8fc);
+    }
+    &:active {
+      transform: scale(0.95);
+      background: var(--600, #ececf1);
+    }
     p {
       color: var(--100, #181826);
       font-size: 18px;
