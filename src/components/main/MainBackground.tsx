@@ -2,6 +2,8 @@ import styled, { keyframes } from 'styled-components';
 import { motion, useAnimation } from 'framer-motion';
 import { ReactComponent as ArrowBottomIcon } from '@/assets/arrowbottom.svg';
 import MainTitle from './MainTitle';
+import { ReactComponent as CinematicImg } from '@/assets/cinematic.svg';
+import { ReactComponent as InstagramImg } from '@/assets/instagramBig.svg';
 import { useEffect, useState } from 'react';
 
 export default function MainBackground() {
@@ -60,7 +62,7 @@ export default function MainBackground() {
     <MainLayout>
       <MainLayoutContent>
         <Title initial="hidden" animate="visible" variants={titleAnimation}>
-          제13회 선린인터넷고등학교 콘텐츠디자인과 졸업전시회
+          제12회 선린인터넷고등학교 콘텐츠디자인과 졸업전시회
         </Title>
         <FloatContainer>
           <div>
@@ -78,6 +80,8 @@ export default function MainBackground() {
                 zIndex: 9,
                 width: '100%',
                 margin: '0 auto',
+                borderRadius: '50%',
+                boxShadow: '0px -20.059px 23.294px 0px rgba(0, 0, 0, 0.15)',
               }}
               src="/map.png"
               alt=""
@@ -85,13 +89,83 @@ export default function MainBackground() {
           </motion.div>
         </FloatContainer>
       </MainLayoutContent>
-      <BottomContent>
-        <BottomLabel>아래로 스크롤해보세요!</BottomLabel>
-        <ArrowBottomIcon />
-      </BottomContent>
+      <BottomContainer
+        style={{
+          background: `linear-gradient(180deg, rgba(42, 29, 76, 0) 0%, rgb(42, 29, 76, ${(() => {
+            const progress = scrollY / blockHeight;
+            return Math.max(0, 1 - progress * 1.3);
+          })()}) 100%)`,
+        }}
+      >
+        <ButtonGroup>
+          <button>
+            <CinematicImg />
+            <p>공식 티저</p>
+          </button>
+
+          <button>
+            <InstagramImg />
+            <p>공식 인스타그램</p>
+          </button>
+        </ButtonGroup>
+        <BottomContent>
+          <BottomLabel>아래로 스크롤해보세요!</BottomLabel>
+          <ArrowBottomIcon />
+        </BottomContent>
+      </BottomContainer>
     </MainLayout>
   );
 }
+
+const ButtonGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  svg {
+    path {
+      fill: var(--800, #fff);
+    }
+    width: 24px;
+    height: 24px;
+    @media (max-width: 1300px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  button {
+    display: flex;
+    padding: 12px 20px 12px 16px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4); // var(--600, #ececf1
+    background: rgba(255, 255, 255, 0.05);
+    transition:
+      background 0.2s,
+      transform 0.2s;
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    &:active {
+      transform: scale(0.95);
+      background: rgba(255, 255, 255, 0.5);
+    }
+    p {
+      color: var(--800, #fff);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 150%; /* 27px */
+      @media (max-width: 1300px) {
+        font-size: 16px;
+      }
+      @media (max-width: 744px) {
+        font-size: 14px;
+      }
+    }
+  }
+`;
 
 const FloatingAnimation = keyframes`
   0% {
@@ -114,6 +188,20 @@ const FloatContainer = styled.div`
   animation: ${FloatingAnimation} 4s infinite 2s;
 `;
 
+const BottomContainer = styled.div`
+  z-index: 100000;
+  display: flex;
+  width: 100%;
+  padding: 32px 0;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(42, 29, 76, 0) 0%, #2a1d4c 100%);
+`;
+
 const BottomLabel = styled.div`
   color: #fff;
   font-size: 16px;
@@ -123,20 +211,16 @@ const BottomLabel = styled.div`
 `;
 
 const BottomContent = styled.div`
-  z-index: 100000;
+  z-index: 1;
   display: flex;
-  width: 100%;
-  padding: 32px 0px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 4px;
-  position: absolute;
-  bottom: 0;
-  background: linear-gradient(180deg, rgba(42, 29, 76, 0) 0%, #2a1d4c 100%);
 `;
 
 const MainLayout = styled.div`
+  background-color: #2a1d4c;
   position: relative;
   display: flex;
   justify-content: center;

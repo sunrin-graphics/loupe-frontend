@@ -34,7 +34,6 @@ export default function Header({ scroll, transparent }: Props) {
     if (!scroll) return;
 
     window.addEventListener('scroll', () => {
-      console.log(window.scrollY, scroll.y);
       if (window.scrollY > scroll.y) {
         setVisible(true);
       } else {
@@ -76,7 +75,7 @@ export default function Header({ scroll, transparent }: Props) {
         backgroundColor: open
           ? '#fff'
           : transparent
-            ? 'transparent'
+            ? '#2e2053'
             : 'var(--100, #ffffff)',
       }}
     >
