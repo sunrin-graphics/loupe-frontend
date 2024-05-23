@@ -13,7 +13,6 @@ import { useUsers } from '@/hooks/user';
 
 export default function Member() {
   const { data: users } = useUsers();
-  console.log(users);
 
   const gridAnimation = {
     show: {

@@ -49,6 +49,7 @@ const MemberCard = ({
             ? `${import.meta.env.VITE_API_URL}/file/${avatar.split('/')[0]}/middle.png`
             : 'author.png'
         }
+        loading="lazy"
         alt={'이미지'}
       />
       <div>
