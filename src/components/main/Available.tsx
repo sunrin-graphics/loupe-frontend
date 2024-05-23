@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { DateTime, Duration } from 'luxon';
 import { ReactComponent as CinematicImg } from '@/assets/cinematic.svg';
-import { ReactComponent as InstagramImg } from '@/assets/instagram.svg';
+import { ReactComponent as InstagramImg } from '@/assets/instagramBig.svg';
 import { motion } from 'framer-motion';
 
 const OPEN_DATE = DateTime.fromISO('2024-05-29T13:00:00');
