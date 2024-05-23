@@ -73,7 +73,7 @@ export default function WorkTop({
                 <AuthorProfile
                   src={
                     author.avatar
-                      ? `${import.meta.env.VITE_API_URL}/file/${author.avatar}`
+                      ? `${import.meta.env.VITE_API_URL}/file/${author.avatar.split('/')[0]}/middle.png`
                       : '/author.png'
                   }
                   alt="author1"
