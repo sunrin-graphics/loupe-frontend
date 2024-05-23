@@ -220,7 +220,7 @@ const Layout = styled.div<{ $animation: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
   justify-content: center;
   width: 100%;
