@@ -23,7 +23,7 @@ export default function Available() {
   return (
     <Layout>
       <ResponsiveContainer>
-        <Container>
+        <Container data-aos="flip-left">
           <ContentWrapper>
             <Content>
               <h1>
