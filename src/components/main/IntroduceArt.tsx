@@ -1,10 +1,10 @@
 import styled, { keyframes } from 'styled-components';
 import { ResponsiveContainer } from '@/components/shared/Styles.tsx';
 import Palette from '@/assets/palette.svg';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, forwardRef, RefObject } from 'react';
 import { useWorks } from '@/hooks/work.ts';
 
-export default function IntroduceArt() {
+const IntroduceRef = () => {
   const { data: works } = useWorks(undefined);
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -66,7 +66,9 @@ export default function IntroduceArt() {
       </WorkList>
     </Layout>
   );
-}
+};
+
+export default IntroduceRef;
 
 const RotateAnimation = keyframes`
     100% {
@@ -87,6 +89,7 @@ const Layout = styled.div`
   overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 140vh;
   background-color: #ffffff;
@@ -95,14 +98,19 @@ const Layout = styled.div`
 `;
 
 const Wrapper = styled.div`
-  margin-top: 140px;
+  margin-top: 120px;
   margin: 0 auto;
   display: flex;
-  width: 552px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
   padding-bottom: 32px;
+  @media (max-width: 1300px) {
+    font-size: 128px;
+  }
+  @media (max-width: 744px) {
+    font-size: 64px;
+  }
 `;
 
 interface WorkListProps {
@@ -148,6 +156,12 @@ const Subtitle = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 36px */
+  @media (max-width: 1300px) {
+    font-size: 20px;
+  }
+  @media (max-width: 744px) {
+    font-size: 16px;
+  }
 `;
 
 const Title = styled.div`
@@ -156,6 +170,12 @@ const Title = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
+  @media (max-width: 1300px) {
+    font-size: 48px;
+  }
+  @media (max-width: 744px) {
+    font-size: 32px;
+  }
 `;
 
 const WrapperTop = styled.div`
@@ -166,6 +186,8 @@ const WrapperTop = styled.div`
 `;
 
 const Button = styled.div`
+  opacity: 0.4;
+  pointer-events: none;
   position: relative;
   width: 165px;
   height: 51px;

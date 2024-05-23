@@ -64,13 +64,15 @@ export default function Header({ scroll, transparent }: Props) {
     };
   }, [open]);
 
+  // 특정 ref가 보일때 상태를 변경
+
   return (
     <Layout
       $animation={!!scroll?.transparent}
       style={{
         boxShadow:
           visible && scroll ? '0px 4px 8px rgba(0, 0, 0, 0.05)' : 'none',
-        transition: 'box-shadow 0.2s',
+        transition: 'box-shadow 0.2s, background-color 0.2s',
         ...(scroll?.transparent && { display: visible ? 'flex' : 'none' }),
         backgroundColor: open
           ? '#fff'
@@ -81,7 +83,7 @@ export default function Header({ scroll, transparent }: Props) {
     >
       <Container>
         <Link to={'/'} style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={transparent ? LogoWhite : Logo} />
+          <img src={open ? Logo : transparent ? LogoWhite : Logo} />
         </Link>
 
         <Nav>
