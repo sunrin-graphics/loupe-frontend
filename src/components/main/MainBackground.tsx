@@ -85,7 +85,14 @@ export default function MainBackground() {
           </motion.div>
         </FloatContainer>
       </MainLayoutContent>
-      <BottomContent>
+      <BottomContent
+        style={{
+          background: `linear-gradient(180deg, rgba(42, 29, 76, 0) 0%, rgb(42, 29, 76, ${(() => {
+            const progress = scrollY / blockHeight;
+            return Math.max(0, 1 - progress * 1.3);
+          })()}) 100%)`,
+        }}
+      >
         <BottomLabel>아래로 스크롤해보세요!</BottomLabel>
         <ArrowBottomIcon />
       </BottomContent>
@@ -123,7 +130,7 @@ const BottomLabel = styled.div`
 `;
 
 const BottomContent = styled.div`
-  z-index: 100000;
+  z-index: 1;
   display: flex;
   width: 100%;
   padding: 32px 0px;
@@ -133,7 +140,6 @@ const BottomContent = styled.div`
   gap: 4px;
   position: absolute;
   bottom: 0;
-  background: linear-gradient(180deg, rgba(42, 29, 76, 0) 0%, #2a1d4c 100%);
 `;
 
 const MainLayout = styled.div`
