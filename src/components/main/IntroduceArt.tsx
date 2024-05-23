@@ -1,14 +1,12 @@
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { ResponsiveContainer } from '@/components/shared/Styles.tsx';
-import Palette from '@/assets/palette.svg'
+import Palette from '@/assets/palette.svg';
 import { useEffect, useState } from 'react';
-import { useWorks, Work } from '@/hooks/work.ts';
+import { useWorks } from '@/hooks/work.ts';
 
 export default function IntroduceArt() {
   const { data: works } = useWorks(undefined);
   const [scrollPosition, setScrollPosition] = useState(0);
-
 
   const handleScroll = () => {
     setScrollPosition(window.scrollY);
@@ -19,7 +17,6 @@ export default function IntroduceArt() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
 
   return (
     <Layout>
@@ -34,35 +31,41 @@ export default function IntroduceArt() {
           </WrapperTop>
           <Button>
             <TextBox>
-              <PaletteImg src={Palette}/>
+              <PaletteImg src={Palette} />
               <ButtonText>작품 보러 가기</ButtonText>
             </TextBox>
           </Button>
         </Wrapper>
       </ResponsiveContainer>
-      <WorkList scrollPosition={scrollPosition-400}>
+      <WorkList scrollPosition={scrollPosition - 400}>
         {works?.map((work) => (
           <Worklistcontent>
-            <WorkImage src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}/>
+            <WorkImage
+              src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}
+            />
           </Worklistcontent>
         ))}
       </WorkList>
       <WorkListleft scrollPosition={scrollPosition}>
         {works?.map((work) => (
           <Worklistcontent>
-            <WorkImage src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}/>
+            <WorkImage
+              src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}
+            />
           </Worklistcontent>
         ))}
       </WorkListleft>
-      <WorkList scrollPosition={scrollPosition+6460}>
+      <WorkList scrollPosition={scrollPosition + 6460}>
         {works?.map((work) => (
           <Worklistcontent>
-            <WorkImage src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}/>
+            <WorkImage
+              src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}
+            />
           </Worklistcontent>
         ))}
       </WorkList>
     </Layout>
-  )
+  );
 }
 
 const RotateAnimation = keyframes`
@@ -71,9 +74,8 @@ const RotateAnimation = keyframes`
     }
 `;
 
-
 const PaletteImg = styled.img`
-    z-index: 1;
+  z-index: 1;
   width: 24px;
   height: 24px;
   @media screen and (max-width: 744px) {
@@ -82,28 +84,25 @@ const PaletteImg = styled.img`
   }
 `;
 const Layout = styled.div`
-    
-    overflow: hidden;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   width: 100%;
   height: 140vh;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   position: relative;
-    flex-direction: column;
-    
+  flex-direction: column;
 `;
-
 
 const Wrapper = styled.div`
   margin-top: 140px;
-    margin: 0 auto;
+  margin: 0 auto;
   display: flex;
   width: 552px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-    padding-bottom: 32px;
+  padding-bottom: 32px;
 `;
 
 interface WorkListProps {
@@ -111,38 +110,38 @@ interface WorkListProps {
 }
 
 const WorkList = styled.div<WorkListProps>`
-
-    display: flex;
-    padding: 32px 0px;
-    flex-direction: low;
-    align-items: flex-start;
-    gap: 12px;
-    transform: ${({ scrollPosition }) => `translateX(${(scrollPosition) * -0.5 + 1000}px)`}; /* Adjust the multiplier to control speed */
-    transition: transform 0.2s ease-out;
-`
+  display: flex;
+  padding: 32px 0px;
+  flex-direction: low;
+  align-items: flex-start;
+  gap: 12px;
+  transform: ${({ scrollPosition }) =>
+    `translateX(${scrollPosition * -0.5 + 1000}px)`}; /* Adjust the multiplier to control speed */
+  transition: transform 0.2s ease-out;
+`;
 
 const WorkListleft = styled.div<WorkListProps>`
-    
-    display: flex;
-    padding: 32px 0px;
-    flex-direction: low;
-    align-items: flex-start;
-    gap: 12px;
-    transform: ${({ scrollPosition }) => `translateX(${(scrollPosition) * 0.5 - 4000}px)`}; /* Adjust the multiplier to control speed */
-    transition: transform 0.2s ease-out;
-`
+  display: flex;
+  padding: 32px 0px;
+  flex-direction: low;
+  align-items: flex-start;
+  gap: 12px;
+  transform: ${({ scrollPosition }) =>
+    `translateX(${scrollPosition * 0.5 - 4000}px)`}; /* Adjust the multiplier to control speed */
+  transition: transform 0.2s ease-out;
+`;
 const Worklistcontent = styled.div`
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 64px;
-`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+`;
 const WorkImage = styled.img`
-    width: 160px;
-    height: 160px;
-    border-radius: 100px;
-`
+  width: 160px;
+  height: 160px;
+  border-radius: 100px;
+`;
 const Subtitle = styled.div`
   color: var(--800, #181826);
   font-size: 24px;
@@ -167,53 +166,50 @@ const WrapperTop = styled.div`
 `;
 
 const Button = styled.div`
-    position: relative;
-    width: 165px;
-    height: 51px;
+  position: relative;
+  width: 165px;
+  height: 51px;
+  border-radius: 100px;
+
+  overflow: hidden;
+  &::before {
+    z-index: 0;
+    content: '';
+    position: absolute;
+    top: -70px;
+    left: -20px;
+    width: 200px; /* 2배 */
+    height: 200px; /* 2배 */
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: linear-gradient(#5c40a6 50%, #b1a4d5 70%);
+    animation: ${RotateAnimation} 3s linear infinite;
+  }
+  &:after {
+    z-index: 0;
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
     border-radius: 100px;
-
-    overflow: hidden;
-    &::before {
-        z-index: 0;
-        content: "";
-        position: absolute;
-        top: -70px;
-        left: -20px;
-        width: 200px; /* 2배 */
-        height: 200px; /* 2배 */
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background-image: linear-gradient(#5C40A6 50%, #B1A4D5 70%);
-        animation: ${RotateAnimation} 3s linear infinite;
-    }
-    &:after {
-        z-index: 0;
-        content: "";
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        right: 2px;
-        bottom: 2px;
-        border-radius: 100px;
-        background: #fff;
-    }
-
-`
+    background: #fff;
+  }
+`;
 
 const TextBox = styled.div`
-
-    padding: 12px 20px 12px 16px;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-`
+  padding: 12px 20px 12px 16px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
 const ButtonText = styled.div`
-    z-index: 1;
-    color: var(--500, #181826);
+  z-index: 1;
+  color: var(--500, #181826);
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 30px */
 `;
-
