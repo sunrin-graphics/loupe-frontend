@@ -34,10 +34,10 @@ const Layout = styled.div`
   height: 100vh;
   background-color: #2e2053;
   position: relative;
-  background-image: url('/overlay.png');
+  /* background-image: url('/overlay.png');
   background-size: cover;
   background-position: center;
-  background-repeat: repeat-x;
+  background-repeat: repeat-x; */
 `;
 
 const Wrapper = styled.div`
