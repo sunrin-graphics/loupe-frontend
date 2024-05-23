@@ -47,12 +47,11 @@ export default function Guestbook() {
     const chunks: Note[][] = Array.from({ length: arrayamount }, () => []);
     let arrayindex = 0;
     for (let i = 0; i < array.length; i += 1) {
-      chunks[arrayindex].push(array[i]);
+      chunks[arrayindex].push(array[array.length-i-1]);
       arrayindex = (arrayindex + 1) % arrayamount;
     }
     return chunks;
   };
-
   useEffect(() => {
     const handleResize = () => {
       setWindowSize(document.documentElement.clientWidth);

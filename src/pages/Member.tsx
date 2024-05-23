@@ -13,7 +13,6 @@ import { useUsers } from '@/hooks/user';
 
 export default function Member() {
   const { data: users } = useUsers();
-  console.log(users);
 
   const gridAnimation = {
     show: {
@@ -36,17 +35,20 @@ export default function Member() {
           animate="show"
           exit="hide"
         >
-          {users?.map((user) => (
-            <MemberCard
-              key={user.uuid}
-              name={user.name}
-              mail={user.email}
-              avatar={user.avatar}
-              insLink={user.instagram}
-              poLink={user.portfolio}
-              artLink={user.made?.[0]?.work.uuid}
-            />
-          ))}
+          {users?.map(
+            (user) =>
+              user.name !== '콘텐츠디자인과 22인' && (
+                <MemberCard
+                  key={user.uuid}
+                  name={user.name}
+                  mail={user.email}
+                  avatar={user.avatar}
+                  insLink={user.instagram}
+                  poLink={user.portfolio}
+                  artLink={user.made?.[0]?.work.uuid}
+                />
+              ),
+          )}
         </MemberCardContainer>
       </Section>
       <Footer />

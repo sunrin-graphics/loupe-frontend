@@ -2,7 +2,25 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { ResponsiveContainer } from '@/components/shared/Styles.tsx';
 import Palette from '@/assets/palette.svg'
+import { useEffect, useState } from 'react';
+import { useWorks, Work } from '@/hooks/work.ts';
+
 export default function IntroduceArt() {
+  const { data: works } = useWorks(undefined);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
   return (
     <Layout>
       <ResponsiveContainer>
@@ -22,6 +40,27 @@ export default function IntroduceArt() {
           </Button>
         </Wrapper>
       </ResponsiveContainer>
+      <WorkList scrollPosition={scrollPosition-400}>
+        {works?.map((work) => (
+          <Worklistcontent>
+            <WorkImage src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}/>
+          </Worklistcontent>
+        ))}
+      </WorkList>
+      <WorkListleft scrollPosition={scrollPosition}>
+        {works?.map((work) => (
+          <Worklistcontent>
+            <WorkImage src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}/>
+          </Worklistcontent>
+        ))}
+      </WorkListleft>
+      <WorkList scrollPosition={scrollPosition+6460}>
+        {works?.map((work) => (
+          <Worklistcontent>
+            <WorkImage src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}/>
+          </Worklistcontent>
+        ))}
+      </WorkList>
     </Layout>
   )
 }
@@ -43,24 +82,67 @@ const PaletteImg = styled.img`
   }
 `;
 const Layout = styled.div`
+    
+    overflow: hidden;
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: 140vh;
   background-color: #FFFFFF;
   position: relative;
+    flex-direction: column;
+    
 `;
 
 
 const Wrapper = styled.div`
   margin-top: 140px;
+    margin: 0 auto;
   display: flex;
   width: 552px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
+    padding-bottom: 32px;
 `;
 
+interface WorkListProps {
+  scrollPosition: number;
+}
+
+const WorkList = styled.div<WorkListProps>`
+
+    display: flex;
+    padding: 32px 0px;
+    flex-direction: low;
+    align-items: flex-start;
+    gap: 12px;
+    transform: ${({ scrollPosition }) => `translateX(${(scrollPosition) * -0.5 + 1000}px)`}; /* Adjust the multiplier to control speed */
+    transition: transform 0.2s ease-out;
+`
+
+const WorkListleft = styled.div<WorkListProps>`
+    
+    display: flex;
+    padding: 32px 0px;
+    flex-direction: low;
+    align-items: flex-start;
+    gap: 12px;
+    transform: ${({ scrollPosition }) => `translateX(${(scrollPosition) * 0.5 - 4000}px)`}; /* Adjust the multiplier to control speed */
+    transition: transform 0.2s ease-out;
+`
+const Worklistcontent = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+`
+const WorkImage = styled.img`
+    width: 160px;
+    height: 160px;
+    border-radius: 100px;
+`
 const Subtitle = styled.div`
   color: var(--800, #181826);
   font-size: 24px;
@@ -89,7 +171,8 @@ const Button = styled.div`
     width: 165px;
     height: 51px;
     border-radius: 100px;
-    
+
+    overflow: hidden;
     &::before {
         z-index: 0;
         content: "";
@@ -100,7 +183,7 @@ const Button = styled.div`
         height: 200px; /* 2배 */
         background-repeat: no-repeat;
         background-size: 100%;
-        background-image: linear-gradient(#5C40A6 100%, #B1A4D5 100%);
+        background-image: linear-gradient(#5C40A6 50%, #B1A4D5 70%);
         animation: ${RotateAnimation} 3s linear infinite;
     }
     &:after {

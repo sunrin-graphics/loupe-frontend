@@ -46,9 +46,10 @@ const MemberCard = ({
         }
         src={
           avatar
-            ? `${import.meta.env.VITE_API_URL}/file/${avatar.split('/')[0]}/middle.png`
+            ? `${import.meta.env.VITE_API_URL}/file/${avatar.split('/')[0]}/256.png`
             : 'author.png'
         }
+        loading="lazy"
         alt={'이미지'}
       />
       <div>

@@ -57,6 +57,7 @@ export default function WorkMain({ youtubeUrl, artworks, authors }: Props) {
               key={author.uuid}
               name={author.name}
               email={author.email}
+              avatar={author.avatar}
             />
           ))}
         </ContentAuthorGroup>

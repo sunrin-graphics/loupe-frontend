@@ -11,7 +11,7 @@ export default function ContentAuthor({ name, avatar, email }: Props) {
       <ContentAuthorProfile
         src={
           avatar
-            ? `${import.meta.env.VITE_API_URL}/file/${avatar}`
+            ? `${import.meta.env.VITE_API_URL}/file/${avatar.split('/')[0]}/256.png`
             : '/author.png'
         }
         alt="author1"
