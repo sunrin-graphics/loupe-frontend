@@ -4,6 +4,7 @@ import { ReactComponent as ArtIcon } from '../assets/art.svg';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import ProgressiveImg from './ProgressiveImg';
 
 interface MemberCardProps {
   name: string;
@@ -38,9 +39,14 @@ const MemberCard = ({
   return (
     <MemberCardLayout variants={imgAnimation}>
       <MemberCardImg
+        placeholderSrc={
+          avatar
+            ? `${import.meta.env.VITE_API_URL}/file/${avatar.split('/')[0]}/low.png`
+            : 'author.png'
+        }
         src={
           avatar
-            ? `${import.meta.env.VITE_API_URL}/file/${avatar}`
+            ? `${import.meta.env.VITE_API_URL}/file/${avatar.split('/')[0]}/middle.png`
             : 'author.png'
         }
         alt={'이미지'}
@@ -84,7 +90,7 @@ const MemberCardLayout = styled(motion.div)`
   gap: 8px;
 `;
 
-const MemberCardImg = styled.img`
+const MemberCardImg = styled(ProgressiveImg)`
   width: 56px;
   height: 56px;
   border-radius: 56px;
