@@ -2,20 +2,20 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import Work from './pages/Work';
+// import Work from './pages/Work';
 import Member from './pages/Member';
 import Main from './pages/Main';
-import Guestbook from './pages/Guestbook';
-import WorkList from './pages/WorkList';
+// import Guestbook from './pages/Guestbook';
+// import WorkList from './pages/WorkList';
 import QueryProvider from './components/provider/QueryProvider';
 
 // 브라우저 라우터 만들기
 // 파라미터로 경로와 컴포넌트 입력하기
 const router = createBrowserRouter([
-  {
-    path: '/work/:id',
-    element: <Work />,
-  },
+  // {
+  //   path: '/work/:id',
+  //   element: <Work />,
+  // },
   {
     path: '/member',
     element: <Member />,
@@ -24,14 +24,14 @@ const router = createBrowserRouter([
     path: '/',
     element: <Main />,
   },
-  {
-    path: '/guestbook',
-    element: <Guestbook />,
-  },
-  {
-    path: '/works',
-    element: <WorkList />,
-  },
+  // {
+  //   path: '/guestbook',
+  //   element: <Guestbook />,
+  // },
+  // {
+  //   path: '/works',
+  //   element: <WorkList />,
+  // },
 ]);
 
 import AOS from 'aos';

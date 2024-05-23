@@ -87,7 +87,7 @@ export default function Header({ scroll, transparent }: Props) {
         </Link>
 
         <Nav>
-          <li>
+          {/* <li>
             <NavItem
               $transparent={!!transparent}
               $active={pathname.startsWith('/work')}
@@ -95,7 +95,7 @@ export default function Header({ scroll, transparent }: Props) {
             >
               작품
             </NavItem>
-          </li>
+          </li> */}
           <li>
             <NavItem
               $transparent={!!transparent}
@@ -105,7 +105,7 @@ export default function Header({ scroll, transparent }: Props) {
               참여 인원
             </NavItem>
           </li>
-          <li>
+          {/* <li>
             <NavItem
               $transparent={!!transparent}
               $active={pathname === '/guestbook'}
@@ -113,7 +113,7 @@ export default function Header({ scroll, transparent }: Props) {
             >
               방명록
             </NavItem>
-          </li>
+          </li> */}
         </Nav>
         <MobileNavButton
           $open={open}
@@ -131,13 +131,13 @@ export default function Header({ scroll, transparent }: Props) {
             animate="visible"
             $transparent={transparent}
           >
-            <MobileNavItem
+            {/* <MobileNavItem
               $transparent={!!transparent}
               $active={pathname.startsWith('/work')}
               to={'/works'}
             >
               작품
-            </MobileNavItem>
+            </MobileNavItem> */}
             <MobileNavItem
               $transparent={!!transparent}
               $active={pathname === '/member'}
@@ -145,13 +145,13 @@ export default function Header({ scroll, transparent }: Props) {
             >
               참여 인원
             </MobileNavItem>
-            <MobileNavItem
+            {/* <MobileNavItem
               $transparent={!!transparent}
               $active={pathname === '/guestbook'}
               to={'/guestbook'}
             >
               방명록
-            </MobileNavItem>
+            </MobileNavItem> */}
           </MobileNav>
           <Overlay onClick={openNav} />
         </>

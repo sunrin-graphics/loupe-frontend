@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { ResponsiveContainer } from '@/components/shared/Styles.tsx';
 import Palette from '@/assets/palette.svg';
-import { useEffect, useState, forwardRef, RefObject } from 'react';
+import { useEffect, useState } from 'react';
 import { useWorks } from '@/hooks/work.ts';
 
 const IntroduceRef = () => {

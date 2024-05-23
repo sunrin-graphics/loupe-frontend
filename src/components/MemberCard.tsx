@@ -74,7 +74,7 @@ const MemberCard = ({
         <CardLinkTitle>포트폴리오</CardLinkTitle>
       </CardLinkItem>
 
-      <CardLinkItem to={`/work/${artLink}`} $disabled={!artLink}>
+      <CardLinkItem to={``} $disabled={true}>
         <CardLinkIcon>
           <ArtIcon />
         </CardLinkIcon>
