@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DateTime, Duration } from 'luxon';
 import { ReactComponent as CinematicImg } from '@/assets/cinematic.svg';
 import { ReactComponent as InstagramImg } from '@/assets/instagramBig.svg';
@@ -8,7 +8,23 @@ import { ResponsiveContainer } from '../shared/Styles';
 const OPEN_DATE = DateTime.fromISO('2024-05-29T13:00:00');
 
 export default function Available() {
+  const layoutRef = useRef<HTMLDivElement>(null);
+
   const [time, setTime] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+
+  function handleScroll() {
+    const scrollTop = window.scrollY;
+    setScrollY(scrollTop);
+  }
+
+  useEffect(() => {
+    document.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const now = DateTime.now().setZone('Asia/Seoul');
@@ -21,9 +37,27 @@ export default function Available() {
   }, [time]);
 
   return (
-    <Layout>
-      <ResponsiveContainer>
-        <Container data-aos="flip-left">
+    <Layout ref={layoutRef}>
+      <Container
+        style={{
+          opacity:
+            (layoutRef.current?.offsetTop ?? 0) + 200 - scrollY <
+            window.innerHeight
+              ? 1
+              : 0,
+          width:
+            layoutRef.current?.offsetTop ?? 0 - scrollY < window.innerHeight
+              ? ((scrollY +
+                  (window.innerHeight ?? 0) -
+                  (layoutRef.current?.offsetTop ?? 0) -
+                  150) /
+                  (layoutRef.current?.offsetHeight ?? 0)) *
+                  100 +
+                '%'
+              : 'calc(100% - 48px)',
+        }}
+      >
+        <Wrapper>
           <ContentWrapper>
             <Content>
               <h1>
@@ -56,8 +90,8 @@ export default function Available() {
           </ContentWrapper>
 
           <img src="/smap.png" alt="loupe" />
-        </Container>
-      </ResponsiveContainer>
+        </Wrapper>
+      </Container>
     </Layout>
   );
 }
@@ -72,15 +106,28 @@ const Layout = styled.div`
   background: #fff;
 `;
 
-const Container = styled(ResponsiveContainer)`
+const Wrapper = styled.div`
   display: flex;
-  padding: 48px;
-  align-items: center;
   justify-content: space-between;
-  flex: 1 0 0;
+  width: 1022px;
+  position: relative;
+  @media (max-width: 1300px) {
+    width: 100%;
+  }
+`;
+
+const Container = styled(ResponsiveContainer)`
+  padding: 48px;
   border-radius: 24px;
   border: 1px solid var(--600, #ececf1);
   background: var(--700, #f8f8fc);
+  overflow: hidden;
+  width: auto;
+
+  transition: opacity 0.3s;
+
+  display: grid;
+  justify-content: center;
 
   img {
     width: 280px;
