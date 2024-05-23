@@ -16,8 +16,7 @@ export default function Main() {
       <MainBackground />
       <Introduce />
       <TravelGraph />
-      <IntroduceArt/>
-      <Available />
+      <IntroduceArt />
       <Available />
       <Footer />
     </MainLayout>
