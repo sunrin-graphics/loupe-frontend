@@ -48,10 +48,10 @@ export default function Available() {
                 <p>공식 티저</p>
               </button>
 
-              <button>
+              <a href="https://instagram.com/sr_design_exhibit" target="_blank">
                 <InstagramImg />
                 <p>공식 인스타그램</p>
-              </button>
+              </a>
             </ButtonGroup>
           </ContentWrapper>
 
@@ -154,7 +154,7 @@ const ButtonGroup = styled.div`
     }
   }
 
-  button {
+  a {
     display: flex;
     padding: 12px 20px 12px 16px;
     align-items: center;
@@ -174,6 +174,30 @@ const ButtonGroup = styled.div`
     }
     p {
       color: var(--100, #181826);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 150%; /* 27px */
+      @media (max-width: 1300px) {
+        font-size: 16px;
+      }
+      @media (max-width: 744px) {
+        font-size: 14px;
+      }
+    }
+  }
+  button {
+    display: flex;
+    padding: 12px 20px 12px 16px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    border: 1.5px solid var(--600, #ececf1);
+    background: var(--800, #fff);
+    transition:
+      background 0.2s,
+      transform 0.2s;
+    p {
+      color: var(--100, #bbbbc4);
       font-size: 18px;
       font-weight: 600;
       line-height: 150%; /* 27px */

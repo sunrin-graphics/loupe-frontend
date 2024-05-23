@@ -94,15 +94,15 @@ export default function MainBackground() {
         }}
       >
         <ButtonGroup>
-          <button>
+          <button disabled>
             <CinematicImg />
             <p>공식 티저</p>
           </button>
 
-          <button>
+          <a href="https://instagram.com/sr_design_exhibit" target="_blank">
             <InstagramImg />
             <p>공식 인스타그램</p>
-          </button>
+          </a>
         </ButtonGroup>
         <BottomContent>
           <BottomLabel>아래로 스크롤해보세요!</BottomLabel>
@@ -130,7 +130,7 @@ const ButtonGroup = styled.div`
     }
   }
 
-  button {
+  a {
     display: flex;
     padding: 12px 20px 12px 16px;
     align-items: center;
@@ -146,10 +146,43 @@ const ButtonGroup = styled.div`
     }
     &:active {
       transform: scale(0.95);
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.4);
     }
     p {
       color: var(--800, #fff);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 150%; /* 27px */
+      @media (max-width: 1300px) {
+        font-size: 16px;
+      }
+      @media (max-width: 744px) {
+        font-size: 14px;
+      }
+    }
+  }
+  button[disabled] {
+    svg {
+      path {
+        fill: var(--800, #ffffff89);
+      }
+      width: 24px;
+      height: 24px;
+      @media (max-width: 1300px) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    display: flex;
+    padding: 12px 20px 12px 16px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4); // var(--600, #ececf1
+    background: rgba(255, 255, 255, 0.05);
+    user-select: none;
+    p {
+      color: var(--800, #ffffff89);
       font-size: 18px;
       font-weight: 600;
       line-height: 150%; /* 27px */
@@ -182,10 +215,16 @@ const FloatContainer = styled.div`
   max-width: 1260px;
   flex: 1;
   animation: ${FloatingAnimation} 4s infinite 2s;
+  @media (max-width: 1300px) {
+    padding: 0 70px;
+  }
+  @media (max-width: 744px) {
+    padding: 80px;
+  }
 `;
 
 const BottomContainer = styled.div`
-  z-index: 100000;
+  z-index: 100;
   display: flex;
   width: 100%;
   padding: 32px 0;
@@ -239,4 +278,10 @@ const Title = styled(motion.div)`
   font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 30px */
+  @media (max-width: 1300px) {
+    font-size: 18px;
+  }
+  @media (max-width: 744px) {
+    font-size: 16px;
+  }
 `;
