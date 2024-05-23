@@ -1,80 +1,139 @@
 import styled from 'styled-components';
 import { ResponsiveContainer } from '../shared/Styles';
+import { useEffect, useState } from 'react';
+import { img } from './/Figma Image 1860x1044.png';
 
 export default function Introduce() {
+  const [screenWidth, setScreenWidth] = useState(window.outerWidth);
+  useEffect(() => {
+    setScreenWidth(window.outerWidth);
+  }, [screenWidth]);
   return (
     <Layout>
-      <ResponsiveContainer>
-        <Wrapper>
-          <WrapperTop>
-            <Subtitle>LOUPE란</Subtitle>
-            <Title>
-              작은 것을 볼 수 있는 <br />
-              확대도구로서,
-            </Title>
-          </WrapperTop>
-          <Description>
-            바로 앞에서도 눈에 보이지 않는 작은 것들이라도 <br />
-            루페를 통해 본다면 또 다른 모습이 보이는 것처럼 <br />
-            이번 졸업전시에서의 ‘LOUPE’는 <br />
-            정형적인 시각의 틀에서 벗어나 다른것을 볼 수 있게 해주는 창을
-            뜻해요.
-          </Description>
-        </Wrapper>
-      </ResponsiveContainer>
+      <Wrapper>
+        <MainTextContainer>
+          <TitleContainer>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'column',
+            }}>
+              <SubTitle>LOUPE의 의미</SubTitle>
+              <MainTitle>다른 세상을 볼 수 있는 창</MainTitle>
+            </div>
+            <Description>
+              루페는 하나의 확대도구로, 작은 무언가를 볼 수 있게 도와주는 도구에요.{!(screenWidth >= 375) && <br />}
+              가까이 있던 무언가가 루페를 통해 본다면 다른 모습으로 보이듯이,{!(screenWidth >= 375) && <br />}
+              이번 졸업전시회의 루페는 정형적인 시각의 틀에서 벗어나{!(screenWidth >= 375) && <br />}
+              다른 무언가를 볼 수 있게 도와주는 창이라는 뜻을 담았어요.{!(screenWidth >= 375) && <br />}
+            </Description>
+          </TitleContainer>
+        </MainTextContainer>
+        <MainContentCOntainer>
+
+        </MainContentCOntainer>
+      </Wrapper>
     </Layout>
   );
 }
 
 const Layout = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background-color: #2e2053;
-  position: relative;
-  /* background-image: url('/overlay.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat-x; */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2e2053;
+    position: relative;
 `;
 
-const Wrapper = styled.div`
-  margin-top: 140px;
-  display: flex;
-  width: 552px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
+const Wrapper = styled(ResponsiveContainer)`
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 `;
-
-const Subtitle = styled.div`
-  color: var(--800, #fff);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%; /* 36px */
+const MainTextContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    @media (max-width: 1440px) {
+        margin-top: 48px;
+    }
+    @media (max-width: 1133px) {
+        margin-top: 32px;
+    }
+    @media (max-width: 375px) {
+        margin-top: 16px;
+    }
 `;
-
-const Title = styled.div`
-  color: var(--800, #fff);
-  font-size: 56px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%;
+const TitleContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
-
-const WrapperTop = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+const SubTitle = styled.div`
+    color: var(--800, #FFF);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
 `;
-
+const MainTitle = styled.div`
+    color: var(--800, #FFF);
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 64px;
+    font-size: 56px;
+    @media (max-width: 1440px) {
+        font-size: 56px;
+    }
+    @media (max-width: 744px) {
+        font-size: 48px;
+    }
+    @media (max-width: 375px) {
+        font-size: 32px;
+    }
+`;
 const Description = styled.div`
-  color: var(--500, #bbbbc4);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 30px */
+    color: var(--500, #BBBBC4);
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+    @media (max-width: 1440px) {
+        width: 748px;
+        font-size: 20px;
+    }
+    @media (max-width: 1133px) {
+        width: 502px;
+        font-size: 18px;
+    }
+    @media (max-width: 375px) {
+        width: 334px;
+        font-size: 16px;
+    }
 `;
+const MainContentCOntainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+`
+const ContentBox = styled.div`
+    width: 930px;
+    height: 522px;
+    flex-shrink: 0;
+    background-image: img;
+`
+const ContentName = styled.div`
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+`
