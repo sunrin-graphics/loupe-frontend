@@ -33,9 +33,6 @@ export default function Footer() {
             <FooterRow>
               <FooterLabel>웹 디자인</FooterLabel>
               <FooterName>박시원</FooterName>
-              <FooterName>박정우</FooterName>
-              <FooterName>백시현</FooterName>
-              <FooterName>오지후</FooterName>
             </FooterRow>
             <FooterRow>
               <FooterLabel>웹 개발</FooterLabel>
