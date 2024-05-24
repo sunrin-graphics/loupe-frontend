@@ -83,7 +83,7 @@ export default function MainBackground() {
                 opacity: progress,
               }}
               src="/map.png"
-              alt=""
+              alt="루페 아트워크"
             />
           </motion.div>
         </FloatContainer>

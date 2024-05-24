@@ -83,7 +83,10 @@ export default function Header({ scroll, transparent }: Props) {
     >
       <Container>
         <Link to={'/'} style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={open ? Logo : transparent ? LogoWhite : Logo} />
+          <img
+            alt="루페 이미지"
+            src={open ? Logo : transparent ? LogoWhite : Logo}
+          />
         </Link>
 
         <Nav>

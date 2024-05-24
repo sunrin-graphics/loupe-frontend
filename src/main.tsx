@@ -11,28 +11,33 @@ import QueryProvider from './components/provider/QueryProvider';
 
 // 브라우저 라우터 만들기
 // 파라미터로 경로와 컴포넌트 입력하기
-const router = createBrowserRouter([
-  // {
-  //   path: '/work/:id',
-  //   element: <Work />,
-  // },
+const router = createBrowserRouter(
+  [
+    // {
+    //   path: '/work/:id',
+    //   element: <Work />,
+    // },
+    {
+      path: '/member',
+      element: <Member />,
+    },
+    {
+      path: '/',
+      element: <Main />,
+    },
+    // {
+    //   path: '/guestbook',
+    //   element: <Guestbook />,
+    // },
+    // {
+    //   path: '/works',
+    //   element: <WorkList />,
+    // },
+  ],
   {
-    path: '/member',
-    element: <Member />,
+    basename: '/2024',
   },
-  {
-    path: '/',
-    element: <Main />,
-  },
-  // {
-  //   path: '/guestbook',
-  //   element: <Guestbook />,
-  // },
-  // {
-  //   path: '/works',
-  //   element: <WorkList />,
-  // },
-]);
+);
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles

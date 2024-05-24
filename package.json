@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://mynameisapple.sunrin.graphics",
+  "homepage": "http://sunrin.graphics/2024",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

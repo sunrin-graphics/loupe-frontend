@@ -31,7 +31,7 @@ const IntroduceRef = () => {
           </WrapperTop>
           <Button>
             <TextBox>
-              <PaletteImg src={Palette} />
+              <PaletteImg alt="팔레트 아이콘" src={Palette} />
               <ButtonText>작품 보러 가기</ButtonText>
             </TextBox>
           </Button>
@@ -41,6 +41,7 @@ const IntroduceRef = () => {
         {works?.map((work) => (
           <Worklistcontent>
             <WorkImage
+              alt="작품 이미지"
               src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}
             />
           </Worklistcontent>
@@ -50,6 +51,7 @@ const IntroduceRef = () => {
         {works?.map((work) => (
           <Worklistcontent>
             <WorkImage
+              alt="작품 이미지"
               src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}
             />
           </Worklistcontent>
@@ -59,6 +61,7 @@ const IntroduceRef = () => {
         {works?.map((work) => (
           <Worklistcontent>
             <WorkImage
+              alt="작품 이미지"
               src={`${import.meta.env.VITE_API_URL}/file/${work.thumbnail.split('/')[0]}/low.png`}
             />
           </Worklistcontent>
