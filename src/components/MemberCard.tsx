@@ -21,7 +21,7 @@ const MemberCard = ({
   avatar,
   insLink = '',
   poLink = '',
-  artLink = '',
+  // artLink = '',
 }: MemberCardProps) => {
   const imgAnimation = {
     show: {
