@@ -99,7 +99,7 @@ export default function Available() {
             </ButtonGroup>
           </ContentWrapper>
 
-          <img src="/smap.png" alt="loupe" />
+          <img src="2024/smap.png" alt="loupe" />
         </Wrapper>
       </Container>
     </Layout>

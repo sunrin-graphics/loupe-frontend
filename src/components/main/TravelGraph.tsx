@@ -17,7 +17,7 @@ export default function TravelGraph() {
             zIndex: '9',
             width: '100%',
           }}
-          src="/map.png"
+          src="2024/map.png"
           alt=""
         />
       </Section>
@@ -32,7 +32,7 @@ const Layout = styled.div`
   justify-content: center;
   background-color: #2e2053;
   overflow: hidden;
-  background-image: url('/overlay.png');
+  background-image: url('2024/overlay.png');
   background-size: cover;
   background-position: center;
   background-repeat: repeat-x;

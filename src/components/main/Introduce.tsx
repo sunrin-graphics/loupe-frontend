@@ -58,9 +58,9 @@ export default function Introduce() {
         <MainContentContainer data-aos="flip-left">
           <ContentMobileName>이미지를 눌러보세요!</ContentMobileName>
           <ContentBox ref={boxRef} onMouseMove={handleMouseMove}>
-            <img src="/default.png" alt="loupe" />
+            <img src="2024/default.png" alt="loupe" />
             <img
-              src="/blend.png"
+              src="2024/blend.png"
               alt="blendimage"
               style={{
                 clipPath: `circle(100px at ${mousePosition.x}px ${mousePosition.y}px)`,
@@ -68,8 +68,8 @@ export default function Introduce() {
             />
           </ContentBox>
           <CardBox onClick={flip} ref={cardRef}>
-            <Card src="loupecircle.png" />
-            <CardBack src="blendcircle.png" className="back" />
+            <Card src="2024/loupecircle.png" />
+            <CardBack src="2024/blendcircle.png" className="back" />
           </CardBox>
           <ContentName>현재의 루페 ↔ 처음 스케치 버전 루페</ContentName>
         </MainContentContainer>
@@ -114,7 +114,7 @@ const Layout = styled.div`
   justify-content: center;
   background-color: #2e2053;
   position: relative;
-  background-image: url('/overlay.png');
+  background-image: url('2024/overlay.png');
   background-size: cover;
   background-position: center;
   background-repeat: repeat-x;

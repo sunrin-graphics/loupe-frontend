@@ -82,7 +82,7 @@ export default function MainBackground() {
                 scale: '1.2',
                 opacity: progress,
               }}
-              src="/map.png"
+              src="2024/map.png"
               alt="루페 아트워크"
             />
           </motion.div>
