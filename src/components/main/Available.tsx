@@ -43,8 +43,6 @@ export default function Available() {
     }, 1000);
   }, [time]);
 
-  console.log(width);
-
   return (
     <Layout ref={layoutRef}>
       <Container
