@@ -124,7 +124,7 @@ const WorkList = styled.div<WorkListProps>`
   align-items: flex-start;
   gap: 12px;
   transform: ${({ scrollPosition }) =>
-    `translateX(${scrollPosition * -0.5 + 1000}px)`}; /* Adjust the multiplier to control speed */
+    `translateX(${scrollPosition * -0.5 + 3330}px)`}; /* Adjust the multiplier to control speed */
   transition: transform 0.2s ease-out;
 `;
 
@@ -135,7 +135,7 @@ const WorkListleft = styled.div<WorkListProps>`
   align-items: flex-start;
   gap: 12px;
   transform: ${({ scrollPosition }) =>
-    `translateX(${scrollPosition * 0.5 - 4000}px)`}; /* Adjust the multiplier to control speed */
+    `translateX(${scrollPosition * 0.5 - 2000}px)`}; /* Adjust the multiplier to control speed */
   transition: transform 0.2s ease-out;
 `;
 const Worklistcontent = styled.div`
