@@ -186,7 +186,6 @@ const WrapperTop = styled.div`
 `;
 
 const Button = styled.div`
-  opacity: 0.4;
   pointer-events: none;
   position: relative;
   width: 165px;
@@ -204,8 +203,9 @@ const Button = styled.div`
     height: 200px; /* 2배 */
     background-repeat: no-repeat;
     background-size: 100%;
-    background-image: linear-gradient(#5c40a6 50%, #b1a4d5 70%);
-    animation: ${RotateAnimation} 3s linear infinite;
+    /* background-image: linear-gradient(#5c40a6 50%, #b1a4d5 70%); */
+    background: #ececf1;
+    /* animation: ${RotateAnimation} 3s linear infinite; */
   }
   &:after {
     z-index: 0;
@@ -216,7 +216,7 @@ const Button = styled.div`
     right: 2px;
     bottom: 2px;
     border-radius: 100px;
-    background: #fff;
+    background: #f8f8fc;
   }
 `;
 
@@ -229,7 +229,7 @@ const TextBox = styled.div`
 `;
 const ButtonText = styled.div`
   z-index: 1;
-  color: var(--500, #181826);
+  color: var(--500, #bbbbc4);
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
