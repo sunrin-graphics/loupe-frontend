@@ -12,6 +12,11 @@ export default function Available() {
 
   const [time, setTime] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  function handleResize() {
+    setWidth(window.innerWidth);
+  }
 
   function handleScroll() {
     const scrollTop = window.scrollY;
@@ -19,10 +24,12 @@ export default function Available() {
   }
 
   useEffect(() => {
-    document.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      document.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -35,6 +42,8 @@ export default function Available() {
       setTime(diff.as('seconds'));
     }, 1000);
   }, [time]);
+
+  console.log(width);
 
   return (
     <Layout ref={layoutRef}>
@@ -66,13 +75,16 @@ export default function Available() {
                 {Duration.fromObject({ seconds: time }).toFormat(
                   'd일 hh시 mm분 ss초',
                 )}{' '}
+                {width < 492 && <br />}
                 남았어요!
               </h1>
 
               <p>
-                3년간의 여정을 거쳐 발견한 또 다른 세계를 보고 싶으시다면,
+                3년간의 여정을 거쳐 발견한{width < 492 && <br />} 또 다른 세계를
+                보고 싶으시다면,
                 <br />
-                공식 티저 및 작품에 많은 관심과 성원 부탁드립니다!
+                공식 티저 및 작품에 많은 관심과{width < 492 && <br />} 성원
+                부탁드립니다!
               </p>
             </Content>
 
@@ -105,12 +117,12 @@ const Layout = styled.div`
   justify-content: center;
   background: #fff;
 
-    @media (max-width: 1300px) {
-        padding: 0 32px;
-    }
-    @media (max-width: 744px) {
-        padding: 0 20px;
-    }
+  @media (max-width: 1300px) {
+    padding: 0 32px;
+  }
+  @media (max-width: 744px) {
+    padding: 0 20px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -142,7 +154,7 @@ const Container = styled(ResponsiveContainer)`
     border-radius: 280px;
     padding: 12px;
     background: linear-gradient(90deg, #5c40a6, #b1a4d5);
-    @media (max-width: 744px) {
+    @media (max-width: 1300px) {
       display: none;
     }
   }
@@ -160,6 +172,8 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  width: max-content;
 `;
 
 const Content = styled.div`
