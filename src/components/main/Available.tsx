@@ -104,6 +104,9 @@ const Layout = styled.div`
   gap: 16px;
   justify-content: center;
   background: #fff;
+    @media (max-width: 744px) {
+        padding: 20px;
+    }
 `;
 
 const Wrapper = styled.div`
