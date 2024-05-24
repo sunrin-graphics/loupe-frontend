@@ -246,4 +246,7 @@ const ContentMobileName = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 30px */
+  @media (min-width: 744px) {
+    display: none;
+  }
 `;
