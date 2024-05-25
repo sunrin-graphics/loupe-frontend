@@ -82,7 +82,7 @@ export default function Header({ scroll, transparent }: Props) {
       }}
     >
       <Container>
-        <Link to={'/'} style={{ display: 'flex', alignItems: 'center' }} onClick={() => window.scrollTo(0, 0)}>
+        <Link to={'/'} style={{ display: 'flex', alignItems: 'center' }} onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}>
           <img
             alt="루페 이미지"
             src={open ? Logo : transparent ? LogoWhite : Logo}
