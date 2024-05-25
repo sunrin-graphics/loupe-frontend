@@ -114,7 +114,6 @@ const Layout = styled.div`
   justify-content: center;
   background-color: #2e2053;
   position: relative;
-  background-image: url('2024/overlay.png');
   background-size: cover;
   background-position: center;
   background-repeat: repeat-x;
