@@ -94,7 +94,7 @@ const Layout = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 140vh;
+  height: 140dvh;
   background-color: #ffffff;
   position: relative;
   flex-direction: column;
