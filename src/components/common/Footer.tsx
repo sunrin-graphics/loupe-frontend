@@ -128,7 +128,7 @@ const FooterColumn = styled.div`
 `;
 
 const FooterText = styled.div`
-  color: var(--400, #878797);
+  color: #59596f;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -137,7 +137,7 @@ const FooterText = styled.div`
 
 const FooterLabel = styled.div`
   width: var(--Title, 64px);
-  color: var(--400, #878797);
+  color: #59596f;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
