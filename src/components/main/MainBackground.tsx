@@ -5,6 +5,7 @@ import MainTitle from './MainTitle';
 import { ReactComponent as CinematicImg } from '@/assets/cinematic.svg';
 import { ReactComponent as InstagramImg } from '@/assets/instagramBig.svg';
 import { useEffect, useState } from 'react';
+import map from '@/assets/images/map.webp';
 
 export default function MainBackground() {
   const [scrollY, setScrollY] = useState(0);
@@ -82,7 +83,7 @@ export default function MainBackground() {
                 scale: '1.2',
                 opacity: progress,
               }}
-              src="2024/map.png"
+              src={map}
               alt="루페 아트워크"
             />
           </motion.div>

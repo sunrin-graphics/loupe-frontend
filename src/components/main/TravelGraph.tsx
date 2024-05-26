@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Section } from '../shared/Styles';
+import map from '@/assets/images/map.webp';
 
 export default function TravelGraph() {
   return (
@@ -17,8 +18,8 @@ export default function TravelGraph() {
             zIndex: '9',
             width: '100%',
           }}
-          src="2024/map.png"
-          alt=""
+          src={map}
+          alt="루페"
         />
       </Section>
     </Layout>

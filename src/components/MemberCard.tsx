@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ProgressiveImg from './ProgressiveImg';
+import authorImage from '@/assets/images/author.webp';
 
 interface MemberCardProps {
   name: string;
@@ -42,12 +43,12 @@ const MemberCard = ({
         placeholderSrc={
           avatar
             ? `${import.meta.env.VITE_API_URL}/file/${avatar.split('/')[0]}/low.png`
-            : 'author.png'
+            : authorImage
         }
         src={
           avatar
             ? `${import.meta.env.VITE_API_URL}/file/${avatar.split('/')[0]}/256.png`
-            : 'author.png'
+            : authorImage
         }
         loading="lazy"
         alt={'이미지'}

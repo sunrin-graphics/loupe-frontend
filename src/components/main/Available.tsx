@@ -4,6 +4,7 @@ import { DateTime, Duration } from 'luxon';
 import { ReactComponent as CinematicImg } from '@/assets/cinematic.svg';
 import { ReactComponent as InstagramImg } from '@/assets/instagramBig.svg';
 import { ResponsiveContainer } from '../shared/Styles';
+import smap from '@/assets/images/smap.webp';
 
 const OPEN_DATE = DateTime.fromISO('2024-05-29T13:00:00');
 
@@ -58,9 +59,9 @@ export default function Available() {
                   (window.innerHeight ?? 0) -
                   (layoutRef.current?.offsetTop ?? 0) -
                   150) /
-                (layoutRef.current?.offsetHeight ?? 0)) *
-              100 +
-              '%'
+                  (layoutRef.current?.offsetHeight ?? 0)) *
+                  100 +
+                '%'
               : 'calc(100% - 48px)',
         }}
       >
@@ -99,7 +100,7 @@ export default function Available() {
             </ButtonGroup>
           </ContentWrapper>
 
-          <img src="2024/smap.png" alt="loupe" />
+          <img src={smap} alt="loupe" />
         </Wrapper>
       </Container>
     </Layout>
@@ -107,177 +108,181 @@ export default function Available() {
 }
 
 const Layout = styled.div`
-    display: flex;
-    width: 100%;
-    padding: 48px 0;
-    align-items: center;
-    gap: 16px;
-    justify-content: center;
-    background: #fff;
+  display: flex;
+  width: 100%;
+  padding: 48px 0;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  background: #fff;
 
-    @media (max-width: 1300px) {
-        padding: 0 32px;
-    }
-    @media (max-width: 744px) {
-        padding: 0 20px;
-    }
+  @media (max-width: 1300px) {
+    padding: 0 32px;
+  }
+  @media (max-width: 744px) {
+    padding: 0 20px;
+  }
 `;
 
 const Wrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 1022px;
-    position: relative;
-    @media (max-width: 1300px) {
-        width: 100%;
-    }
+  display: flex;
+  justify-content: space-between;
+  width: 1022px;
+  position: relative;
+  @media (max-width: 1300px) {
+    width: 100%;
+    justify-content: flex-start;
+  }
 `;
 
 const Container = styled(ResponsiveContainer)`
-    padding: 48px;
-    border-radius: 24px;
-    border: 1px solid var(--600, #ececf1);
-    background: var(--700, #f8f8fc);
-    overflow: hidden;
-    width: auto;
+  padding: 48px;
+  border-radius: 24px;
+  border: 1px solid var(--600, #ececf1);
+  background: var(--700, #f8f8fc);
+  overflow: hidden;
+  width: auto;
 
-    transition: opacity 0.3s;
+  transition: opacity 0.3s;
 
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 
-    img {
-        width: 280px;
-        height: 280px;
-        border-radius: 280px;
-        padding: 12px;
-        background: linear-gradient(90deg, #5c40a6, #b1a4d5);
-        @media (max-width: 1300px) {
-            display: none;
-        }
-    }
-
+  img {
+    width: 280px;
+    height: 280px;
+    border-radius: 280px;
+    padding: 12px;
+    background: linear-gradient(90deg, #5c40a6, #b1a4d5);
     @media (max-width: 1300px) {
-        padding: 40px;
+      display: none;
     }
-    @media (max-width: 744px) {
-        padding: 24px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  }
+
+  @media (max-width: 1300px) {
+    padding: 40px;
+    justify-content: flex-start;
+  }
+  @media (max-width: 744px) {
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const ContentWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
-    width: max-content;
+  width: max-content;
 `;
 
 const Content = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-    h1 {
-        color: var(--100, #181826);
-        font-size: 56px;
-        font-weight: 600;
-        line-height: 150%;
-        @media (max-width: 1300px) {
-            font-size: 48px;
-        }
-        @media (max-width: 744px) {
-            font-size: 32px;
-        }
+  h1 {
+    color: var(--100, #181826);
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 150%;
+    @media (max-width: 1300px) {
+      font-size: 48px;
     }
+    @media (max-width: 744px) {
+      font-size: 32px;
+    }
+  }
 
-    p {
-        color: var(--300, #59596f);
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 150%;
-        @media (max-width: 1300px) {
-            font-size: 18px;
-        }
-        @media (max-width: 744px) {
-            font-size: 16px;
-        }
+  p {
+    color: var(--300, #59596f);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 150%;
+    @media (max-width: 1300px) {
+      font-size: 18px;
     }
+    @media (max-width: 744px) {
+      font-size: 16px;
+    }
+  }
 `;
 
 const ButtonGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  svg {
+    fill: var(--500, #bbbbc4);
+    width: 24px;
+    height: 24px;
+    @media (max-width: 1300px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  a {
     display: flex;
+    padding: 12px 20px 12px 16px;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    border-radius: 100px;
+    border: 1.5px solid var(--600, #ececf1);
+    background: var(--800, #fff);
+    transition:
+      background 0.2s,
+      transform 0.2s;
 
-    svg {
-        fill: var(--500, #BBBBC4);
-        width: 24px;
-        height: 24px;
-        @media (max-width: 1300px) {
-            width: 20px;
-            height: 20px;
-        }
+    &:hover {
+      background: var(--700, #f8f8fc);
     }
 
-    a {
-        display: flex;
-        padding: 12px 20px 12px 16px;
-        align-items: center;
-        gap: 8px;
-        border-radius: 100px;
-        border: 1.5px solid var(--600, #ececf1);
-        background: var(--800, #fff);
-        transition: background 0.2s,
-        transform 0.2s;
-
-        &:hover {
-            background: var(--700, #f8f8fc);
-        }
-
-        &:active {
-            transform: scale(0.95);
-            background: var(--600, #ececf1);
-        }
-
-        p {
-            color: var(--100, #181826);
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 150%; /* 27px */
-            @media (max-width: 1300px) {
-                font-size: 16px;
-            }
-            @media (max-width: 744px) {
-                font-size: 14px;
-            }
-        }
+    &:active {
+      transform: scale(0.95);
+      background: var(--600, #ececf1);
     }
 
-    button {
-        display: flex;
-        padding: 12px 20px 12px 16px;
-        align-items: center;
-        gap: 8px;
-        border-radius: 100px;
-        border: 1.5px solid var(--600, #ececf1);
-        background: var(--800, #fff);
-        transition: background 0.2s,
-        transform 0.2s;
-
-        p {
-            color: var(--500, #BBBBC4);
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 150%; /* 27px */
-            @media (max-width: 1300px) {
-                font-size: 16px;
-            }
-            @media (max-width: 744px) {
-                font-size: 14px;
-            }
-        }
+    p {
+      color: var(--100, #181826);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 150%; /* 27px */
+      @media (max-width: 1300px) {
+        font-size: 16px;
+      }
+      @media (max-width: 744px) {
+        font-size: 14px;
+      }
     }
+  }
+
+  button {
+    display: flex;
+    padding: 12px 20px 12px 16px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    border: 1.5px solid var(--600, #ececf1);
+    background: var(--800, #fff);
+    transition:
+      background 0.2s,
+      transform 0.2s;
+
+    p {
+      color: var(--500, #bbbbc4);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 150%; /* 27px */
+      @media (max-width: 1300px) {
+        font-size: 16px;
+      }
+      @media (max-width: 744px) {
+        font-size: 14px;
+      }
+    }
+  }
 `;
