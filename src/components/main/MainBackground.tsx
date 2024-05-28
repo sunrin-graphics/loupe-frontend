@@ -95,15 +95,18 @@ export default function MainBackground() {
         }}
       >
         <ButtonGroup>
-          <button disabled>
+          <RoundButton $disabled>
             <CinematicImg fill={'#BBBBC4'} />
-            <p>공식 티저</p>
-          </button>
+            공식 티저
+          </RoundButton>
 
-          <a href="https://instagram.com/sr_design_exhibit" target="_blank">
+          <RoundButton
+            href="https://instagram.com/sr_design_exhibit"
+            target="_blank"
+          >
             <InstagramImg />
-            <p>공식 인스타그램</p>
-          </a>
+            공식 인스타그램
+          </RoundButton>
         </ButtonGroup>
         <BottomContent>
           <BottomLabel>아래로 스크롤해보세요!</BottomLabel>
@@ -118,12 +121,35 @@ const ButtonGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+`;
 
+const RoundButton = styled.a<{
+  $disabled?: boolean;
+}>`
+  color: ${(props) => (props.$disabled ? '#bbbbc4' : '#fff')};
+  user-select: ${(props) => (props.$disabled ? 'none' : 'auto')};
+  display: flex;
+  padding: 12px 20px 12px 16px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  ${(props) =>
+    !props.$disabled &&
+    `
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  &:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.4);
+  }
+  `}
   svg {
-    path {
-      fill: var(--800, #fff);
-    }
-
     width: 24px;
     height: 24px;
     @media (max-width: 1300px) {
@@ -131,77 +157,14 @@ const ButtonGroup = styled.div`
       height: 20px;
     }
   }
-
-  a {
-    display: flex;
-    padding: 12px 20px 12px 16px;
-    align-items: center;
-    gap: 8px;
-    border-radius: 100px;
-    border: 1.5px solid rgba(255, 255, 255, 0.4); // var(--600, #ececf1
-    background: rgba(255, 255, 255, 0.05);
-    transition:
-      background 0.2s,
-      transform 0.2s;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    &:active {
-      transform: scale(0.95);
-      background: rgba(255, 255, 255, 0.4);
-    }
-
-    p {
-      color: var(--800, #fff);
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 150%; /* 27px */
-      @media (max-width: 1300px) {
-        font-size: 16px;
-      }
-      @media (max-width: 744px) {
-        font-size: 14px;
-      }
-    }
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 150%; /* 27px */
+  @media (max-width: 1300px) {
+    font-size: 16px;
   }
-
-  button[disabled] {
-    svg {
-      path {
-        fill: var(--800, #bbbbc4);
-      }
-
-      width: 24px;
-      height: 24px;
-      @media (max-width: 1300px) {
-        width: 20px;
-        height: 20px;
-      }
-    }
-
-    display: flex;
-    padding: 12px 20px 12px 16px;
-    align-items: center;
-    gap: 8px;
-    border-radius: 100px;
-    border: 1.5px solid rgba(255, 255, 255, 0.4); // var(--600, #ececf1
-    background: rgba(255, 255, 255, 0.05);
-    user-select: none;
-
-    p {
-      color: var(--800, #bbbbc4);
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 150%; /* 27px */
-      @media (max-width: 1300px) {
-        font-size: 16px;
-      }
-      @media (max-width: 744px) {
-        font-size: 14px;
-      }
-    }
+  @media (max-width: 744px) {
+    font-size: 14px;
   }
 `;
 

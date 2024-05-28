@@ -88,15 +88,18 @@ export default function Available() {
             </Content>
 
             <ButtonGroup>
-              <button disabled>
-                <CinematicImg/>
-                <p>공식 티저</p>
-              </button>
+              <RoundButton $disabled>
+                <CinematicImg />
+                공식 티저
+              </RoundButton>
 
-              <a href="https://instagram.com/sr_design_exhibit" target="_blank">
+              <RoundButton
+                href="https://instagram.com/sr_design_exhibit"
+                target="_blank"
+              >
                 <InstagramImg />
-                <p>공식 인스타그램</p>
-              </a>
+                공식 인스타그램
+              </RoundButton>
             </ButtonGroup>
           </ContentWrapper>
 
@@ -210,116 +213,53 @@ const Content = styled.div`
   }
 `;
 
+const RoundButton = styled.a<{
+  $disabled?: boolean;
+}>`
+  color: ${(props) => (props.$disabled ? '#BBBBC4' : '#181826')};
+  user-select: ${(props) => (props.$disabled ? 'none' : 'auto')};
+  display: flex;
+  padding: 12px 20px 12px 16px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  border: 1.5px solid var(--600, #ececf1);
+  background: #fff;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  ${(props) =>
+    !props.$disabled &&
+    `
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  &:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.4);
+  }
+  `}
+  svg {
+    width: 24px;
+    height: 24px;
+    @media (max-width: 1300px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 150%; /* 27px */
+  @media (max-width: 1300px) {
+    font-size: 16px;
+  }
+  @media (max-width: 744px) {
+    font-size: 14px;
+  }
+`;
+
 const ButtonGroup = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    svg {
-        //path {
-        //    fill: var(--800, #BBBBC4);
-        //}
-
-        width: 24px;
-        height: 24px;
-        @media (max-width: 1300px) {
-            width: 20px;
-            height: 20px;
-        }
-    }
-
-    a {
-        display: flex;
-        padding: 12px 20px 12px 16px;
-        align-items: center;
-        gap: 8px;
-        border-radius: 100px;
-        border: 1.5px solid var(--600, #ececf1);
-        background: var(--800, #fff);
-        transition: background 0.2s,
-        transform 0.2s;
-
-        &:hover {
-            background: var(--700, #f8f8fc);
-        }
-
-        &:active {
-            transform: scale(0.95);
-            background: var(--600, #ececf1);
-        }
-
-        p {
-            color: var(--100, #181826);
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 150%; /* 27px */
-            @media (max-width: 1300px) {
-                font-size: 16px;
-            }
-            @media (max-width: 744px) {
-                font-size: 14px;
-            }
-        }
-    }
-
-    button {
-        display: flex;
-        padding: 12px 20px 12px 16px;
-        align-items: center;
-        gap: 8px;
-        border-radius: 100px;
-        border: 1.5px solid var(--600, #ececf1);
-        background: var(--800, #fff);
-        transition: background 0.2s,
-        transform 0.2s;
-
-        p {
-            color: var(--500, #bbbbc4);
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 150%; /* 27px */
-            @media (max-width: 1300px) {
-                font-size: 16px;
-            }
-            @media (max-width: 744px) {
-                font-size: 14px;
-            }
-        }
-    }
-    button[disabled]{
-        display: flex;
-        padding: 12px 20px 12px 16px;
-        align-items: center;
-        gap: 8px;
-        border-radius: 100px;
-        border: 1.5px solid var(--600, #ececf1);
-        background: var(--800, #fff);
-        transition: background 0.2s,
-        transform 0.2s;
-        svg {
-            path {
-                fill: var(--800, #BBBBC4);
-            }
-
-            width: 24px;
-            height: 24px;
-            @media (max-width: 1300px) {
-                width: 20px;
-                height: 20px;
-            }
-        }
-
-        p {
-            color: var(--500, #bbbbc4);
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 150%; /* 27px */
-            @media (max-width: 1300px) {
-                font-size: 16px;
-            }
-            @media (max-width: 744px) {
-                font-size: 14px;
-            }
-        }
-    }
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
