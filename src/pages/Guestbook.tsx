@@ -26,7 +26,10 @@ export default function Guestbook() {
       transition: { staggerChildren: 0.1 },
     },
     hide: {
-      transition: { staggerChildren: 0.1, staggerDirection: -1 },
+      transition: {
+        staggerChildren: 0.1,
+        staggerDirection: -1,
+      },
     },
   };
 
@@ -35,9 +38,13 @@ export default function Guestbook() {
       transition: { staggerChildren: 0.1 },
     },
     hide: {
-      transition: { staggerChildren: 0.1, staggerDirection: -1 },
+      transition: {
+        staggerChildren: 0.1,
+        staggerDirection: -1,
+      },
     },
   };
+
   const chunkArray = (array: Note[], windowsize: number): Note[][] => {
     let arrayamount = 4;
     if (windowsize < 590) arrayamount = 1;
@@ -47,11 +54,12 @@ export default function Guestbook() {
     const chunks: Note[][] = Array.from({ length: arrayamount }, () => []);
     let arrayindex = 0;
     for (let i = 0; i < array.length; i += 1) {
-      chunks[arrayindex].push(array[array.length-i-1]);
+      chunks[arrayindex].push(array[array.length - i - 1]);
       arrayindex = (arrayindex + 1) % arrayamount;
     }
     return chunks;
   };
+
   useEffect(() => {
     const handleResize = () => {
       setWindowSize(document.documentElement.clientWidth);
@@ -82,15 +90,22 @@ export default function Guestbook() {
             작성하기
           </PageCTAButton>
         </SectionTop>
-        <Gallery variants={gridAnimation} animate="show" exit="hide">
-          {noteChunks.map((chunk) => (
-            <GuestbookColumn variants={columnAnimation}>
-              {chunk.map((note) => (
-                <GuestbookCard from={note.author} content={note.message} />
-              ))}
-            </GuestbookColumn>
-          ))}
-        </Gallery>
+
+        {noteChunks?.[0]?.length > 0 && (
+          <Gallery variants={gridAnimation} animate="show" exit="hide">
+            {noteChunks.map((chunk) => (
+              <GuestbookColumn variants={columnAnimation}>
+                {chunk.map((note) => (
+                  <GuestbookCard
+                    key={note.id}
+                    from={note.author}
+                    content={note.message}
+                  />
+                ))}
+              </GuestbookColumn>
+            ))}
+          </Gallery>
+        )}
       </Section>
       <Footer />
     </PageLayout>

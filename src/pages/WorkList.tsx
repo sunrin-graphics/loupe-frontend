@@ -41,17 +41,21 @@ export default function WorkList() {
         <SectionTopV2>
           <TitlePagination state={[title, setTitle]} title={dummy} />
         </SectionTopV2>
-        <Gallery variants={gridAnimation} animate="show" exit="hide">
-          {works?.map((work) => (
-            <Artwork
-              key={work.uuid}
-              onClick={() => navigate(`/work/${work.uuid}`)}
-              title={work.title}
-              owner={work.made?.map((m) => m?.user?.name).join(', ')}
-              thumbnail={work.thumbnail}
-            />
-          ))}
-        </Gallery>
+        {works && (
+          <Gallery variants={gridAnimation} animate="show" exit="hide">
+            {works
+              ?.sort((a, b) => a.title.localeCompare(b.title))
+              .map((work) => (
+                <Artwork
+                  key={work.uuid}
+                  onClick={() => navigate(`/work/${work.uuid}`)}
+                  title={work.title}
+                  owner={work.made?.map((m) => m?.user?.name).join(', ')}
+                  thumbnail={work.thumbnail}
+                />
+              ))}
+          </Gallery>
+        )}
       </Section>
       <Footer />
     </PageLayout>
