@@ -19,7 +19,7 @@ function Stars() {
   const ref = useRef<Group>(null);
   const [sphere] = useState(
     () =>
-      new Float32Array(random.inSphere(new Float32Array(800), { radius: 10 })),
+      new Float32Array(random.inSphere(new Float32Array(2000), { radius: 12 })),
   );
 
   useFrame((state, delta) => {
