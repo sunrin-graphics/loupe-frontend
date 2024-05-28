@@ -1,21 +1,10 @@
 import styled from 'styled-components';
-
 import { useEffect, useRef, useState } from 'react';
-import { DateTime } from 'luxon';
 import { ResponsiveContainer } from '../shared/Styles';
-
-const OPEN_DATE = DateTime.fromISO('2024-05-29T13:00:00');
 
 export default function VideoSection() {
   const layoutRef = useRef<HTMLDivElement>(null);
-
-  const [time, setTime] = useState(0);
   const [scrollY, setScrollY] = useState(0);
-  const [width, setWidth] = useState(window.innerWidth);
-
-  function handleResize() {
-    setWidth(window.innerWidth);
-  }
 
   function handleScroll() {
     const scrollTop = window.scrollY;
@@ -24,23 +13,11 @@ export default function VideoSection() {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    const now = DateTime.now().setZone('Asia/Seoul');
-
-    setTimeout(() => {
-      const diff = OPEN_DATE.diff(now, ['days', 'hours', 'minutes', 'seconds']);
-      if (diff.as('seconds') < 0) return;
-      setTime(diff.as('seconds'));
-    }, 1000);
-  }, [time]);
 
   return (
     <Layout ref={layoutRef}>

@@ -8,10 +8,13 @@ import TravelGraph from '@/components/main/TravelGraph.tsx';
 import Available from '@/components/main/Available.tsx';
 import Footer from '@/components/common/Footer.tsx';
 import { useEffect, useRef, useState } from 'react';
+import useIsOpenStore from '@/store/isOpen.ts';
+import VideoSection from '@/components/main/VideoSection.tsx';
 
 export default function Main() {
   const whiteRef = useRef<HTMLDivElement>(null);
   const [headerTransparent, setHeaderTransparent] = useState(false);
+  const isOpen = useIsOpenStore((state) => state.isOpen);
 
   // 특정 ref 가 보이는 스크롤부터 상태 변경
   useEffect(() => {
@@ -43,7 +46,7 @@ export default function Main() {
       <WhiteSection ref={whiteRef}>
         <TravelGraph />
         <IntroduceArt />
-        <Available />
+        {isOpen ? <VideoSection /> : <Available />}
       </WhiteSection>
       <Footer />
     </MainLayout>
@@ -53,10 +56,6 @@ export default function Main() {
 const MainLayout = styled.div`
   position: relative;
   width: 100%;
-  /* background-image: url('/overlay.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat-x; */
 `;
 
 const WhiteSection = styled.div`
