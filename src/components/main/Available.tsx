@@ -70,7 +70,6 @@ export default function Available() {
         <Wrapper>
           <ContentWrapper>
             <Content>
-              {isOpen ? <p>작품이 공개되었습니다!</p> : <p>asdf</p>}
               <h1>
                 작품 공개까지
                 <br />
