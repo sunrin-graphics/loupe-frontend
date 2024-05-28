@@ -4648,6 +4648,7 @@ __metadata:
     typescript: "npm:^5.4.5"
     vite: "npm:^5.2.0"
     vite-plugin-svgr: "npm:^4.2.0"
+    zustand: "npm:^4.5.2"
   languageName: unknown
   linkType: soft
 
@@ -6441,7 +6442,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zustand@npm:^4.3.2":
+"zustand@npm:^4.3.2, zustand@npm:^4.5.2":
   version: 4.5.2
   resolution: "zustand@npm:4.5.2"
   dependencies:

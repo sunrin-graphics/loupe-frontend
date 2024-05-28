@@ -5,10 +5,12 @@ import { ReactComponent as CinematicImg } from '@/assets/cinematic.svg';
 import { ReactComponent as InstagramImg } from '@/assets/instagramBig.svg';
 import { ResponsiveContainer } from '../shared/Styles';
 import smap from '@/assets/images/smap.webp';
+import useIsOpenStore from '@/store/isOpen';
 
 const OPEN_DATE = DateTime.fromISO('2024-05-29T13:00:00');
 
 export default function Available() {
+  const isOpen = useIsOpenStore((state) => state.isOpen);
   const layoutRef = useRef<HTMLDivElement>(null);
 
   const [time, setTime] = useState(0);
@@ -68,6 +70,7 @@ export default function Available() {
         <Wrapper>
           <ContentWrapper>
             <Content>
+              {isOpen ? <p>작품이 공개되었습니다!</p> : <p>asdf</p>}
               <h1>
                 작품 공개까지
                 <br />

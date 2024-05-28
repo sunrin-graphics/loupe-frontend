@@ -7,6 +7,7 @@ import { ReactComponent as NavButton } from '@/assets/nav-button.svg';
 import { ReactComponent as CloseButton } from '@/assets/nav-close.svg';
 import { motion } from 'framer-motion';
 import LogoWhite from '@/assets/logomain.svg';
+import useIsOpenStore from '@/store/isOpen';
 
 interface Props {
   scroll?: {
@@ -17,6 +18,8 @@ interface Props {
 }
 
 export default function Header({ scroll, transparent }: Props) {
+  const isOpen = useIsOpenStore((state) => state.isOpen);
+
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const { pathname } = location;
@@ -94,15 +97,17 @@ export default function Header({ scroll, transparent }: Props) {
         </Link>
 
         <Nav>
-          <li>
-            <NavItem
-              $transparent={!!transparent}
-              $active={pathname.startsWith('/work')}
-              to={'/works'}
-            >
-              작품
-            </NavItem>
-          </li>
+          {isOpen && (
+            <li>
+              <NavItem
+                $transparent={!!transparent}
+                $active={pathname.startsWith('/work')}
+                to={'/works'}
+              >
+                작품
+              </NavItem>
+            </li>
+          )}
           <li>
             <NavItem
               $transparent={!!transparent}
@@ -112,15 +117,17 @@ export default function Header({ scroll, transparent }: Props) {
               참여 인원
             </NavItem>
           </li>
-          <li>
-            <NavItem
-              $transparent={!!transparent}
-              $active={pathname === '/guestbook'}
-              to={'/guestbook'}
-            >
-              방명록
-            </NavItem>
-          </li>
+          {isOpen && (
+            <li>
+              <NavItem
+                $transparent={!!transparent}
+                $active={pathname === '/guestbook'}
+                to={'/guestbook'}
+              >
+                방명록
+              </NavItem>
+            </li>
+          )}
         </Nav>
         <MobileNavButton
           $open={open}

@@ -8,14 +8,28 @@ import Work from './pages/Work';
 import Guestbook from './pages/Guestbook';
 import WorkList from './pages/WorkList';
 import QueryProvider from './components/provider/QueryProvider';
+import OpenRouter from './components/common/OpenRouter';
 
 // 브라우저 라우터 만들기
 // 파라미터로 경로와 컴포넌트 입력하기
 const router = createBrowserRouter(
   [
     {
-      path: '/work/:id',
-      element: <Work />,
+      element: <OpenRouter />,
+      children: [
+        {
+          path: '/work/:id',
+          element: <Work />,
+        },
+        {
+          path: '/guestbook',
+          element: <Guestbook />,
+        },
+        {
+          path: '/works',
+          element: <WorkList />,
+        },
+      ],
     },
     {
       path: '/member',
@@ -25,14 +39,6 @@ const router = createBrowserRouter(
       path: '/',
       element: <Main />,
     },
-    {
-      path: '/guestbook',
-      element: <Guestbook />,
-    },
-    {
-      path: '/works',
-      element: <WorkList />,
-    },
   ],
   {
     basename: '/2024',
@@ -41,6 +47,7 @@ const router = createBrowserRouter(
 
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import OpenProvider from './components/provider/OpenProvider';
 // ..
 AOS.init({
   duration: 600,
@@ -51,7 +58,9 @@ AOS.init({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryProvider>
-      <RouterProvider router={router} />
+      <OpenProvider>
+        <RouterProvider router={router} />
+      </OpenProvider>
     </QueryProvider>
   </React.StrictMode>,
 );
