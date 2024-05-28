@@ -88,8 +88,8 @@ export default function Available() {
             </Content>
 
             <ButtonGroup>
-              <button>
-                <CinematicImg />
+              <button disabled>
+                <CinematicImg/>
                 <p>공식 티저</p>
               </button>
 
@@ -211,78 +211,115 @@ const Content = styled.div`
 `;
 
 const ButtonGroup = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  svg {
-    fill: var(--500, #bbbbc4);
-    width: 24px;
-    height: 24px;
-    @media (max-width: 1300px) {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  a {
     display: flex;
-    padding: 12px 20px 12px 16px;
     align-items: center;
-    gap: 8px;
-    border-radius: 100px;
-    border: 1.5px solid var(--600, #ececf1);
-    background: var(--800, #fff);
-    transition:
-      background 0.2s,
-      transform 0.2s;
+    gap: 10px;
 
-    &:hover {
-      background: var(--700, #f8f8fc);
+    svg {
+        //path {
+        //    fill: var(--800, #BBBBC4);
+        //}
+
+        width: 24px;
+        height: 24px;
+        @media (max-width: 1300px) {
+            width: 20px;
+            height: 20px;
+        }
     }
 
-    &:active {
-      transform: scale(0.95);
-      background: var(--600, #ececf1);
+    a {
+        display: flex;
+        padding: 12px 20px 12px 16px;
+        align-items: center;
+        gap: 8px;
+        border-radius: 100px;
+        border: 1.5px solid var(--600, #ececf1);
+        background: var(--800, #fff);
+        transition: background 0.2s,
+        transform 0.2s;
+
+        &:hover {
+            background: var(--700, #f8f8fc);
+        }
+
+        &:active {
+            transform: scale(0.95);
+            background: var(--600, #ececf1);
+        }
+
+        p {
+            color: var(--100, #181826);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 150%; /* 27px */
+            @media (max-width: 1300px) {
+                font-size: 16px;
+            }
+            @media (max-width: 744px) {
+                font-size: 14px;
+            }
+        }
     }
 
-    p {
-      color: var(--100, #181826);
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 150%; /* 27px */
-      @media (max-width: 1300px) {
-        font-size: 16px;
-      }
-      @media (max-width: 744px) {
-        font-size: 14px;
-      }
-    }
-  }
+    button {
+        display: flex;
+        padding: 12px 20px 12px 16px;
+        align-items: center;
+        gap: 8px;
+        border-radius: 100px;
+        border: 1.5px solid var(--600, #ececf1);
+        background: var(--800, #fff);
+        transition: background 0.2s,
+        transform 0.2s;
 
-  button {
-    display: flex;
-    padding: 12px 20px 12px 16px;
-    align-items: center;
-    gap: 8px;
-    border-radius: 100px;
-    border: 1.5px solid var(--600, #ececf1);
-    background: var(--800, #fff);
-    transition:
-      background 0.2s,
-      transform 0.2s;
-
-    p {
-      color: var(--500, #bbbbc4);
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 150%; /* 27px */
-      @media (max-width: 1300px) {
-        font-size: 16px;
-      }
-      @media (max-width: 744px) {
-        font-size: 14px;
-      }
+        p {
+            color: var(--500, #bbbbc4);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 150%; /* 27px */
+            @media (max-width: 1300px) {
+                font-size: 16px;
+            }
+            @media (max-width: 744px) {
+                font-size: 14px;
+            }
+        }
     }
-  }
+    button[disabled]{
+        display: flex;
+        padding: 12px 20px 12px 16px;
+        align-items: center;
+        gap: 8px;
+        border-radius: 100px;
+        border: 1.5px solid var(--600, #ececf1);
+        background: var(--800, #fff);
+        transition: background 0.2s,
+        transform 0.2s;
+        svg {
+            path {
+                fill: var(--800, #BBBBC4);
+            }
+
+            width: 24px;
+            height: 24px;
+            @media (max-width: 1300px) {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        p {
+            color: var(--500, #bbbbc4);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 150%; /* 27px */
+            @media (max-width: 1300px) {
+                font-size: 16px;
+            }
+            @media (max-width: 744px) {
+                font-size: 14px;
+            }
+        }
+    }
 `;

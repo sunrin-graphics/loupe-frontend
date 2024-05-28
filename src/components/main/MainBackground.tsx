@@ -96,7 +96,7 @@ export default function MainBackground() {
       >
         <ButtonGroup>
           <button disabled>
-            <CinematicImg />
+            <CinematicImg fill={'#BBBBC4'}/>
             <p>공식 티저</p>
           </button>
 
@@ -115,86 +115,93 @@ export default function MainBackground() {
 }
 
 const ButtonGroup = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  svg {
-    path {
-      fill: var(--800, #fff);
-    }
-    width: 24px;
-    height: 24px;
-    @media (max-width: 1300px) {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  a {
     display: flex;
-    padding: 12px 20px 12px 16px;
     align-items: center;
-    gap: 8px;
-    border-radius: 100px;
-    border: 1.5px solid rgba(255, 255, 255, 0.4); // var(--600, #ececf1
-    background: rgba(255, 255, 255, 0.05);
-    transition:
-      background 0.2s,
-      transform 0.2s;
-    &:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    &:active {
-      transform: scale(0.95);
-      background: rgba(255, 255, 255, 0.4);
-    }
-    p {
-      color: var(--800, #fff);
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 150%; /* 27px */
-      @media (max-width: 1300px) {
-        font-size: 16px;
-      }
-      @media (max-width: 744px) {
-        font-size: 14px;
-      }
-    }
-  }
-  button[disabled] {
+    gap: 10px;
+
     svg {
-      path {
-        fill: var(--800, #ffffff89);
-      }
-      width: 24px;
-      height: 24px;
-      @media (max-width: 1300px) {
-        width: 20px;
-        height: 20px;
-      }
+        path {
+            fill: var(--800, #fff);
+        }
+
+        width: 24px;
+        height: 24px;
+        @media (max-width: 1300px) {
+            width: 20px;
+            height: 20px;
+        }
     }
-    display: flex;
-    padding: 12px 20px 12px 16px;
-    align-items: center;
-    gap: 8px;
-    border-radius: 100px;
-    border: 1.5px solid rgba(255, 255, 255, 0.4); // var(--600, #ececf1
-    background: rgba(255, 255, 255, 0.05);
-    user-select: none;
-    p {
-      color: var(--800, #ffffff89);
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 150%; /* 27px */
-      @media (max-width: 1300px) {
-        font-size: 16px;
-      }
-      @media (max-width: 744px) {
-        font-size: 14px;
-      }
+
+    a {
+        display: flex;
+        padding: 12px 20px 12px 16px;
+        align-items: center;
+        gap: 8px;
+        border-radius: 100px;
+        border: 1.5px solid rgba(255, 255, 255, 0.4); // var(--600, #ececf1
+        background: rgba(255, 255, 255, 0.05);
+        transition: background 0.2s,
+        transform 0.2s;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        &:active {
+            transform: scale(0.95);
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        p {
+            color: var(--800, #fff);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 150%; /* 27px */
+            @media (max-width: 1300px) {
+                font-size: 16px;
+            }
+            @media (max-width: 744px) {
+                font-size: 14px;
+            }
+        }
     }
-  }
+
+    button[disabled] {
+        svg {
+            path {
+                fill: var(--800, #BBBBC4);
+            }
+
+            width: 24px;
+            height: 24px;
+            @media (max-width: 1300px) {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        display: flex;
+        padding: 12px 20px 12px 16px;
+        align-items: center;
+        gap: 8px;
+        border-radius: 100px;
+        border: 1.5px solid rgba(255, 255, 255, 0.4); // var(--600, #ececf1
+        background: rgba(255, 255, 255, 0.05);
+        user-select: none;
+
+        p {
+            color: var(--800, #BBBBC4);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 150%; /* 27px */
+            @media (max-width: 1300px) {
+                font-size: 16px;
+            }
+            @media (max-width: 744px) {
+                font-size: 14px;
+            }
+        }
+    }
 `;
 
 const FloatingAnimation = keyframes`
