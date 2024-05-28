@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import useIsOpenStore from '@/store/isOpen';
 
-const OPEN_DATE = DateTime.fromISO('2024-05-28T13:00:00');
+const OPEN_DATE = DateTime.fromISO('2024-05-29T13:00:00');
 
 interface Props {
   children: React.ReactNode;
