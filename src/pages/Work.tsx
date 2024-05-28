@@ -10,8 +10,6 @@ function Work() {
   const { id } = useParams();
   const { data: work } = useWork(id as string);
 
-  console.log(work);
-
   return (
     <PageLayout>
       <Header
