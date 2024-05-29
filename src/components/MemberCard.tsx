@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 import ProgressiveImg from './ProgressiveImg';
 import authorImage from '@/assets/images/author.webp';
 import useIsOpenStore from '@/store/isOpen.ts';
-import { useEffect } from 'react';
-import { is } from '@react-three/fiber/dist/declarations/src/core/utils';
 
 interface MemberCardProps {
   name: string;
