@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import authorImage from '@/assets/images/author.webp';
 
 interface Props {
   name: string;
@@ -12,7 +13,7 @@ export default function ContentAuthor({ name, avatar, email }: Props) {
         src={
           avatar
             ? `${import.meta.env.VITE_API_URL}/file/${avatar.split('/')[0]}/256.png`
-            : '/author.png'
+            : authorImage
         }
         alt="author1"
       />

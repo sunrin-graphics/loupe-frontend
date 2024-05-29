@@ -1,6 +1,7 @@
 import { User } from '@/hooks/user';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import authorImage from '@/assets/images/author.webp';
 
 interface Props {
   title: string;
@@ -74,7 +75,7 @@ export default function WorkTop({
                   src={
                     author.avatar
                       ? `${import.meta.env.VITE_API_URL}/file/${author.avatar.split('/')[0]}/256.png`
-                      : '/author.png'
+                      : authorImage
                   }
                   alt="author1"
                 />
