@@ -6,14 +6,12 @@ import { ReactComponent as CinematicImg } from '@/assets/cinematic.svg';
 import { ReactComponent as InstagramImg } from '@/assets/instagramBig.svg';
 import { useEffect, useState } from 'react';
 import map from '@/assets/images/map.webp';
-import useIsOpenStore from '@/store/isOpen.ts';
 
 export default function MainBackground() {
   const [scrollY, setScrollY] = useState(0);
   const [progress, setProgress] = useState(0);
   const controls = useAnimation();
   const blockHeight = 800; // 스크롤을 막을 길이
-  const isOpen = useIsOpenStore((state) => state.isOpen);
 
   const handleScroll = () => {
     const scrollTop = window.scrollY;
@@ -97,7 +95,7 @@ export default function MainBackground() {
         }}
       >
         <ButtonGroup>
-          <RoundButton $disabled={!isOpen}>
+          <RoundButton href={'https://youtu.be/ffOQYj-Uj5E'} target={'_blank'}>
             <CinematicImg fill={'#BBBBC4'} />
             공식 티저
           </RoundButton>
