@@ -27,6 +27,8 @@ export default function TravelGraph() {
 }
 
 const Layout = styled.div`
+
+    min-height: 917px;
   width: 100%;
   height: 100vh;
   display: flex;

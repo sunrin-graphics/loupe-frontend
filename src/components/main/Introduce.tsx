@@ -111,6 +111,8 @@ const CardBox = styled.div`
 `;
 
 const Layout = styled.div`
+
+    min-height: 974px;
   width: 100%;
   height: 100vh;
   display: flex;

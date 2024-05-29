@@ -89,6 +89,7 @@ const PaletteImg = styled.img`
   }
 `;
 const Layout = styled.div`
+    min-height: 1280px;
   overflow: hidden;
   display: flex;
   justify-content: center;
