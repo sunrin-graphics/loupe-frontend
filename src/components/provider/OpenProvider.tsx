@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import useIsOpenStore from '@/store/isOpen';
 
-const OPEN_DATE = DateTime.fromISO('2024-05-29T13:00:00');
+const OPEN_DATE = DateTime.fromISO('2024-05-28T13:00:00');
 
 interface Props {
   children: React.ReactNode;
 }
 export default function OpenProvider({ children }: Props) {
   const setIsOpen = useIsOpenStore((state) => state.setIsOpen);
+  const toggleLoad = useIsOpenStore((state) => state.toggleLoad);
 
   const [time, setTime] = useState(0);
 
@@ -22,6 +23,7 @@ export default function OpenProvider({ children }: Props) {
 
   useEffect(() => {
     handle();
+    toggleLoad();
   }, []);
 
   useEffect(() => {
