@@ -6,6 +6,9 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ProgressiveImg from './ProgressiveImg';
 import authorImage from '@/assets/images/author.webp';
+import useIsOpenStore from '@/store/isOpen.ts';
+import { useEffect } from 'react';
+import { is } from '@react-three/fiber/dist/declarations/src/core/utils';
 
 interface MemberCardProps {
   name: string;
@@ -22,8 +25,9 @@ const MemberCard = ({
   avatar,
   insLink = '',
   poLink = '',
-  // artLink = '',
+  artLink = '',
 }: MemberCardProps) => {
+  const isOpen = useIsOpenStore((state) => state.isOpen);
   const imgAnimation = {
     show: {
       y: [40, 0],
@@ -75,7 +79,7 @@ const MemberCard = ({
         <CardLinkTitle>포트폴리오</CardLinkTitle>
       </CardLinkItem>
 
-      <CardLinkItem to={``} $disabled={true}>
+      <CardLinkItem to={!isOpen ? '' : `/work/${artLink}`} $disabled={!isOpen}>
         <CardLinkIcon>
           <ArtIcon />
         </CardLinkIcon>
