@@ -14,13 +14,14 @@ export default function PostGuestbookModal({
   open = false,
   setOpen,
 }: ModalProps) {
-  const { mutate: postNote } = usePostNote();
+  const { mutate: postNote, isError, reset } = usePostNote();
 
   const modalRoot = document.querySelector('#modal-root') as HTMLElement;
 
   const [content, setContent] = useState('');
   const [name, setName] = useState('');
   const [isComplete, setIsComplete] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -37,14 +38,22 @@ export default function PostGuestbookModal({
     e.stopPropagation();
     e.preventDefault();
     setOpen(false);
+    reset();
   };
 
   const onSubmit = () => {
-    postNote({
-      message: content,
-      author: name,
-    });
-    setOpen(false);
+    postNote(
+      { message: content, author: name },
+      {
+        onSuccess: () => {
+          setOpen(false);
+          setErrorMessage(null);
+        },
+        onError: (error: any) => {
+          setErrorMessage(error.message);
+        },
+      },
+    );
   };
 
   return ReactDOM.createPortal(
@@ -58,16 +67,36 @@ export default function PostGuestbookModal({
                 <img src={Close} />
               </CloseButton>
             </ModalTop>
-            <ContentInput
-              placeholder="내용을 입력해주세요."
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            />
+            <ContentInputContainer>
+              <ContentInput
+                placeholder="내용을 입력해주세요."
+                value={content}
+                onChange={(e) => {
+                  // 글자수 제한
+                  if (e.target.value.length > 300) {
+                    setContent(e.target.value.slice(0, 300));
+                  } else {
+                    setContent(e.target.value);
+                  }
+                }}
+              />
+              <LengthLabel $full={content.length === 300}>
+                {content.length}/300 자
+              </LengthLabel>
+            </ContentInputContainer>
+
             <ModalBottom>
               <NameInput
                 placeholder="이름을 입력해주세요."
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  // 글자수 제한
+                  if (e.target.value.length > 10) {
+                    setName(e.target.value.slice(0, 10));
+                  } else {
+                    setName(e.target.value);
+                  }
+                }}
               />
               <CTAButton
                 onClick={isComplete ? onSubmit : onCancel}
@@ -76,6 +105,7 @@ export default function PostGuestbookModal({
                 등록하기
               </CTAButton>
             </ModalBottom>
+            {isError && <Error>{errorMessage}</Error>}
           </Modal>
         </ModalOverlay>
       ) : null}
@@ -83,6 +113,50 @@ export default function PostGuestbookModal({
     modalRoot,
   );
 }
+
+const LengthLabel = styled.div<{
+  $full: boolean;
+}>`
+  color: ${(props) => (props.$full ? '#FF0000' : ' #878797')};
+  text-align: right;
+  align-self: flex-end;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+`;
+
+const ContentInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 192px;
+  padding: 12px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px #ececf1;
+  border: none;
+  background: var(--700, #f8f8fc);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  transition: box-shadow 0.2s;
+  line-height: 150%; /* 24px */
+  resize: none;
+  outline: none;
+  &:focus {
+    box-shadow: inset 0 0 0 1px #bbbbc4;
+  }
+  @media (max-width: 744px) {
+    font-size: 14px;
+    height: 150px;
+  }
+  @media (max-width: 1300px) {
+    height: 168px;
+  }
+`;
 
 const CloseButton = styled.div`
   cursor: pointer;
@@ -121,6 +195,14 @@ const ModalOverlay = styled.div`
   @media (max-width: 744px) {
     padding: 0 20px;
   }
+`;
+
+const Error = styled.div`
+  color: #f00;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
 `;
 
 const Modal = styled.div`
@@ -162,16 +244,10 @@ const ModalTitle = styled.div`
 `;
 
 const ContentInput = styled.textarea`
-  display: flex;
-  height: 192px;
-  padding: 12px;
-  align-items: flex-start;
-  gap: 10px;
   align-self: stretch;
-  border-radius: 8px;
-  box-shadow: inset 0 0 0 1px #ececf1;
+  background: none;
+  flex: 1;
   border: none;
-  background: var(--700, #f8f8fc);
   color: var(--100, #181826);
   font-size: 16px;
   font-style: normal;
@@ -183,15 +259,8 @@ const ContentInput = styled.textarea`
   &::placeholder {
     color: var(--500, #bbbbc4);
   }
-  &:focus {
-    box-shadow: inset 0 0 0 1px #bbbbc4;
-  }
   @media (max-width: 744px) {
     font-size: 14px;
-    height: 150px;
-  }
-  @media (max-width: 1300px) {
-    height: 168px;
   }
 `;
 
