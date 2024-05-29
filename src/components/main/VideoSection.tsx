@@ -78,19 +78,13 @@ const Layout = styled.div`
 `;
 
 const VideoEmbed = styled.div`
-  position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 비율 (9/16 * 100) */
-  height: 0;
+  aspect-ratio: 16 / 9;
   border-radius: 8px;
   overflow: hidden;
   iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    border: 0;
   }
 `;
 
