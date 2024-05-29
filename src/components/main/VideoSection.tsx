@@ -10,6 +10,11 @@ export default function VideoSection() {
   const [debounceWidth, setDebounceWidth] = useState(0);
 
   useEffect(() => {
+    setWidth(window.innerWidth);
+    setDebounceWidth(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
     function handleResize() {
       setWidth(window.innerWidth);
     }
