@@ -16,26 +16,31 @@ export default function Main() {
   const [headerTransparent, setHeaderTransparent] = useState(false);
   const isOpen = useIsOpenStore((state) => state.isOpen);
 
+  const [scrollY, setScrollY] = useState(0);
+
   // 특정 ref 가 보이는 스크롤부터 상태 변경
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setHeaderTransparent(!entry.isIntersecting);
-      },
-      {
-        threshold: 0,
-        rootMargin: '0px 0px -100% 0px',
-      },
-    );
-
-    if (whiteRef.current) {
-      observer.observe(whiteRef.current);
+    function handleScroll() {
+      const scrollTop = window.scrollY;
+      setScrollY(scrollTop);
     }
 
+    window.addEventListener('scroll', handleScroll);
+
     return () => {
-      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (!whiteRef.current) return;
+
+    if (scrollY + 60 < whiteRef.current.offsetTop) {
+      setHeaderTransparent(true);
+    } else {
+      setHeaderTransparent(false);
+    }
+  }, [scrollY]);
 
   return (
     <MainLayout>
@@ -43,8 +48,8 @@ export default function Main() {
       <ThreeBackground />
       <MainBackground />
       <Introduce />
+      <TravelGraph />
       <WhiteSection ref={whiteRef}>
-        <TravelGraph />
         <IntroduceArt />
         {isOpen ? <VideoSection /> : <Available />}
       </WhiteSection>
