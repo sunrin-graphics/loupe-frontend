@@ -6,6 +6,31 @@ export default function VideoSection() {
   const layoutRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
 
+  const [width, setWidth] = useState(0);
+  const [debounceWidth, setDebounceWidth] = useState(0);
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      setDebounceWidth(width);
+    }, 100);
+
+    return () => {
+      clearTimeout(debounce);
+    };
+  }, [width]);
+
   function handleScroll() {
     const scrollTop = window.scrollY;
     setScrollY(scrollTop);
@@ -40,21 +65,32 @@ export default function VideoSection() {
               : 'calc(100% - 48px)',
         }}
       >
-        <Content>
-          유튜브에서 <br />
-          메인 티저 영상을 <br />
-          확인해보세요! <br />
-        </Content>
-        <VideoEmbed>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/9bZkp7q19f0"
-            title="loupe 영상"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </VideoEmbed>
+        <Wrapper
+          style={{
+            width:
+              debounceWidth > 1300
+                ? '1022px'
+                : debounceWidth > 744
+                  ? (layoutRef?.current?.offsetWidth ?? 0) - 80 - 64 + 'px'
+                  : (layoutRef?.current?.offsetWidth ?? 0) - 48 - 40 + 'px',
+          }}
+        >
+          <Content>
+            유튜브에서 <br />
+            메인 티저 영상을 <br />
+            확인해보세요! <br />
+          </Content>
+          <VideoEmbed>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/9bZkp7q19f0"
+              title="loupe 영상"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </VideoEmbed>
+        </Wrapper>
       </Container>
     </Layout>
   );
@@ -88,6 +124,19 @@ const VideoEmbed = styled.div`
   }
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 28px;
+  width: 1022px;
+  position: relative;
+  @media (max-width: 1300px) {
+    width: 100%;
+    justify-content: flex-start;
+  }
+`;
+
 const Container = styled(ResponsiveContainer)`
   padding: 48px;
   border-radius: 24px;
@@ -95,19 +144,17 @@ const Container = styled(ResponsiveContainer)`
   background: #f8f8fc;
   overflow: hidden;
   width: auto;
-  flex-direction: column;
   transition: opacity 0.3s;
-  gap: 28px;
-  display: flex;
+
+  display: grid;
+  justify-content: center;
 
   @media (max-width: 1300px) {
     padding: 40px;
-    justify-content: flex-start;
   }
   @media (max-width: 744px) {
     padding: 24px;
     flex-direction: column;
-    align-items: flex-start;
   }
 `;
 
