@@ -1,12 +1,15 @@
 import styled, { keyframes } from 'styled-components';
 import { ResponsiveContainer } from '@/components/shared/Styles.tsx';
-import Palette from '@/assets/palette.svg';
+import { ReactComponent as Palette } from '@/assets/palette.svg';
 import { useEffect, useState } from 'react';
 import { useWorks } from '@/hooks/work.ts';
+import useIsOpenStore from '@/store/isOpen.ts';
+import { Link } from 'react-router-dom';
 
 const IntroduceRef = () => {
   const { data: works } = useWorks(undefined);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const isOpen = useIsOpenStore((state) => state.isOpen);
 
   const handleScroll = () => {
     setScrollPosition(window.scrollY);
@@ -29,10 +32,10 @@ const IntroduceRef = () => {
               보여주고자 해요.
             </Title>
           </WrapperTop>
-          <Button>
-            <TextBox>
-              <PaletteImg alt="팔레트 아이콘" src={Palette} />
-              <ButtonText>작품 보러 가기</ButtonText>
+          <Button to={'/works'} $disabled={!isOpen}>
+            <TextBox $disabled={!isOpen}>
+              <Palette />
+              <div>작품 보러 가기</div>
             </TextBox>
           </Button>
         </Wrapper>
@@ -79,15 +82,6 @@ const RotateAnimation = keyframes`
     }
 `;
 
-const PaletteImg = styled.img`
-  z-index: 1;
-  width: 24px;
-  height: 24px;
-  @media screen and (max-width: 744px) {
-    width: 20px;
-    height: 20px;
-  }
-`;
 const Layout = styled.div`
     min-height: 1280px;
   overflow: hidden;
@@ -189,8 +183,10 @@ const WrapperTop = styled.div`
   gap: 4px;
 `;
 
-const Button = styled.div`
-  pointer-events: none;
+const Button = styled(Link)<{
+  $disabled?: boolean;
+}>`
+  pointer-events: ${(props) => (props.$disabled ? 'none' : 'auto')};
   position: relative;
   width: 165px;
   height: 51px;
@@ -207,9 +203,13 @@ const Button = styled.div`
     height: 200px; /* 2배 */
     background-repeat: no-repeat;
     background-size: 100%;
-    /* background-image: linear-gradient(#5c40a6 50%, #b1a4d5 70%); */
-    background: #ececf1;
-    /* animation: ${RotateAnimation} 3s linear infinite; */
+
+    ${(props) =>
+      props.$disabled
+        ? 'background: #ececf1;'
+        : 'background-image: linear-gradient(#5c40a6 50%, #b1a4d5 70%);'}
+
+    animation: ${RotateAnimation} 3s linear infinite;
   }
   &:after {
     z-index: 0;
@@ -224,18 +224,30 @@ const Button = styled.div`
   }
 `;
 
-const TextBox = styled.div`
+const TextBox = styled.div<{
+  $disabled?: boolean;
+}>`
   padding: 12px 20px 12px 16px;
   z-index: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
-`;
-const ButtonText = styled.div`
-  z-index: 1;
-  color: var(--500, #bbbbc4);
+  color: ${(props) => (props.$disabled ? '#BBBBC4' : '#181826')};
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 30px */
+  svg {
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+    @media screen and (max-width: 744px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  div {
+    z-index: 1;
+  }
 `;
