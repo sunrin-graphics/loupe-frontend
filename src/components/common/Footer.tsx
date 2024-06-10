@@ -45,32 +45,30 @@ export default function Footer() {
           </FooterColumn>
         </FooterBlock>
         <FooterBlock>
-          <FooterSemiLabel>웹사이트 바로가기</FooterSemiLabel>
-          <FooterLinkItem target="_blank" to="https://sunrint.sen.hs.kr">
-            <FooterIcon>
-              <img src={link} alt="youtube" />
-            </FooterIcon>
-
-            <FooterLinkLabel>학교 공식 웹사이트</FooterLinkLabel>
-          </FooterLinkItem>
-          <FooterLinkItem
-            target="_blank"
-            to="https://www.instagram.com/sr_design_exhibit/"
-          >
-            <FooterIcon>
-              <img src={instagram} alt="youtube" />
-            </FooterIcon>
-            <FooterLinkLabel>졸업전시회 인스타그램</FooterLinkLabel>
-          </FooterLinkItem>
-          <FooterLinkItem
-            target="_blank"
-            to="https://www.youtube.com/@user-wi9bc4qg4g"
-          >
-            <FooterIcon>
-              <img src={youtube} alt="youtube" />
-            </FooterIcon>
-            <FooterLinkLabel>졸업전시회 유튜브</FooterLinkLabel>
-          </FooterLinkItem>
+          <FooterSemiLabel>제12회 졸업전시회 졸업전시준비위원회</FooterSemiLabel>
+          <FooterColumn>
+            <FooterRow $gap={'8px'}>
+              <FooterName>박정우</FooterName>
+              <FooterName>오지후</FooterName>
+              <FooterName>박시원</FooterName>
+              <FooterName>박세현 (남)</FooterName>
+              <FooterName>표한빈</FooterName>
+            </FooterRow>
+            <FooterRow $gap={'8px'}>
+              <FooterName>안재민</FooterName>
+              <FooterName>백시현</FooterName>
+              <FooterName>이경훈</FooterName>
+              <FooterName>김지민</FooterName>
+              <FooterName>윤진혁</FooterName>
+            </FooterRow>
+            <FooterRow $gap={'8px'}>
+              <FooterName>이하은</FooterName>
+              <FooterName>윤태이</FooterName>
+              <FooterName>서유진</FooterName>
+              <FooterName>김해윤</FooterName>
+              <FooterName>이초원</FooterName>
+            </FooterRow>
+          </FooterColumn>
         </FooterBlock>
       </FooterContainer>
     </FooterLayout>
@@ -94,7 +92,7 @@ const FooterSemiLabel = styled.div`
 const FooterLayout = styled.footer`
   display: flex;
   width: 100%;
-  margin-top: 48px;
+  margin-top: 32px;
   align-items: flex-end;
   justify-content: center;
   border-top: 1px solid var(--600, #ececf1);
@@ -145,11 +143,13 @@ const FooterLabel = styled.div`
   user-select: none;
 `;
 
-const FooterRow = styled.div`
+const FooterRow = styled.div<{
+  $gap? : string;
+}>`
   display: flex;
   align-items: center;
 
-  gap: 4px;
+  gap: ${(props) => props.$gap || '4px'};
 `;
 
 const FooterName = styled.div`
@@ -187,3 +187,4 @@ const FooterIcon = styled.div`
   align-items: center;
   gap: 8.333px;
 `;
+
