@@ -119,7 +119,7 @@ const Layout = styled.div`
 `;
 
 const VideoEmbed = styled.div`
-  width: 100%;
+  width: 50%;
   aspect-ratio: 16 / 9;
   border-radius: 8px;
   overflow: hidden;
@@ -127,17 +127,21 @@ const VideoEmbed = styled.div`
     width: 100%;
     height: 100%;
   }
+  @media (max-width: 1300px) {
+    width: 100%;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
   gap: 28px;
   width: 1022px;
   position: relative;
   @media (max-width: 1300px) {
     width: 100%;
+    flex-direction: column;
     justify-content: flex-start;
   }
 `;
@@ -165,7 +169,7 @@ const Container = styled(ResponsiveContainer)`
 
 const Content = styled.div`
   color: #181826;
-  font-size: 56px;
+  font-size: 63.5px;
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 48px */
