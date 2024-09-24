@@ -52,10 +52,9 @@ export default function Introduce() {
               </MainTitle>
             </div>
             <Description data-aos="fade-up">
-              루페는 하나의 확대도구로, 작은 무언가를 볼 수 있게 도와주는
-              도구에요. 가까이 있던 무언가가 루페를 통해 본다면 다른 모습으로
-              보이듯이, 이번 졸업전시회의 루페는 정형적인 시각의 틀에서 벗어나
-              다른 무언가를 볼 수 있게 도와주는 창이라는 뜻을 담았어요.
+              'LOUPE'는 작은 확대경으로, 작은 크기의 무언가를 더 자세히 볼 수 있게 도와주는 도구예요. <br/>
+              가까이 있지만 평소에는 잘 보지 못했던 것들을 루페로 보면 다른 모습으로 보이듯,
+              이번 졸업전시회에서의 'LOUPE'는 정형적인 시각에서 벗어나 새로운 관점을 제시하는 창이라는 뜻을 담았어요.
             </Description>
           </TitleContainer>
         </MainTextContainer>

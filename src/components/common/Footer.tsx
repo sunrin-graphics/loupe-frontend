@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 import sunrinLogo from '@/assets/sunrin.svg';
-import youtube from '@/assets/youtube.svg';
-import link from '@/assets/link.svg';
-import instagram from '@/assets/instagram.svg';
 import { ResponsiveContainer } from '../shared/Styles';
 import { Link } from 'react-router-dom';
 
@@ -74,12 +71,6 @@ export default function Footer() {
     </FooterLayout>
   );
 }
-
-const FooterLinkItem = styled(Link)`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
 
 const FooterSemiLabel = styled.div`
   color: var(--100, #181826);
@@ -163,28 +154,3 @@ const FooterName = styled.div`
 const Strong = styled.span`
   font-weight: 600;
 `;
-
-const FooterLinkLabel = styled.p`
-  color: var(--300, #59596f);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%; /* 21px */
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.2s;
-  &:hover {
-    color: var(--100, #181826);
-    font-weight: 600;
-  }
-`;
-
-const FooterIcon = styled.div`
-  display: flex;
-  width: 20px;
-  height: 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 8.333px;
-`;
-
